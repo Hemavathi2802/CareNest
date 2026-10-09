@@ -1,0 +1,1149 @@
+/* =========================================================
+   CARENEST - PATIENT VISIT REPORTS
+   Based on Patient Schedule theme
+   ========================================================= */
+
+
+/* ================= PAGE ================= */
+
+.visit-reports-page {
+  min-height: calc(100vh - 72px);
+  padding: 45px 30px 70px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(170, 205, 255, 0.55),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(244, 188, 239, 0.55),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(205, 192, 255, 0.45),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #dff5ff 0%,
+      #eceaff 48%,
+      #fae9f7 100%
+    );
+
+  color: #30235f;
+}
+/* ================= HEADER ================= */
+
+.visit-reports-header {
+  max-width: 950px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.visit-reports-label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #8746d9;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.visit-reports-header h1 {
+  margin: 0;
+
+  color: #24205e;
+
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.visit-reports-header p {
+  margin: 12px 0 0;
+
+  color: #68658e;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* ================= MAIN CONTAINER ================= */
+
+.visit-reports-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+/* ================= MAIN CARD ================= */
+
+.visit-reports-card {
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 55px rgba(92, 76, 157, 0.15);
+}
+
+
+/* ================= CARD HEADER ================= */
+
+.visit-reports-card-header {
+  min-height: 125px;
+
+  padding: 28px 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #ece8f8;
+}
+
+.visit-reports-card-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+/* ================= MAIN ICON ================= */
+
+.visit-reports-main-icon {
+  width: 62px;
+  height: 62px;
+  min-width: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #eee9ff,
+      #f8efff
+    );
+
+  color: #7043d4;
+}
+
+.visit-reports-main-icon svg {
+  width: 29px;
+  height: 29px;
+}
+
+
+/* ================= CARD TITLE ================= */
+
+.visit-reports-card-title h2 {
+  margin: 0;
+
+  color: #25205f;
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.visit-reports-card-title p {
+  margin: 5px 0 0;
+
+  color: #777493;
+
+  font-size: 14px;
+}
+
+
+/* ================= HEADER ART ================= */
+
+.visit-reports-header-art {
+  width: 62px;
+  height: 62px;
+  min-width: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 19px;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      #f0eaff,
+      #f8f1ff
+    );
+
+  color: #7450d8;
+}
+
+.visit-reports-header-art svg {
+  width: 28px;
+  height: 28px;
+}
+
+
+/* ================= LOADING ================= */
+
+.visit-reports-message {
+  padding: 42px 35px;
+
+  text-align: center;
+
+  color: #8050db;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* ================= REPORT LIST ================= */
+
+.visit-reports-list {
+  padding: 25px 35px 38px;
+}
+
+
+/* ================= REPORT ITEM ================= */
+
+.visit-report-item {
+  display: grid;
+
+  grid-template-columns:
+    220px
+    minmax(0, 1fr)
+    125px
+    145px;
+
+  align-items: center;
+
+  gap: 24px;
+
+  min-height: 175px;
+
+  margin-bottom: 17px;
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fcfaff
+    );
+
+  border: 1px solid #e6def7;
+  border-radius: 20px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.visit-report-item:last-child {
+  margin-bottom: 0;
+}
+
+.visit-report-item:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(104, 79, 164, 0.10);
+}
+
+
+/* ================= DATE BOX ================= */
+
+.visit-report-date {
+  min-height: 125px;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f4efff,
+      #faf5ff
+    );
+
+  border-radius: 17px;
+}
+
+
+/* ================= DATE ICON ================= */
+
+.report-date-icon {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #ebe3ff;
+
+  color: #6840ce;
+}
+
+.report-date-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+/* ================= DATE TEXT ================= */
+
+.report-date-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #8876c0;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.visit-report-date strong {
+  display: block;
+
+  color: #282463;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+
+/* ================= DETAILS ================= */
+
+.visit-report-details {
+  min-width: 0;
+}
+
+
+/* ================= SERVICE TITLE ================= */
+
+.report-service-title {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 18px;
+}
+
+.report-service-title h3 {
+  margin: 0;
+
+  color: #272260;
+
+  font-size: 19px;
+  font-weight: 800;
+}
+
+
+/* ================= HEALTH ICON ================= */
+
+.report-health-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ddf7ef;
+
+  color: #13a47b;
+}
+
+.report-health-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* ================= DETAIL ROW ================= */
+
+.report-detail-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 11px;
+}
+
+.report-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ================= DETAIL ICON ================= */
+
+.report-detail-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #f0ebff;
+
+  color: #7650d6;
+}
+
+.report-detail-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ================= DETAIL TEXT ================= */
+
+.report-detail-row span {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: #8b83a8;
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.report-detail-row p {
+  margin: 0;
+
+  color: #4f4a78;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* ================= STATUS ================= */
+
+.visit-report-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 10px 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcfaef,
+      #e8fbf4
+    );
+
+  border-radius: 30px;
+
+  color: #15936f;
+
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+
+/* ================= STATUS CHECK ================= */
+
+.report-status-check {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #d0f6e8;
+
+  color: #15936f;
+}
+
+.report-status-check svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+/* ================= VIEW REPORT BUTTON ================= */
+
+.visit-report-view-btn {
+  min-height: 44px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: none;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #c76ac9
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(111, 78, 180, 0.15);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.visit-report-view-btn svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+}
+
+.visit-report-view-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 24px rgba(111, 78, 180, 0.22);
+}
+/* ================= DELETE REPORT BUTTON ================= */
+
+.visit-report-delete-btn {
+  min-height: 44px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 1px solid #f4c7d0;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff1f4,
+      #fff7f8
+    );
+
+  color: #d44d69;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 15px rgba(212, 77, 105, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.visit-report-delete-btn svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+}
+
+.visit-report-delete-btn:hover {
+  transform: translateY(-2px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe5eb,
+      #fff0f3
+    );
+
+  border-color: #e9a9b8;
+
+  box-shadow:
+    0 10px 22px rgba(212, 77, 105, 0.16);
+}
+
+.visit-report-delete-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ================= EMPTY ================= */
+
+.visit-reports-empty {
+  padding: 65px 30px;
+
+  text-align: center;
+}
+
+.visit-reports-empty-icon {
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: #f0eaff;
+
+  color: #7045d1;
+}
+
+.visit-reports-empty-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.visit-reports-empty h3 {
+  margin: 0 0 7px;
+
+  color: #30285f;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.visit-reports-empty p {
+  margin: 0;
+
+  color: #817a96;
+
+  font-size: 14px;
+}
+
+
+/* ================= ERROR ================= */
+
+.visit-reports-error {
+  padding: 55px 30px;
+
+  text-align: center;
+}
+
+.visit-reports-error-icon {
+  width: 65px;
+  height: 65px;
+
+  margin: 0 auto 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: #fff0f2;
+
+  color: #d44d69;
+}
+
+.visit-reports-error-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.visit-reports-error h3 {
+  margin: 0 0 7px;
+
+  color: #30285f;
+
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.visit-reports-error p {
+  margin: 0 0 20px;
+
+  color: #817a96;
+
+  font-size: 14px;
+}
+
+.visit-reports-retry-btn {
+  padding: 11px 21px;
+
+  border: none;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #c76ac9
+    );
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(111, 78, 180, 0.15);
+}
+
+
+/* ================= MODAL ================= */
+
+.visit-reports-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  padding: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(48, 35, 95, 0.35);
+
+  backdrop-filter: blur(6px);
+}
+
+
+/* ================= MODAL CONTENT ================= */
+
+.visit-reports-modal-content {
+  width: 100%;
+  max-width: 720px;
+  max-height: 88vh;
+
+  overflow-y: auto;
+
+  padding: 27px;
+
+  background: #ffffff;
+
+  border: 1px solid #eee8f8;
+  border-radius: 25px;
+
+  box-shadow:
+    0 25px 70px rgba(58, 43, 110, 0.25);
+}
+
+
+/* ================= MODAL HEADER ================= */
+
+.visit-reports-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #ece8f8;
+}
+
+.modal-title-area {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.modal-report-icon {
+  width: 47px;
+  height: 47px;
+  min-width: 47px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #eee9ff;
+
+  color: #7043d4;
+}
+
+.modal-report-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.visit-reports-modal-header h2 {
+  margin: 0;
+
+  color: #292361;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.visit-reports-modal-header p {
+  margin: 4px 0 0;
+
+  color: #817a96;
+
+  font-size: 13px;
+}
+
+
+/* ================= CLOSE ================= */
+
+.visit-reports-modal-close {
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f3effb;
+
+  color: #685b8d;
+
+  font-size: 23px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.visit-reports-modal-close:hover {
+  background: #e9e1f8;
+  color: #493878;
+}
+
+
+/* ================= MODAL SECTION ================= */
+
+.visit-reports-modal-section {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid #f0edf7;
+}
+
+.modal-section-icon {
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #f0ebff;
+
+  color: #7650d6;
+}
+
+.modal-section-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.visit-reports-modal-section h3 {
+  margin: 0 0 5px;
+
+  color: #30285f;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.visit-reports-modal-section p {
+  margin: 0;
+
+  color: #625c7f;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* ================= MODAL STATUS ================= */
+
+.visit-reports-modal-status {
+  margin-top: 20px;
+
+  padding: 11px 15px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  width: fit-content;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcfaef,
+      #e8fbf4
+    );
+
+  border-radius: 30px;
+
+  color: #15936f;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.modal-status-check {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #d0f6e8;
+
+  color: #15936f;
+}
+
+.modal-status-check svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+/* ================= SCROLLBAR ================= */
+
+.visit-reports-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.visit-reports-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.visit-reports-modal-content::-webkit-scrollbar-thumb {
+  background: #d9d0ef;
+  border-radius: 10px;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+  .visit-report-item {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr)
+      115px;
+
+    gap: 18px;
+  }
+
+  .visit-report-view-btn {
+    grid-column: 2 / 4;
+    width: 170px;
+    justify-self: end;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 650px) {
+
+  .visit-reports-page {
+    padding: 35px 16px 55px;
+  }
+
+  .visit-reports-header h1 {
+    font-size: 36px;
+  }
+
+  .visit-reports-header p {
+    font-size: 14px;
+  }
+
+  .visit-reports-card-header {
+    padding: 24px 22px;
+  }
+
+  .visit-reports-card-title {
+    gap: 13px;
+  }
+
+  .visit-reports-main-icon {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    border-radius: 16px;
+  }
+
+  .visit-reports-main-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .visit-reports-card-title h2 {
+    font-size: 21px;
+  }
+
+  .visit-reports-card-title p {
+    font-size: 12px;
+  }
+
+  .visit-reports-header-art {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+  }
+
+  .visit-reports-header-art svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .visit-reports-list {
+    padding: 20px;
+  }
+
+  .visit-report-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 17px;
+
+    padding: 17px;
+  }
+
+  .visit-report-date {
+    min-height: auto;
+
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .visit-report-status {
+    align-self: flex-start;
+  }
+
+  .visit-report-view-btn {
+    width: 100%;
+  }
+
+  .visit-reports-modal {
+    padding: 15px;
+  }
+
+  .visit-reports-modal-content {
+    padding: 20px;
+    max-height: 92vh;
+  }
+
+  .visit-reports-modal-header h2 {
+    font-size: 19px;
+  }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 400px) {
+
+  .visit-reports-header h1 {
+    font-size: 31px;
+  }
+
+  .visit-reports-card-header {
+    padding: 20px 17px;
+  }
+
+  .visit-reports-header-art {
+    display: none;
+  }
+
+  .visit-reports-list {
+    padding: 15px;
+  }
+
+  .visit-report-item {
+    padding: 14px;
+  }
+
+  .visit-reports-modal-section p {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,966 @@
+/* =========================
+   NURSE SCHEDULE PAGE
+   ========================= */
+
+.nurse-schedule-page {
+  min-height: calc(100vh - 72px);
+
+  padding: 45px 30px 70px;
+
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(170, 205, 255, 0.35) 0,
+      rgba(170, 205, 255, 0.35) 110px,
+      transparent 111px
+    ),
+    radial-gradient(
+      circle at 92% 10%,
+      rgba(244, 188, 239, 0.40) 0,
+      rgba(244, 188, 239, 0.40) 115px,
+      transparent 116px
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(205, 192, 255, 0.30) 0,
+      rgba(205, 192, 255, 0.30) 100px,
+      transparent 101px
+    ),
+    linear-gradient(
+      135deg,
+      #dff5ff 0%,
+      #eceaff 48%,
+      #fae9f7 100%
+    );
+
+  color: #30235f;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.nurse-schedule-header {
+  max-width: 950px;
+
+  margin: 0 auto 38px;
+
+  text-align: center;
+}
+
+.nurse-schedule-label {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: #8746d9;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.nurse-schedule-header h1 {
+  margin: 0 0 10px;
+
+  color: #24205e;
+
+  font-size: 46px;
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+.nurse-schedule-header p {
+  margin: 0;
+
+  color: #68658e;
+
+  font-size: 16px;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+   ========================= */
+
+.nurse-schedule-container {
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
+.nurse-schedule-card-wrapper {
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 55px rgba(92, 76, 157, 0.15);
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   CARD HEADER
+   ========================= */
+
+.nurse-schedule-card-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 35px 38px;
+
+  border-bottom: 1px solid #ece8f8;
+}
+
+.nurse-schedule-card-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+}
+
+
+/* =========================
+   MAIN CALENDAR ICON
+   ========================= */
+
+.nurse-schedule-main-icon {
+  width: 88px;
+  height: 88px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #eee9ff,
+      #f8efff
+    );
+
+  color: #7043d4;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(125, 85, 215, 0.05);
+}
+
+.nurse-schedule-main-icon .schedule-calendar-icon {
+  width: 48px;
+  height: 48px;
+}
+
+
+/* =========================
+   CARD TITLE
+   ========================= */
+
+.nurse-schedule-card-header h2 {
+  margin: 0 0 7px;
+
+  color: #25205f;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.nurse-schedule-card-header p {
+  margin: 0;
+
+  color: #777493;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   LOADING
+   ========================= */
+
+.nurse-schedule-message {
+  min-height: 300px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #8050db;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   ERROR
+   ========================= */
+
+.nurse-schedule-error {
+  min-height: 350px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  text-align: center;
+}
+
+.nurse-schedule-error-icon {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 15px;
+
+  border-radius: 50%;
+
+  background: #fff0f2;
+
+  color: #d44d69;
+
+  font-size: 25px;
+
+  font-weight: 800;
+}
+
+.nurse-schedule-error h3 {
+  margin: 0 0 7px;
+
+  color: #30235f;
+
+  font-size: 18px;
+}
+
+.nurse-schedule-error p {
+  margin: 0 0 18px;
+
+  color: #81798f;
+
+  font-size: 13px;
+}
+
+.nurse-schedule-retry-btn {
+  border: none;
+
+  padding: 11px 22px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #c76ac9
+    );
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 16px rgba(139, 92, 246, 0.20);
+
+  transition:
+    transform 0.2s ease;
+}
+
+.nurse-schedule-retry-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   EMPTY STATE
+   ========================= */
+
+.nurse-schedule-empty {
+  min-height: 350px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  text-align: center;
+}
+
+.nurse-schedule-empty-icon {
+  width: 75px;
+  height: 75px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 20px;
+
+  background: #f0eaff;
+
+  color: #7045d1;
+}
+
+.nurse-schedule-empty-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.nurse-schedule-empty h3 {
+  margin: 0 0 8px;
+
+  color: #30285f;
+
+  font-size: 20px;
+
+  font-weight: 800;
+}
+
+.nurse-schedule-empty p {
+  margin: 0;
+
+  color: #817a96;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   SCHEDULE LIST
+   ========================= */
+
+.nurse-schedule-list {
+  padding: 25px 35px 38px;
+}
+
+
+/* =========================
+   SCHEDULE ITEM
+   ========================= */
+
+.nurse-schedule-item {
+  display: grid;
+
+  grid-template-columns:
+    250px
+    minmax(0, 1fr)
+    170px
+    145px;
+
+  align-items: center;
+
+  gap: 28px;
+
+  min-height: 205px;
+
+  padding: 22px;
+
+  margin-bottom: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fcfaff
+    );
+
+  border: 1px solid #e6def7;
+
+  border-radius: 20px;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nurse-schedule-item:last-child {
+  margin-bottom: 0;
+}
+
+.nurse-schedule-item:hover {
+  transform: translateY(-3px);
+
+  border-color: #d6c5f1;
+
+  box-shadow:
+    0 12px 30px rgba(104, 79, 164, 0.10);
+}
+
+
+/* =========================
+   DATE + TIME BOX
+   ========================= */
+
+.nurse-schedule-date-box {
+  min-height: 155px;
+
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f4efff,
+      #faf5ff
+    );
+}
+
+
+/* =========================
+   DATE / TIME ROW
+   ========================= */
+
+.schedule-date-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.schedule-date-icon-box {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: #ebe3ff;
+
+  color: #6840ce;
+}
+
+.schedule-date-icon-box svg {
+  width: 27px;
+  height: 27px;
+}
+
+.schedule-small-icon {
+  width: 27px;
+  height: 27px;
+}
+
+.schedule-clock-icon {
+  width: 27px;
+  height: 27px;
+}
+
+
+/* =========================
+   DATE / TIME TEXT
+   ========================= */
+
+.schedule-label {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #8876c0;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.schedule-date-row strong {
+  display: block;
+
+  color: #282463;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   DIVIDER
+   ========================= */
+
+.schedule-divider {
+  height: 1px;
+
+  margin: 17px 0;
+
+  background: #e1d8f4;
+}
+
+
+/* =========================
+   PATIENT DETAILS
+   ========================= */
+
+.nurse-schedule-details {
+  min-width: 0;
+
+  padding: 5px 0;
+}
+
+
+/* =========================
+   PATIENT TITLE
+   ========================= */
+
+.schedule-service-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.schedule-health-icon-box {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ddf7ef;
+
+  color: #13a47b;
+}
+
+.schedule-health-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.schedule-service-title h3 {
+  margin: 0;
+
+  color: #272260;
+
+  font-size: 21px;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================
+   DETAIL ROW
+   ========================= */
+
+.schedule-detail-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 13px;
+}
+
+.schedule-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-detail-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f0ebff;
+
+  color: #7650d6;
+}
+
+.schedule-info-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.schedule-detail-row span {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: #8b83a8;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.schedule-detail-row p {
+  margin: 0;
+
+  color: #4f4a78;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   LOCATION BOX
+   ========================= */
+
+.nurse-schedule-location-box {
+  min-width: 0;
+
+  padding: 5px 0;
+}
+
+.nurse-schedule-location-box .schedule-detail-row {
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   STATUS
+   ========================= */
+
+.nurse-schedule-status-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.nurse-schedule-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 12px 18px;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcfaef,
+      #e8fbf4
+    );
+
+  color: #15936f;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(
+      24,
+      169,
+      126,
+      0.08
+    );
+}
+
+.schedule-status-check {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #1bb587;
+
+  color: white;
+}
+
+.schedule-check-icon {
+  width: 17px;
+  height: 17px;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 900px) {
+
+  .nurse-schedule-page {
+    padding: 35px 20px 55px;
+  }
+
+  .nurse-schedule-header h1 {
+    font-size: 38px;
+  }
+
+  .nurse-schedule-card-header {
+    padding: 28px;
+  }
+
+  .nurse-schedule-item {
+    grid-template-columns:
+      210px
+      minmax(0, 1fr);
+
+    gap: 20px;
+  }
+
+  .nurse-schedule-location-box {
+    grid-column: 2;
+  }
+
+  .nurse-schedule-status-wrapper {
+    grid-column: 2;
+
+    justify-content: flex-start;
+  }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+  .nurse-schedule-page {
+    padding: 28px 14px 45px;
+  }
+
+  .nurse-schedule-header {
+    margin-bottom: 28px;
+  }
+
+  .nurse-schedule-label {
+    font-size: 11px;
+  }
+
+  .nurse-schedule-header h1 {
+    font-size: 30px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .nurse-schedule-header p {
+    font-size: 13px;
+
+    line-height: 1.5;
+  }
+
+
+  /* CARD */
+
+  .nurse-schedule-card-wrapper {
+    border-radius: 21px;
+  }
+
+  .nurse-schedule-card-header {
+    padding: 22px 18px;
+  }
+
+  .nurse-schedule-card-title {
+    gap: 14px;
+  }
+
+  .nurse-schedule-main-icon {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 17px;
+  }
+
+  .nurse-schedule-main-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nurse-schedule-card-header h2 {
+    font-size: 20px;
+  }
+
+  .nurse-schedule-card-header p {
+    font-size: 12px;
+  }
+
+
+  /* LIST */
+
+  .nurse-schedule-list {
+    padding: 18px;
+  }
+
+
+  /* ITEM */
+
+  .nurse-schedule-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 17px;
+
+    min-height: auto;
+
+    padding: 16px;
+
+    margin-bottom: 14px;
+  }
+
+
+  /* DATE BOX */
+
+  .nurse-schedule-date-box {
+    min-height: auto;
+
+    padding: 15px;
+  }
+
+
+  /* DETAILS */
+
+  .nurse-schedule-details {
+    padding: 0;
+  }
+
+  .schedule-service-title {
+    margin-bottom: 16px;
+  }
+
+  .schedule-service-title h3 {
+    font-size: 18px;
+  }
+
+
+  /* LOCATION */
+
+  .nurse-schedule-location-box {
+    padding: 0;
+  }
+
+
+  /* STATUS */
+
+  .nurse-schedule-status-wrapper {
+    justify-content: flex-start;
+  }
+
+  .nurse-schedule-status {
+    padding: 10px 15px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+
+@media (max-width: 400px) {
+
+  .nurse-schedule-header h1 {
+    font-size: 27px;
+  }
+
+  .nurse-schedule-card-header {
+    padding: 20px 15px;
+  }
+
+  .nurse-schedule-list {
+    padding: 14px;
+  }
+
+  .schedule-date-row strong {
+    font-size: 14px;
+  }
+
+  .schedule-service-title h3 {
+    font-size: 16px;
+  }
+
+  .schedule-detail-row p {
+    font-size: 13px;
+  }
+}

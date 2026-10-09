@@ -1,0 +1,715 @@
+/* =========================================
+   CARENEST
+   NURSE AVAILABILITY
+   PASTEL HEALTHCARE THEME
+========================================= */
+
+.nurse-availability-page {
+  min-height: 100vh;
+  padding: 35px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4fbfa 0%,
+      #f3f8fc 50%,
+      #faf6fc 100%
+    );
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.nurse-availability-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  top: 70px;
+  right: -130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(164, 222, 216, 0.28),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.nurse-availability-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 290px;
+  height: 290px;
+
+  left: -130px;
+  bottom: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(207, 193, 232, 0.25),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.nurse-availability-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.nurse-availability-header {
+  position: relative;
+
+  padding: 32px;
+
+  margin-bottom: 30px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a9ded8,
+      #b8ddea,
+      #cbc1e6
+    );
+
+  overflow: hidden;
+
+  box-shadow:
+    0 14px 32px rgba(89, 119, 130, 0.13);
+}
+
+.nurse-availability-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  right: 120px;
+  bottom: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.nurse-availability-header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 230px;
+  height: 230px;
+
+  right: -80px;
+  top: -115px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* =========================================
+   HEADER TEXT
+========================================= */
+
+.nurse-availability-label {
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;
+
+  margin-bottom: 9px;
+
+  color: #426d70;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.nurse-availability-header h1 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #29464e;
+
+  font-size: 35px;
+
+  font-weight: 800;
+}
+
+.nurse-availability-header p {
+  position: relative;
+  z-index: 2;
+
+  margin: 9px 0 0;
+
+  color: #4f6d74;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.nurse-availability-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.nurse-availability-line {
+  width: 6px;
+  height: 45px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #9ddbd4,
+      #b9cce8
+    );
+}
+
+.nurse-availability-heading h2 {
+  margin: 0;
+
+  color: #3a5660;
+
+  font-size: 22px;
+
+  font-weight: 800;
+}
+
+.nurse-availability-heading p {
+  margin: 4px 0 0;
+
+  color: #829298;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.nurse-availability-card {
+  padding: 26px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eeee;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 28px rgba(75, 105, 115, 0.08);
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.availability-section {
+  padding-bottom: 25px;
+
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid #edf2f2;
+}
+
+.availability-section:last-of-type {
+  margin-bottom: 0;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.availability-section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 20px;
+}
+
+.availability-small-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 13px;
+
+  background: #d8efeb;
+
+  color: #527d78;
+}
+
+.availability-small-icon.purple {
+  background: #e9e0f4;
+
+  color: #74618a;
+}
+
+.availability-small-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.availability-section-title h3 {
+  margin: 0;
+
+  color: #405b63;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+.availability-section-title p {
+  margin: 5px 0 0;
+
+  color: #87979c;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   DAYS
+========================================= */
+
+.availability-days {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 12px;
+}
+
+.availability-day {
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 10px 13px;
+
+  border: 1px solid #e1ebea;
+
+  border-radius: 12px;
+
+  background: #f8fbfb;
+
+  color: #65787d;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.availability-day:hover {
+  transform: translateY(-2px);
+
+  border-color: #b8dcd7;
+}
+
+.availability-day.active {
+  background: #e5f5f1;
+
+  border-color: #b8ded8;
+
+  color: #4d7771;
+}
+
+
+/* =========================================
+   CHECK
+========================================= */
+
+.availability-check {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1.5px solid #c7d8d6;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+}
+
+.availability-day.active .availability-check {
+  border-color: #8dc8c0;
+
+  background: #9ddbd4;
+
+  color: #ffffff;
+}
+
+.availability-check svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* =========================================
+   TIME GRID
+========================================= */
+
+.availability-time-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 40px 1fr;
+
+  align-items: end;
+
+  max-width: 650px;
+}
+
+.availability-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.availability-field label {
+  color: #65787d;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.availability-field input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px 13px;
+
+  border: 1px solid #dce8e7;
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #f9fcfc;
+
+  color: #4b6269;
+
+  font-size: 13px;
+
+  transition: 0.2s ease;
+}
+
+.availability-field input:focus {
+  border-color: #a6d5cf;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(157, 219, 212, 0.15);
+}
+
+.availability-time-divider {
+  padding-bottom: 12px;
+
+  text-align: center;
+
+  color: #91a0a4;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
+
+.availability-success {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 22px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #b9dec4;
+
+  border-radius: 10px;
+
+  background: #e4f5e9;
+
+  color: #4e8060;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.availability-success svg {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.availability-error {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 22px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #e5c8cf;
+
+  border-radius: 10px;
+
+  background: #fae9ed;
+
+  color: #8a5f6b;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.availability-error svg {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+.availability-save-area {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 24px;
+}
+
+.availability-save-btn {
+  padding: 11px 20px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #9ddbd4,
+      #aebfe0
+    );
+
+  color: #36565e;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 16px rgba(130, 178, 183, 0.18);
+
+  transition: 0.2s ease;
+}
+
+.availability-save-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 20px rgba(130, 178, 183, 0.25);
+}
+
+.availability-save-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+  .nurse-availability-page {
+    padding: 25px;
+  }
+
+  .availability-days {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .nurse-availability-page {
+    padding: 18px 14px;
+  }
+
+  .nurse-availability-header {
+    padding: 25px 20px;
+  }
+
+  .nurse-availability-header h1 {
+    font-size: 28px;
+  }
+
+  .nurse-availability-card {
+    padding: 20px;
+  }
+
+  .availability-days {
+    grid-template-columns: 1fr;
+  }
+
+  .availability-time-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .availability-time-divider {
+    padding: 0;
+
+    text-align: left;
+  }
+
+  .availability-save-area {
+    justify-content: stretch;
+  }
+
+  .availability-save-btn {
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .nurse-availability-page {
+    padding: 12px;
+  }
+
+  .nurse-availability-header h1 {
+    font-size: 24px;
+  }
+
+  .nurse-availability-card {
+    padding: 16px;
+  }
+
+  .availability-section-title h3 {
+    font-size: 14px;
+  }
+
+  .availability-section-title p {
+    font-size: 11px;
+  }
+
+}

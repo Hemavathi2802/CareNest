@@ -1,0 +1,1638 @@
+/* =========================================================
+   CARENEST ADMIN PORTAL
+   ADMIN VISITS PAGE
+   NURSE MANAGEMENT MATCHING PASTEL THEME
+
+   Pink + Lavender + Soft Blue
+   Soft Grey Borders
+   Responsive Layout
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL PAGE
+========================================================= */
+
+.admin-visits-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 32px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f8f2ff 48%,
+      #f1f8ff 100%
+    );
+
+  color: #55415f;
+
+  font-family:
+    "Inter",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+.admin-visits-page *,
+.admin-visits-page *::before,
+.admin-visits-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   DECORATIVE BACKGROUND CIRCLES
+========================================================= */
+
+.admin-visits-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  top: -130px;
+  left: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 182, 210, 0.38);
+
+  pointer-events: none;
+}
+
+.admin-visits-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -150px;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(205, 188, 255, 0.38);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+   CARENEST • ADMIN PORTAL
+   ADMIN VISITS
+========================================================= */
+
+.admin-visits-header {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  max-width: 1250px;
+
+  min-height: 151px;
+
+  margin: 0 auto 26px;
+
+  padding: 36px 40px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f3c5d9 0%,
+      #e2c9f3 52%,
+      #cbdcf5 100%
+    );
+
+  box-shadow:
+    0 12px 35px rgba(180, 160, 190, 0.25);
+
+  color: #493b59;
+
+  text-align: left;
+
+  overflow: hidden;
+}
+
+
+/* Header Decorative Circles */
+
+.admin-visits-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 210px;
+  height: 210px;
+
+  right: -70px;
+  top: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  pointer-events: none;
+}
+
+.admin-visits-header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: 150px;
+  bottom: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+
+  pointer-events: none;
+}
+
+
+/* CARENEST • ADMIN PORTAL */
+
+.admin-visits-label {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 12px;
+
+  color: #765a86;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  line-height: 1.3;
+
+  text-align: left;
+
+  text-transform: uppercase;
+}
+
+
+/* Admin Visits Heading */
+
+.admin-visits-header h1 {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  margin: 0;
+
+  color: #443650;
+
+  font-size: clamp(28px, 4vw, 42px);
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+  line-height: 1.2;
+
+  text-align: left;
+}
+
+
+/* Description */
+
+.admin-visits-header p {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  max-width: 600px;
+
+  margin: 10px 0 0;
+
+  color: #665b70;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  text-align: left;
+}
+
+
+/* Visit Count */
+
+.admin-visits-count {
+  position: relative;
+
+  z-index: 1;
+
+  margin: 8px 0 0;
+
+  color: #765a86;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.admin-visits-toolbar {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto 22px;
+}
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.admin-visits-search {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: 360px;
+
+  min-height: 46px;
+
+  padding: 0 15px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 6px 18px rgba(180, 160, 190, 0.12);
+
+  box-sizing: border-box;
+}
+
+.admin-visits-search svg {
+  width: 18px;
+
+  height: 18px;
+
+  flex-shrink: 0;
+
+  color: #b779a7;
+}
+
+.admin-visits-search input {
+  width: 100%;
+
+  min-width: 0;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #55415f;
+
+  font-family: inherit;
+
+  font-size: 13px;
+}
+
+.admin-visits-search input::placeholder {
+  color: #a99aaa;
+}
+
+
+/* =========================================================
+   REFRESH / ADD VISIT BUTTON
+========================================================= */
+
+.admin-add-visit-btn {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-width: 110px;
+
+  min-height: 46px;
+
+  padding: 10px 18px;
+
+  border: 1px solid #c7afd8;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dca8c3,
+      #c5b1e8
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(190, 155, 200, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.admin-add-visit-btn:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(1.02);
+
+  box-shadow:
+    0 11px 24px rgba(190, 155, 200, 0.30);
+}
+
+.admin-add-visit-btn:active {
+  transform: translateY(0);
+}
+
+.admin-add-visit-btn svg {
+  width: 18px;
+
+  height: 18px;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.admin-visits-container {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.admin-visits-card {
+  position: relative;
+
+  width: 100%;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 12px 35px rgba(180, 160, 190, 0.20);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.admin-visits-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 30px 34px;
+
+  border-bottom: 1px solid #e6e6e6;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 245, 250, 0.85),
+      rgba(248, 242, 255, 0.85)
+    );
+}
+
+.admin-visits-card-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   MAIN ICON
+========================================================= */
+
+.admin-visits-main-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 76px;
+
+  height: 76px;
+
+  border: 1px solid #d8c8e7;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e9c4dc,
+      #cbbcf1
+    );
+
+  color: #5d4b70;
+
+  box-shadow:
+    0 7px 16px rgba(190, 170, 210, 0.20);
+}
+
+.admin-visits-main-icon svg {
+  width: 36px;
+
+  height: 36px;
+}
+
+.admin-schedule-calendar-icon {
+  width: 36px;
+
+  height: 36px;
+}
+
+
+/* =========================================================
+   CARD TITLE TEXT
+========================================================= */
+
+.admin-visits-card-header h2 {
+  margin: 0 0 6px;
+
+  color: #493d56;
+
+  font-size: 24px;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+.admin-visits-card-header p {
+  margin: 0;
+
+  color: #918798;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   HEADER ART
+========================================================= */
+
+.admin-visits-header-art {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 115px;
+
+  height: 95px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #f5d8e8 0%,
+      #e8def9 65%,
+      transparent 66%
+    );
+
+  color: #a789bd;
+}
+
+.admin-visits-header-art svg {
+  width: 44px;
+
+  height: 44px;
+}
+
+
+/* =========================================================
+   LOADING MESSAGE
+========================================================= */
+
+.admin-visits-message {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 260px;
+
+  padding: 40px;
+
+  color: #80658e;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   VISIT LIST
+========================================================= */
+
+.admin-visits-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+  padding: 26px 30px 32px;
+}
+
+
+/* =========================================================
+   VISIT ITEM
+========================================================= */
+
+.admin-visit-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    250px
+    minmax(0, 1fr)
+    160px;
+
+  align-items: center;
+
+  gap: 24px;
+
+  min-height: 190px;
+
+  margin: 0;
+
+  padding: 20px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fff9fd
+    );
+
+  box-shadow:
+    0 5px 16px rgba(180, 160, 190, 0.10);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-visit-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 4px;
+
+  border-radius: 18px 0 0 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e7a9c4,
+      #bba8e8
+    );
+}
+
+.admin-visit-item:last-child {
+  margin-bottom: 0;
+}
+
+.admin-visit-item:hover {
+  transform: translateY(-3px);
+
+  border-color: #b8a8c8;
+
+  box-shadow:
+    0 12px 28px rgba(180, 160, 190, 0.22);
+}
+
+
+/* =========================================================
+   DATE BOX
+========================================================= */
+
+.admin-visit-date-box {
+  min-height: 145px;
+
+  padding: 18px;
+
+  border: 1px solid #eadced;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff0f8,
+      #f4efff
+    );
+}
+
+.admin-date-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.admin-date-icon-box {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 46px;
+
+  height: 46px;
+
+  border: 1px solid #e2c8df;
+
+  border-radius: 13px;
+
+  background: #f5dff0;
+
+  color: #ad5a9f;
+}
+
+.admin-date-icon-box svg {
+  width: 23px;
+
+  height: 23px;
+}
+
+.admin-schedule-small-icon,
+.admin-schedule-clock-icon {
+  width: 23px;
+
+  height: 23px;
+}
+
+
+/* =========================================================
+   DATE TEXT
+========================================================= */
+
+.admin-schedule-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #a887b2;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.admin-date-row strong {
+  display: block;
+
+  color: #59406e;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   DATE DIVIDER
+========================================================= */
+
+.admin-schedule-divider {
+  height: 1px;
+
+  margin: 16px 0;
+
+  background: #e8d9ec;
+}
+
+
+/* =========================================================
+   VISIT DETAILS
+========================================================= */
+
+.admin-visit-details {
+  min-width: 0;
+
+  padding: 4px 0;
+}
+
+
+/* =========================================================
+   SERVICE TITLE
+========================================================= */
+
+.admin-service-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.admin-health-icon-box {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 46px;
+
+  height: 46px;
+
+  border: 1px solid #ccefe1;
+
+  border-radius: 50%;
+
+  background: #ddf8ed;
+
+  color: #20a67f;
+}
+
+.admin-schedule-health-icon {
+  width: 25px;
+
+  height: 25px;
+}
+
+.admin-service-title h3 {
+  min-width: 0;
+
+  margin: 0;
+
+  color: #574069;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   DETAIL ROW
+========================================================= */
+
+.admin-detail-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.admin-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.admin-detail-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 38px;
+
+  height: 38px;
+
+  border: 1px solid #ddd2f1;
+
+  border-radius: 50%;
+
+  background: #eee7ff;
+
+  color: #9873d9;
+}
+
+.admin-schedule-info-icon {
+  width: 20px;
+
+  height: 20px;
+}
+
+.admin-detail-row span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #a18ba9;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.admin-detail-row p {
+  margin: 0;
+
+  color: #756080;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   STATUS WRAPPER
+========================================================= */
+
+.admin-visit-status-wrapper {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+}
+
+.admin-status-label {
+  color: #78677f;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   VISIT STATUS
+========================================================= */
+
+.admin-visit-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #bcebd8;
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcf9eb,
+      #eafcf3
+    );
+
+  color: #15936f;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(24, 169, 126, 0.06);
+}
+
+.admin-status-check {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 25px;
+
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: #20b486;
+
+  color: #ffffff;
+}
+
+.admin-schedule-check-icon {
+  width: 15px;
+
+  height: 15px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.admin-visits-empty {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 300px;
+
+  padding: 45px 25px;
+
+  text-align: center;
+}
+
+.admin-visits-empty-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 68px;
+
+  height: 68px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #d7c8e8;
+
+  border-radius: 18px;
+
+  background: #eee6fa;
+
+  color: #9b83bb;
+}
+
+.admin-visits-empty-icon svg {
+  width: 34px;
+
+  height: 34px;
+}
+
+.admin-visits-empty h3 {
+  margin: 0 0 8px;
+
+  color: #665474;
+
+  font-size: 20px;
+
+  font-weight: 800;
+}
+
+.admin-visits-empty p {
+  margin: 0;
+
+  color: #9a8fa2;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   ERROR STATE
+========================================================= */
+
+.admin-visits-error {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 300px;
+
+  padding: 45px 25px;
+
+  text-align: center;
+}
+
+.admin-visits-error-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 58px;
+
+  height: 58px;
+
+  margin-bottom: 15px;
+
+  border: 1px solid #e6b8c7;
+
+  border-radius: 50%;
+
+  background: #fff0f5;
+
+  color: #d45d87;
+
+  font-size: 23px;
+
+  font-weight: 800;
+}
+
+.admin-visits-error h3 {
+  margin: 0 0 8px;
+
+  color: #665474;
+
+  font-size: 19px;
+
+  font-weight: 800;
+}
+
+.admin-visits-error p {
+  margin: 0 0 18px;
+
+  color: #9a8fa2;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.admin-visits-retry-btn {
+  padding: 11px 22px;
+
+  border: 1px solid #c7afd8;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dca8c3,
+      #c5b1e8
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 16px rgba(190, 155, 200, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-visits-retry-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(190, 155, 200, 0.30);
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+  .admin-visits-page {
+    padding: 28px 22px;
+  }
+
+  .admin-visit-item {
+    grid-template-columns:
+      220px
+      minmax(0, 1fr)
+      135px;
+
+    gap: 18px;
+
+    padding: 18px;
+  }
+
+  .admin-visits-card-header {
+    padding: 28px;
+  }
+
+  .admin-visits-list {
+    padding: 24px;
+  }
+
+  .admin-visits-header-art {
+    width: 90px;
+
+    height: 80px;
+  }
+
+  .admin-visits-header-art svg {
+    width: 38px;
+
+    height: 38px;
+  }
+}
+
+
+/* =========================================================
+   TABLET SMALL
+========================================================= */
+
+@media (max-width: 850px) {
+  .admin-visits-header {
+    padding: 30px;
+
+    border-radius: 22px;
+  }
+
+  .admin-visits-toolbar {
+    align-items: stretch;
+  }
+
+  .admin-visits-search {
+    flex: 1;
+
+    width: auto;
+  }
+
+  .admin-visits-header-art {
+    display: none;
+  }
+
+  .admin-visit-item {
+    grid-template-columns:
+      210px
+      minmax(0, 1fr);
+
+    gap: 20px;
+  }
+
+  .admin-visit-status-wrapper {
+    grid-column: 2;
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .admin-visits-page {
+    padding: 18px 12px 35px;
+  }
+
+  .admin-visits-header {
+    min-height: auto;
+
+    margin-bottom: 20px;
+
+    padding: 26px 22px;
+
+    border-radius: 20px;
+  }
+
+  .admin-visits-label {
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .admin-visits-header h1 {
+    font-size: 28px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .admin-visits-header p {
+    margin-top: 9px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+  }
+
+  .admin-visits-count {
+    font-size: 11px;
+  }
+
+  .admin-visits-toolbar {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+  }
+
+  .admin-visits-search {
+    width: 100%;
+
+    min-height: 44px;
+  }
+
+  .admin-add-visit-btn {
+    width: 100%;
+
+    min-height: 44px;
+  }
+
+  .admin-visits-card {
+    border-radius: 20px;
+  }
+
+  .admin-visits-card-header {
+    align-items: flex-start;
+
+    padding: 23px 18px;
+  }
+
+  .admin-visits-card-title {
+    gap: 13px;
+  }
+
+  .admin-visits-main-icon {
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 16px;
+  }
+
+  .admin-visits-main-icon svg {
+    width: 30px;
+
+    height: 30px;
+  }
+
+  .admin-visits-card-header h2 {
+    font-size: 19px;
+  }
+
+  .admin-visits-card-header p {
+    font-size: 11px;
+  }
+
+  .admin-visits-list {
+    gap: 14px;
+
+    padding: 18px;
+  }
+
+  .admin-visit-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+
+    min-height: auto;
+
+    padding: 17px;
+  }
+
+  .admin-visit-date-box {
+    min-height: auto;
+
+    padding: 15px;
+  }
+
+  .admin-visit-details {
+    padding: 0;
+  }
+
+  .admin-service-title {
+    margin-bottom: 16px;
+  }
+
+  .admin-service-title h3 {
+    font-size: 17px;
+  }
+
+  .admin-detail-row p {
+    font-size: 12px;
+  }
+
+  .admin-visit-status-wrapper {
+    align-items: flex-start;
+
+    justify-content: flex-start;
+  }
+
+  .admin-status-label {
+    text-align: left;
+  }
+
+  .admin-visit-status {
+    padding: 9px 13px;
+
+    font-size: 11px;
+  }
+
+  .admin-visits-empty,
+  .admin-visits-error {
+    min-height: 260px;
+
+    padding: 35px 20px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .admin-visits-page {
+    padding: 12px 10px 28px;
+  }
+
+  .admin-visits-header {
+    padding: 23px 18px;
+  }
+
+  .admin-visits-header h1 {
+    font-size: 25px;
+  }
+
+  .admin-visits-card-header {
+    padding: 20px 15px;
+  }
+
+  .admin-visits-card-title {
+    gap: 10px;
+  }
+
+  .admin-visits-main-icon {
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 14px;
+  }
+
+  .admin-visits-main-icon svg {
+    width: 27px;
+
+    height: 27px;
+  }
+
+  .admin-visits-card-header h2 {
+    font-size: 17px;
+  }
+
+  .admin-visits-card-header p {
+    font-size: 10px;
+  }
+
+  .admin-visits-list {
+    padding: 14px;
+  }
+
+  .admin-visit-item {
+    padding: 14px;
+  }
+
+  .admin-date-row {
+    gap: 10px;
+  }
+
+  .admin-date-icon-box {
+    width: 42px;
+
+    height: 42px;
+  }
+
+  .admin-date-row strong {
+    font-size: 13px;
+  }
+
+  .admin-service-title h3 {
+    font-size: 16px;
+  }
+
+  .admin-detail-row p {
+    font-size: 11px;
+  }
+
+  .admin-detail-icon {
+    width: 34px;
+
+    height: 34px;
+  }
+
+  .admin-schedule-info-icon {
+    width: 18px;
+
+    height: 18px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.admin-add-visit-btn:focus-visible,
+.admin-visits-retry-btn:focus-visible,
+.admin-visits-search input:focus-visible {
+  outline: 3px solid rgba(183, 137, 213, 0.45);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-visit-item,
+  .admin-add-visit-btn,
+  .admin-visits-retry-btn {
+    transition: none;
+  }
+
+  .admin-visit-item:hover,
+  .admin-add-visit-btn:hover,
+  .admin-visits-retry-btn:hover {
+    transform: none;
+  }
+}

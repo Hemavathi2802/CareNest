@@ -1,0 +1,540 @@
+/* =========================================
+   CARENEST
+   NURSE VISIT REPORT
+   PASTEL HEALTHCARE THEME
+========================================= */
+
+.nurse-report-page {
+  min-height: 100vh;
+  padding: 35px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4fbfa 0%,
+      #f3f8fc 50%,
+      #faf6fc 100%
+    );
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.nurse-report-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  top: 80px;
+  right: -130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(164, 222, 216, 0.28),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.nurse-report-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 290px;
+  height: 290px;
+
+  left: -130px;
+  bottom: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(207, 193, 232, 0.25),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.nurse-report-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.nurse-report-header {
+  position: relative;
+
+  padding: 32px;
+
+  margin-bottom: 25px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a9ded8,
+      #b8ddea,
+      #cbc1e6
+    );
+
+  overflow: hidden;
+
+  box-shadow:
+    0 14px 32px rgba(89, 119, 130, 0.13);
+}
+
+.nurse-report-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  right: 120px;
+  bottom: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.nurse-report-header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 230px;
+  height: 230px;
+
+  right: -80px;
+  top: -115px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.nurse-report-label {
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;
+
+  margin-bottom: 9px;
+
+  color: #426d70;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.nurse-report-header h1 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #29464e;
+
+  font-size: 35px;
+
+  font-weight: 800;
+}
+
+.nurse-report-header p {
+  position: relative;
+  z-index: 2;
+
+  margin: 9px 0 0;
+
+  color: #4f6d74;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ALERT MESSAGE
+========================================= */
+
+.nurse-report-alert {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 20px;
+
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  animation: nurseReportAlertIn 0.25s ease;
+}
+
+.nurse-report-alert.success {
+  background: #e2f4e7;
+
+  border: 1px solid #c9e7d1;
+
+  color: #557a60;
+}
+
+.nurse-report-alert.error {
+  background: #fae9ed;
+
+  border: 1px solid #ead3da;
+
+  color: #8b626d;
+}
+
+.nurse-report-alert-icon {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.nurse-report-alert-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+@keyframes nurseReportAlertIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.nurse-report-card {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eeee;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 30px rgba(75, 105, 115, 0.08);
+}
+
+
+/* =========================================
+   CARD HEADING
+========================================= */
+
+.nurse-report-card-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding-bottom: 22px;
+
+  margin-bottom: 22px;
+
+  border-bottom: 1px solid #edf2f2;
+}
+
+.nurse-report-heading-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #e1f2ef;
+
+  color: #5a8983;
+}
+
+.nurse-report-heading-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.nurse-report-card-heading h2 {
+  margin: 0;
+
+  color: #3d5961;
+
+  font-size: 19px;
+}
+
+.nurse-report-card-heading p {
+  margin: 5px 0 0;
+
+  color: #8a999d;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.nurse-report-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-bottom: 18px;
+}
+
+.nurse-report-field label {
+  color: #5a7178;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.nurse-report-field input,
+.nurse-report-field select,
+.nurse-report-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px 13px;
+
+  border: 1px solid #dce9e8;
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #fbfdfd;
+
+  color: #526b72;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  transition: 0.2s ease;
+}
+
+.nurse-report-field textarea {
+  resize: vertical;
+
+  min-height: 90px;
+
+  line-height: 1.5;
+}
+
+.nurse-report-field input:focus,
+.nurse-report-field select:focus,
+.nurse-report-field textarea:focus {
+  border-color: #9bcfc9;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(157, 219, 212, 0.15);
+}
+
+.nurse-report-field input::placeholder,
+.nurse-report-field textarea::placeholder {
+  color: #a7b3b6;
+}
+
+
+/* =========================================
+   ROW
+========================================= */
+
+.nurse-report-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.nurse-report-loading {
+  padding: 12px 13px;
+
+  border: 1px solid #dce9e8;
+
+  border-radius: 11px;
+
+  background: #fbfdfd;
+
+  color: #8a999d;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   SUBMIT
+========================================= */
+
+.nurse-report-submit {
+  width: 100%;
+
+  padding: 13px 20px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8bcfc7,
+      #a8c8df
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 17px rgba(105, 160, 165, 0.18);
+
+  transition: 0.2s ease;
+}
+
+.nurse-report-submit:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 21px rgba(105, 160, 165, 0.22);
+}
+
+.nurse-report-submit:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+  .nurse-report-page {
+    padding: 25px;
+  }
+
+  .nurse-report-card {
+    padding: 23px;
+  }
+
+  .nurse-report-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .nurse-report-page {
+    padding: 15px 12px;
+  }
+
+  .nurse-report-header {
+    padding: 25px 20px;
+  }
+
+  .nurse-report-header h1 {
+    font-size: 27px;
+  }
+
+  .nurse-report-card {
+    padding: 18px;
+  }
+
+  .nurse-report-card-heading h2 {
+    font-size: 17px;
+  }
+
+}

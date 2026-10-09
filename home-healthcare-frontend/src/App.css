@@ -1,0 +1,886 @@
+
+/* =====================================================
+   CARENEST GLOBAL DESIGN SYSTEM
+   Pastel Pink • Lavender • Soft Blue Theme
+===================================================== */
+
+
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+
+  background: #f7f0ff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  font-family:
+    "Segoe UI",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  color: #55415f;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f7f0ff 48%,
+      #f1f8ff 100%
+    );
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f7f0ff 48%,
+      #f1f8ff 100%
+    );
+}
+
+
+/* =====================================================
+   COMMON ELEMENTS
+===================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #55415f;
+  font-weight: 700;
+}
+
+p {
+  color: #6d6076;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* =====================================================
+   FOCUS ACCESSIBILITY
+===================================================== */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(196, 179, 237, 0.75);
+  outline-offset: 3px;
+}
+
+
+/* =====================================================
+   PAGE CONTAINER
+===================================================== */
+
+.page-container {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f7f0ff 48%,
+      #f1f8ff 100%
+    );
+
+  isolation: isolate;
+}
+
+.page-container::before {
+  content: "";
+
+  position: absolute;
+  top: -110px;
+  right: -90px;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  background: rgba(228, 174, 202, 0.14);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+.page-container::after {
+  content: "";
+
+  position: absolute;
+  bottom: -130px;
+  left: -110px;
+
+  width: 280px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  background: rgba(196, 179, 237, 0.14);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* =====================================================
+   COMMON PAGE HEADER
+===================================================== */
+
+.page-header {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.page-header h1,
+.page-header h2 {
+  margin-bottom: 8px;
+
+  color: #55415f;
+  font-weight: 700;
+}
+
+.page-header p {
+  margin-bottom: 0;
+
+  color: #786b81;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+  position: relative;
+  z-index: 1000;
+
+  width: 100%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f3c5d9 0%,
+      #e2c9f3 48%,
+      #cbdcf5 100%
+    );
+
+  border-bottom: 1px solid #cccccc;
+
+  box-shadow:
+    0 3px 14px rgba(90, 72, 101, 0.08);
+}
+
+.navbar a {
+  color: #55415f;
+
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #8d5f82;
+}
+
+
+/* =====================================================
+   COMMON BUTTON SYSTEM
+===================================================== */
+
+.primary-button,
+.btn-primary,
+.common-primary-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 42px;
+
+  padding: 10px 18px;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dca8c3 0%,
+      #c5b1e8 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-align: center;
+
+  box-shadow:
+    0 4px 10px rgba(176, 139, 181, 0.14);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.primary-button:hover,
+.btn-primary:hover,
+.common-primary-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 14px rgba(176, 139, 181, 0.23);
+
+  filter: brightness(1.02);
+}
+
+.primary-button:active,
+.btn-primary:active,
+.common-primary-button:active {
+  transform: translateY(0);
+}
+
+.secondary-button,
+.btn-secondary,
+.common-secondary-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 42px;
+
+  padding: 10px 18px;
+
+  border: 1px solid #cfc4d9;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #665471;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.secondary-button:hover,
+.btn-secondary:hover,
+.common-secondary-button:hover {
+  background: #faf5ff;
+  border-color: #c4b3ed;
+
+  transform: translateY(-1px);
+}
+
+.danger-button,
+.btn-danger {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+
+  padding: 10px 18px;
+
+  border: 1px solid #e4b4bd;
+  border-radius: 9px;
+
+  background: #fff1f3;
+
+  color: #b45f70;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.danger-button:hover,
+.btn-danger:hover {
+  background: #ffe4e9;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   COMMON CARD
+===================================================== */
+
+.card,
+.common-card {
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+
+  box-shadow:
+    0 6px 18px rgba(90, 72, 101, 0.07);
+}
+
+.card-header {
+  padding: 20px 22px;
+
+  border-bottom: 1px solid #e6e0e9;
+}
+
+.card-header h2,
+.card-header h3 {
+  margin-bottom: 5px;
+
+  color: #55415f;
+}
+
+.card-body {
+  padding: 22px;
+}
+
+
+/* =====================================================
+   COMMON FORM ELEMENTS
+===================================================== */
+
+label {
+  display: inline-block;
+
+  margin-bottom: 6px;
+
+  color: #5f4d68;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  min-height: 42px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #d5ccd9;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #55415f;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaa0b1;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #c4b3ed;
+
+  box-shadow:
+    0 0 0 3px rgba(196, 179, 237, 0.18);
+
+  outline: none;
+}
+
+
+/* =====================================================
+   COMMON TABLE
+===================================================== */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+}
+
+th,
+td {
+  padding: 12px 14px;
+
+  border-bottom: 1px solid #e8e2eb;
+
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background: #faf5fc;
+
+  color: #5a4865;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+td {
+  color: #6b5c73;
+  font-size: 14px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   COMMON STATUS BADGES
+===================================================== */
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 27px;
+
+  padding: 4px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-success {
+  background: #e6f6ed;
+  color: #4c8a68;
+}
+
+.status-warning {
+  background: #fff4dc;
+  color: #ad8240;
+}
+
+.status-danger {
+  background: #fff0f2;
+  color: #b45f70;
+}
+
+.status-info {
+  background: #edf3ff;
+  color: #6d80b4;
+}
+
+
+/* =====================================================
+   COMMON ERROR MESSAGE
+===================================================== */
+
+.error-message,
+.form-error,
+.availability-error {
+  padding: 12px 15px;
+
+  border: 1px solid #efc0c8;
+  border-radius: 9px;
+
+  background: #fff1f3;
+
+  color: #b45f70;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   COMMON SUCCESS MESSAGE
+===================================================== */
+
+.success-message,
+.form-success {
+  padding: 12px 15px;
+
+  border: 1px solid #b9dfc6;
+  border-radius: 9px;
+
+  background: #effaf2;
+
+  color: #4d8b62;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-state,
+.empty-availability {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  padding: 30px;
+
+  border: 1px dashed #d6cbdc;
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  text-align: center;
+}
+
+.empty-state h3,
+.empty-availability h3 {
+  margin-bottom: 8px;
+
+  color: #65536e;
+}
+
+.empty-state p,
+.empty-availability p {
+  margin-bottom: 0;
+
+  color: #95899d;
+}
+
+
+/* =====================================================
+   404 PAGE
+===================================================== */
+
+.not-found {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: calc(100vh - 73px);
+  min-height: calc(100dvh - 73px);
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f7f0ff 48%,
+      #f1f8ff 100%
+    );
+}
+
+.not-found-card {
+  width: min(100%, 500px);
+
+  padding: 42px 35px;
+
+  border: 1px solid #cccccc;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  text-align: center;
+
+  box-shadow:
+    0 12px 35px rgba(90, 72, 101, 0.1);
+}
+
+.not-found-number {
+  margin-bottom: 8px;
+
+  color: #b88bbd;
+
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.not-found-card h1 {
+  margin-bottom: 10px;
+
+  color: #55415f;
+
+  font-size: 26px;
+}
+
+.not-found-card p {
+  margin-bottom: 25px;
+
+  color: #83758b;
+}
+
+.not-found-card a {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+
+  padding: 10px 20px;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dca8c3 0%,
+      #c5b1e8 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.not-found-card a:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 13px rgba(176, 139, 181, 0.2);
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7f0ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4c4df;
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bca5cf;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+  .page-container {
+    padding: 25px;
+  }
+
+  .card-body {
+    padding: 18px;
+  }
+
+  th,
+  td {
+    padding: 10px 11px;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    font-size: 14px;
+  }
+
+  .page-container {
+    padding: 20px 15px;
+  }
+
+  .page-header {
+    margin-bottom: 20px;
+  }
+
+  .page-header h1,
+  .page-header h2 {
+    font-size: 22px;
+  }
+
+  .primary-button,
+  .btn-primary,
+  .common-primary-button,
+  .secondary-button,
+  .btn-secondary,
+  .common-secondary-button,
+  .danger-button,
+  .btn-danger {
+    min-height: 40px;
+
+    padding: 9px 14px;
+
+    font-size: 13px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  .card-header,
+  .card-body {
+    padding: 16px;
+  }
+
+  .not-found {
+    min-height: calc(100vh - 60px);
+    min-height: calc(100dvh - 60px);
+
+    padding: 20px 15px;
+  }
+
+  .not-found-card {
+    padding: 32px 22px;
+  }
+
+  .not-found-number {
+    font-size: 52px;
+  }
+
+  .not-found-card h1 {
+    font-size: 22px;
+  }
+
+  table {
+    min-width: 600px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}

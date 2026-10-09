@@ -1,0 +1,952 @@
+/* =========================================
+   ADMIN AVAILABILITY - PASTEL THEME
+   Matching Admin Nurse Management Design
+
+   Pink + Lavender + Blue
+   Soft Grey Border: #CCCCCC
+========================================= */
+
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.admin-availability-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 30px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f8f2ff 48%,
+      #f1f8ff 100%
+    );
+
+  color: #55415f;
+
+  font-family:
+    "Inter",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+.admin-availability-page *,
+.admin-availability-page *::before,
+.admin-availability-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   DECORATIVE BACKGROUND CIRCLES
+========================================= */
+
+.admin-availability-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  top: -130px;
+  left: -120px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 182, 210, 0.38);
+
+  pointer-events: none;
+}
+
+.admin-availability-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -150px;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background: rgba(205, 188, 255, 0.38);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   HEADER
+   CARENEST • ADMIN PORTAL
+   Nurse Availability
+   Description
+========================================= */
+
+.admin-availability-header {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  max-width: 1250px;
+
+  min-height: 151px;
+
+  margin: 0 auto 20px;
+
+  padding: 36px 40px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #efbdd5 0%,
+      #e2c9f3 52%,
+      #cbdcf5 100%
+    );
+
+  box-shadow:
+    0 8px 25px rgba(180, 160, 190, 0.20);
+
+  color: #493b59;
+
+  text-align: left;
+
+  overflow: hidden;
+}
+
+
+/* Header Decorative Circle */
+
+.admin-availability-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 210px;
+  height: 210px;
+
+  right: -70px;
+  top: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  pointer-events: none;
+}
+
+.admin-availability-header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: 150px;
+  bottom: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+
+  pointer-events: none;
+}
+
+
+/* CARENEST • ADMIN PORTAL */
+
+.admin-availability-header span {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 12px;
+
+  color: #765a86;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  line-height: 1.3;
+
+  text-align: left;
+
+  text-transform: uppercase;
+}
+
+
+/* Nurse Availability */
+
+.admin-availability-header h1 {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  margin: 0;
+
+  color: #443650;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.7px;
+
+  line-height: 1.2;
+
+  text-align: left;
+}
+
+
+/* View availability submitted by nurses. */
+
+.admin-availability-header p {
+  position: relative;
+
+  z-index: 1;
+
+  width: 100%;
+
+  max-width: 600px;
+
+  margin: 8px 0 0;
+
+  color: #665b70;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  text-align: left;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.availability-error {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 1250px;
+
+  margin: 0 auto 20px;
+
+  padding: 14px 18px;
+
+  border: 1px solid #e6b8c7;
+
+  border-left: 5px solid #d987a5;
+
+  border-radius: 12px;
+
+  background: #fff0f5;
+
+  color: #a34d70;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   AVAILABILITY LIST
+   Full Width Cards
+========================================= */
+
+.admin-availability-list {
+  position: relative;
+
+  z-index: 1;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 14px;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  align-items: stretch;
+}
+
+
+/* =========================================
+   AVAILABILITY CARD
+========================================= */
+
+.admin-availability-card {
+  position: relative;
+
+  z-index: 1;
+
+  min-height: 125px;
+
+  padding: 26px 20px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 5px 16px rgba(180, 160, 190, 0.16);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* Left Pastel Strip */
+
+.admin-availability-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 5px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e8b0ce,
+      #cbb8f3
+    );
+}
+
+
+/* Card Hover */
+
+.admin-availability-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #b8a8c8;
+
+  box-shadow:
+    0 10px 25px rgba(180, 160, 190, 0.25);
+}
+
+
+/* =========================================
+   NURSE HEADER
+========================================= */
+
+.availability-nurse-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 22px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.availability-nurse-avatar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 52px;
+
+  height: 52px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e9c4dc,
+      #cbbcf1
+    );
+
+  color: #5d4b70;
+
+  font-size: 23px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 12px rgba(190, 170, 210, 0.20);
+}
+
+.availability-nurse-header h3 {
+  margin: 0 0 5px;
+
+  color: #493d56;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+}
+
+.availability-nurse-header p {
+  margin: 0;
+
+  color: #918798;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   INFORMATION SECTION
+========================================= */
+
+.availability-info {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 10px 18px;
+
+  margin-bottom: 18px;
+}
+
+.availability-info strong {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #716477;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
+}
+
+.availability-info strong::before {
+  content: "";
+
+  width: 4px;
+
+  height: 15px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e7a9c4,
+      #bba8e8
+    );
+}
+
+.availability-info > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  max-width: 100%;
+
+  padding: 9px 12px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 10px;
+
+  background: #faf8fc;
+
+  color: #5b5064;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   DAY BADGES
+========================================= */
+
+.admin-day-badges {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.admin-day-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 32px;
+
+  padding: 6px 12px;
+
+  border: 1px solid #d5c7ee;
+
+  border-radius: 50px;
+
+  background: #f1eafd;
+
+  color: #76619b;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-day-badge:hover {
+  background: #e5dafa;
+
+  border-color: #c4b3ed;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-availability {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  padding: 65px 25px;
+
+  border: 1px dashed #cccccc;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  text-align: center;
+}
+
+.empty-availability h3 {
+  margin: 0 0 10px;
+
+  color: #665474;
+
+  font-size: 20px;
+
+  font-weight: 800;
+}
+
+.empty-availability p {
+  margin: 0;
+
+  color: #9a8fa2;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   OPTIONAL EMPTY ICON
+========================================= */
+
+.empty-availability-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 58px;
+
+  height: 58px;
+
+  margin: 0 auto 16px;
+
+  border: 1px solid #d7c8e8;
+
+  border-radius: 17px;
+
+  background: #eee6fa;
+
+  color: #9b83bb;
+}
+
+.empty-availability-icon svg {
+  width: 28px;
+
+  height: 28px;
+}
+
+
+/* =========================================
+   LOADING STATE
+========================================= */
+
+.availability-loading {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  padding: 60px 25px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  text-align: center;
+}
+
+.availability-loader {
+  width: 36px;
+
+  height: 36px;
+
+  margin: 0 auto 16px;
+
+  border: 4px solid rgba(196, 179, 237, 0.30);
+
+  border-top-color: #c4b3ed;
+
+  border-radius: 50%;
+
+  animation: availabilitySpin 0.8s linear infinite;
+}
+
+@keyframes availabilitySpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.availability-loading h3 {
+  margin: 0;
+
+  color: #665474;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+.availability-loading p {
+  margin: 7px 0 0;
+
+  color: #9a8fa2;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 768px) {
+  .admin-availability-page {
+    padding: 22px 16px;
+  }
+
+  .admin-availability-header {
+    min-height: auto;
+
+    margin-bottom: 20px;
+
+    padding: 28px 24px;
+
+    border-radius: 18px;
+  }
+
+  .admin-availability-header h1 {
+    font-size: 30px;
+  }
+
+  .admin-availability-header p {
+    font-size: 13px;
+  }
+
+  .admin-availability-list {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .admin-availability-card {
+    padding: 22px 18px;
+
+    border-radius: 17px;
+  }
+
+  .availability-nurse-avatar {
+    width: 52px;
+
+    height: 52px;
+
+    font-size: 22px;
+  }
+
+  .availability-info {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 9px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .admin-availability-page {
+    padding: 14px 12px;
+  }
+
+  .admin-availability-header {
+    padding: 25px 20px;
+
+    border-radius: 17px;
+  }
+
+  .admin-availability-header span {
+    font-size: 9px;
+
+    letter-spacing: 1.3px;
+  }
+
+  .admin-availability-header h1 {
+    font-size: 26px;
+
+    letter-spacing: -0.5px;
+  }
+
+  .admin-availability-header p {
+    margin-top: 10px;
+
+    font-size: 12px;
+  }
+
+  .availability-error {
+    padding: 13px 15px;
+
+    font-size: 12px;
+  }
+
+  .admin-availability-card {
+    min-height: auto;
+
+    padding: 20px 17px;
+
+    border-radius: 16px;
+  }
+
+  .availability-nurse-header {
+    gap: 11px;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 16px;
+  }
+
+  .availability-nurse-avatar {
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 14px;
+
+    font-size: 20px;
+  }
+
+  .availability-nurse-header h3 {
+    font-size: 16px;
+  }
+
+  .availability-nurse-header p {
+    font-size: 11px;
+  }
+
+  .availability-info {
+    margin-bottom: 17px;
+  }
+
+  .availability-info strong {
+    font-size: 11px;
+  }
+
+  .availability-info > span {
+    padding: 9px 11px;
+
+    font-size: 12px;
+  }
+
+  .admin-day-badge {
+    min-height: 30px;
+
+    padding: 6px 10px;
+
+    font-size: 10px;
+  }
+
+  .empty-availability {
+    padding: 45px 20px;
+  }
+
+  .empty-availability h3 {
+    font-size: 18px;
+  }
+
+  .empty-availability p {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
+  .admin-availability-page {
+    padding: 10px;
+  }
+
+  .admin-availability-header {
+    padding: 22px 16px;
+  }
+
+  .admin-availability-header h1 {
+    font-size: 23px;
+  }
+
+  .admin-availability-card {
+    padding: 17px 14px;
+  }
+
+  .availability-nurse-header h3 {
+    font-size: 14px;
+  }
+
+  .availability-nurse-header p {
+    font-size: 10px;
+  }
+
+  .availability-info > span {
+    font-size: 11px;
+  }
+
+  .admin-day-badge {
+    padding: 5px 9px;
+
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-availability-card,
+  .admin-day-badge,
+  .availability-loader {
+    animation: none;
+
+    transition: none;
+  }
+}

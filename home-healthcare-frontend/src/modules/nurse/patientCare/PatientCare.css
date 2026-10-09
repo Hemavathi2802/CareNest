@@ -1,0 +1,504 @@
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* ===============================
+   MAIN PAGE
+================================ */
+
+.patient-care-page {
+  min-height: 100vh;
+  padding: 32px;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255, 214, 224, 0.55),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(207, 232, 255, 0.65),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(221, 255, 232, 0.55),
+      transparent 40%
+    ),
+    #f9fbff;
+  font-family: "DM Sans", sans-serif;
+  color: #26334a;
+  box-sizing: border-box;
+}
+
+.patient-care-page *,
+.patient-care-page *::before,
+.patient-care-page *::after {
+  box-sizing: border-box;
+}
+
+/* ===============================
+   PAGE HEADER
+================================ */
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #293653;
+  letter-spacing: -0.8px;
+}
+
+.page-header p {
+  margin: 0;
+  color: #7d8aa3;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ===============================
+   COMMON CARDS
+================================ */
+
+.patient-care-card,
+.history-card {
+  width: 100%;
+  margin-bottom: 26px;
+  padding: 28px;
+  border: 1px solid rgba(220, 228, 243, 0.85);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 35px rgba(72, 91, 125, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.card-header {
+  margin-bottom: 26px;
+}
+
+.card-header h2 {
+  margin: 0 0 7px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  color: #34415e;
+  letter-spacing: -0.4px;
+}
+
+.card-header p {
+  margin: 0;
+  font-size: 14px;
+  color: #8a96ac;
+  line-height: 1.6;
+}
+
+/* ===============================
+   FORM GRID
+================================ */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #596780;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #dce4f1;
+  border-radius: 12px;
+  outline: none;
+  background: #fbfcff;
+  color: #35425d;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+  min-height: 47px;
+}
+
+.form-group textarea {
+  min-height: 115px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aab4c6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #9bb8ed;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(155, 184, 237, 0.16);
+}
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+  cursor: not-allowed;
+  background: #f1f4fa;
+  color: #8d99ae;
+}
+
+.field-help {
+  margin-top: 7px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #96a2b8;
+}
+
+/* ===============================
+   VITALS SECTION
+================================ */
+
+.vitals-section {
+  margin-top: 10px;
+  margin-bottom: 24px;
+  padding: 22px;
+  border: 1px solid #e3eafa;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(244, 248, 255, 0.9),
+    rgba(250, 246, 255, 0.8)
+  );
+}
+
+.vitals-section h3 {
+  margin: 0 0 20px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #53617c;
+}
+
+.vitals-section .form-grid {
+  gap: 18px;
+}
+
+.vitals-section .form-group {
+  margin-bottom: 0;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+
+.save-care-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 47px;
+  padding: 13px 26px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8daeea, #9b9be0);
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(141, 174, 234, 0.25);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.save-care-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 22px rgba(141, 174, 234, 0.35);
+}
+
+.save-care-button:active {
+  transform: translateY(0);
+}
+
+.save-care-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===============================
+   SUCCESS AND ERROR
+================================ */
+
+.success-message,
+.error-message {
+  margin-bottom: 20px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.success-message {
+  border: 1px solid #c8ecd9;
+  background: #edfff5;
+  color: #32815e;
+}
+
+.error-message {
+  border: 1px solid #f4cccc;
+  background: #fff1f1;
+  color: #bd5a5a;
+}
+
+/* ===============================
+   HISTORY CARD
+================================ */
+
+.history-card {
+  overflow: hidden;
+}
+
+.history-card .card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf6;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.care-history-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.care-history-table thead {
+  background: #f4f7fd;
+}
+
+.care-history-table th {
+  padding: 15px 17px;
+  border-bottom: 1px solid #e4eaf4;
+  color: #64728d;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.care-history-table td {
+  padding: 16px 17px;
+  border-bottom: 1px solid #edf1f7;
+  color: #596780;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+  vertical-align: top;
+}
+
+.care-history-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.care-history-table tbody tr:hover {
+  background: #fafbff;
+}
+
+.care-history-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.care-history-table td:first-child {
+  color: #3e4d6a;
+  font-weight: 700;
+}
+
+.empty-message {
+  padding: 35px 20px;
+  border: 1px dashed #dbe3f0;
+  border-radius: 15px;
+  background: #fbfcff;
+  color: #8e9bb0;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ===============================
+   FILTER
+================================ */
+
+.history-card select {
+  min-width: 170px;
+  padding: 10px 13px;
+  border: 1px solid #dce4f1;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfcff;
+  color: #596780;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.history-card select:focus {
+  border-color: #9bb8ed;
+  box-shadow: 0 0 0 4px rgba(155, 184, 237, 0.16);
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 1100px) {
+  .patient-care-page {
+    padding: 28px;
+  }
+
+  .patient-care-card,
+  .history-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .patient-care-page {
+    padding: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .vitals-section .form-grid {
+    gap: 0;
+  }
+
+  .vitals-section .form-group {
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 650px) {
+  .patient-care-page {
+    padding: 18px;
+  }
+
+  .page-header {
+    margin-bottom: 22px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .page-header p {
+    font-size: 13px;
+  }
+
+  .patient-care-card,
+  .history-card {
+    padding: 20px;
+    border-radius: 19px;
+  }
+
+  .card-header {
+    margin-bottom: 22px;
+  }
+
+  .card-header h2 {
+    font-size: 18px;
+  }
+
+  .card-header p {
+    font-size: 13px;
+  }
+
+  .vitals-section {
+    padding: 17px;
+  }
+
+  .save-care-button {
+    width: 100%;
+  }
+
+  .history-card .card-header {
+    display: block;
+  }
+
+  .history-card select {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .patient-care-page {
+    padding: 14px;
+  }
+
+  .patient-care-card,
+  .history-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 13px;
+  }
+
+  .vitals-section {
+    padding: 14px;
+  }
+  
+}

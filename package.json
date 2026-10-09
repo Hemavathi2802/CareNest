@@ -1,0 +1,9 @@
+{
+  "name": "home-healthcare-project",
+  "private": true,
+  "scripts": {
+    "dev": "start-dev.cmd",
+    "dev:frontend": "npm --prefix home-healthcare-frontend run dev -- --host localhost --port 5173 --strictPort",
+    "dev:backend": "home-healthcare-backend\\home-healthcare-backend\\mvnw.cmd -f home-healthcare-backend\\home-healthcare-backend\\pom.xml spring-boot:run"
+  }
+}

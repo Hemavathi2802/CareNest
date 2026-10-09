@@ -1,0 +1,839 @@
+/* =========================================
+   ADMIN NURSES - PASTEL PINK + LAVENDER THEME
+========================================= */
+
+/* ================= MAIN PAGE ================= */
+
+.admin-nurses-page {
+  min-height: 100vh;
+  padding: 30px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5fa 0%,
+      #f7f0ff 48%,
+      #f1f8ff 100%
+    );
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Pink circle */
+
+.admin-nurses-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  right: -140px;
+  top: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 182, 210, 0.48),
+      rgba(255, 182, 210, 0.10) 65%,
+      transparent 75%
+    );
+
+  pointer-events: none;
+}
+
+/* Lavender circle */
+
+.admin-nurses-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 360px;
+  height: 360px;
+
+  left: -160px;
+  bottom: -110px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(205, 188, 255, 0.48),
+      rgba(205, 188, 255, 0.10) 65%,
+      transparent 75%
+    );
+
+  pointer-events: none;
+}
+
+/* ================= HEADER ================= */
+
+.admin-nurses-header {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 28px 30px;
+  margin-bottom: 20px;
+
+  border: 1px solid #cccccc;
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f3c5d9 0%,
+      #e2c9f3 52%,
+      #cbdcf5 100%
+    );
+
+  box-shadow:
+    0 12px 30px rgba(180, 160, 190, 0.18);
+}
+
+.admin-nurses-header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.admin-nurses-label {
+  display: inline-block;
+  margin-bottom: 6px;
+
+  color: #90617c;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.admin-nurses-header h1 {
+  margin: 0;
+
+  color: #55415f;
+
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.admin-nurses-header p {
+  margin: 7px 0 0;
+
+  color: #806b87;
+
+  font-size: 12px;
+}
+
+/* ================= COUNT ================= */
+
+.admin-nurses-count {
+  position: relative;
+  z-index: 2;
+
+  min-width: 100px;
+  padding: 14px 18px;
+
+  text-align: center;
+
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  box-shadow:
+    0 5px 15px rgba(180, 160, 190, 0.10);
+}
+
+.admin-nurses-count strong {
+  display: block;
+
+  color: #695477;
+  font-size: 25px;
+}
+
+.admin-nurses-count span {
+  color: #927f9b;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* ================= TOOLBAR ================= */
+
+.admin-nurses-toolbar {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.admin-nurses-search {
+  width: 100%;
+  max-width: 430px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+  padding: 12px 15px;
+
+  background: #ffffff;
+
+  border: 1px solid #cccccc;
+  border-radius: 13px;
+
+  box-shadow:
+    0 7px 20px rgba(180, 160, 190, 0.12);
+
+  box-sizing: border-box;
+}
+
+.admin-nurses-search svg {
+  width: 18px;
+  height: 18px;
+
+  color: #c08cae;
+
+  flex-shrink: 0;
+}
+
+.admin-nurses-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #5c4c66;
+  font-size: 12px;
+}
+
+.admin-nurses-search input::placeholder {
+  color: #b5a7ba;
+}
+
+/* ================= ADD BUTTON ================= */
+
+.admin-add-nurse-btn {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+  padding: 11px 17px;
+
+  border: 1px solid #d5b1c6;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dca8c3,
+      #c5b1e8
+    );
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 17px rgba(190, 150, 190, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-add-nurse-btn span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.admin-add-nurse-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 11px 22px rgba(190, 150, 190, 0.30);
+}
+
+/* ================= FORM ================= */
+
+.admin-nurse-form-card {
+  position: relative;
+  z-index: 2;
+
+  padding: 22px;
+  margin-bottom: 24px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #cccccc;
+  border-radius: 18px;
+
+  box-shadow:
+    0 9px 26px rgba(180, 160, 190, 0.14);
+}
+
+.admin-form-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.admin-form-title span {
+  color: #b084a2;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.admin-form-title h2 {
+  margin: 5px 0 0;
+
+  color: #5a4865;
+  font-size: 18px;
+}
+
+.admin-form-close {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+
+  background: #faf2f8;
+  color: #947a9d;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.admin-nurse-form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.admin-form-group label {
+  color: #806d89;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.admin-form-group input,
+.admin-form-group select {
+  width: 100%;
+
+  padding: 11px 12px;
+  box-sizing: border-box;
+
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fffafd;
+  color: #62536c;
+
+  font-size: 11px;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus {
+  border-color: #d3b4e8;
+
+  box-shadow:
+    0 0 0 3px rgba(211, 180, 232, 0.20);
+}
+
+.admin-form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.admin-cancel-btn,
+.admin-save-btn {
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.admin-cancel-btn {
+  border: 1px solid #cccccc;
+
+  background: #ffffff;
+  color: #92849b;
+}
+
+.admin-save-btn {
+  border: 1px solid #d5b1c6;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dca8c3,
+      #c5b1e8
+    );
+
+  color: #ffffff;
+}
+
+/* ================= SECTION ================= */
+
+.admin-nurses-section {
+  position: relative;
+  z-index: 2;
+}
+
+.admin-section-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.admin-section-line {
+  width: 5px;
+  height: 35px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e4aeca,
+      #c4b3ed
+    );
+}
+
+.admin-section-heading h2 {
+  margin: 0;
+
+  color: #5a4865;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.admin-section-heading p {
+  margin: 4px 0 0;
+
+  color: #a091aa;
+  font-size: 10px;
+}
+
+/* ================= NURSE LIST ================= */
+
+.admin-nurses-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+/* ================= NURSE CARD ================= */
+
+.admin-nurse-card {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+  padding: 16px 18px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #cccccc;
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 22px rgba(180, 160, 190, 0.12);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-nurse-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 4px;
+  height: 100%;
+
+  background: #e4aeca;
+}
+
+.admin-nurse-card:nth-child(2)::before {
+  background: #c5b5e3;
+}
+
+.admin-nurse-card:nth-child(3)::before {
+  background: #d6bce7;
+}
+
+.admin-nurse-card:nth-child(4)::before {
+  background: #f0c5d5;
+}
+
+.admin-nurse-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 27px rgba(180, 160, 190, 0.22);
+}
+
+/* ================= AVATAR ================= */
+
+.admin-nurse-avatar {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #cccccc;
+  border-radius: 14px;
+
+  background: #f5dce9;
+  color: #95617c;
+}
+
+.admin-nurse-card:nth-child(2)
+.admin-nurse-avatar {
+  background: #e7ddf6;
+  color: #776394;
+}
+
+.admin-nurse-card:nth-child(3)
+.admin-nurse-avatar {
+  background: #eadcf2;
+  color: #80618e;
+}
+
+.admin-nurse-avatar svg {
+  width: 23px;
+  height: 23px;
+}
+
+/* ================= INFO ================= */
+
+.admin-nurse-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-nurse-info h3 {
+  margin: 0 0 4px;
+
+  color: #5a4865;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.admin-nurse-info > span {
+  color: #a18fa9;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.admin-nurse-contact {
+  display: flex;
+
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.admin-nurse-contact small {
+  color: #b0a2b6;
+  font-size: 9px;
+}
+
+/* ================= STATUS ================= */
+
+.admin-nurse-status {
+  min-width: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+  padding: 8px 10px;
+
+  border: 1px solid #cce4d5;
+  border-radius: 10px;
+
+  background: #eaf7ef;
+  color: #719b80;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.admin-nurse-status span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #91c59f;
+}
+
+.admin-nurse-status.inactive {
+  background: #f9e9ef;
+
+  border-color: #e7c3d0;
+  color: #ae8293;
+}
+
+.admin-nurse-status.inactive span {
+  background: #d9a1b6;
+}
+
+/* ================= DELETE ================= */
+
+.admin-delete-btn {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5cbd5;
+  border-radius: 10px;
+
+  background: #fff1f5;
+  color: #c18aa1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-delete-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.admin-delete-btn:hover {
+  background: #f8dce7;
+
+  transform: translateY(-1px);
+}
+
+/* ================= EMPTY ================= */
+
+.admin-nurses-empty {
+  padding: 60px 20px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid #cccccc;
+  border-radius: 17px;
+
+  box-shadow:
+    0 7px 22px rgba(180, 160, 190, 0.10);
+}
+
+.admin-empty-icon {
+  width: 55px;
+  height: 55px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d9c9e8;
+  border-radius: 16px;
+
+  background: #eee6fa;
+  color: #9c83bd;
+}
+
+.admin-empty-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.admin-nurses-empty h3 {
+  margin: 0;
+
+  color: #5f4d6b;
+  font-size: 15px;
+}
+
+.admin-nurses-empty p {
+  margin: 6px 0 0;
+
+  color: #a596af;
+  font-size: 10px;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 750px) {
+  .admin-nurses-page {
+    padding: 20px;
+  }
+
+  .admin-nurse-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .admin-nurses-page {
+    padding: 14px;
+  }
+
+  .admin-nurses-header {
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 15px;
+  }
+
+  .admin-nurses-count {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-nurses-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-nurses-search {
+    max-width: none;
+  }
+
+  .admin-add-nurse-btn {
+    justify-content: center;
+  }
+
+  .admin-nurse-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .admin-nurse-status {
+    margin-left: 64px;
+  }
+
+  .admin-delete-btn {
+    margin-left: auto;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 420px) {
+  .admin-nurses-page {
+    padding: 10px;
+  }
+
+  .admin-nurses-header {
+    padding: 22px 18px;
+  }
+
+  .admin-nurses-header h1 {
+    font-size: 23px;
+  }
+
+  .admin-nurse-avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .admin-nurse-avatar svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .admin-nurse-info h3 {
+    font-size: 13px;
+  }
+
+  .admin-nurse-contact {
+    flex-direction: column;
+    gap: 3px;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-nurse-card,
+  .admin-add-nurse-btn,
+  .admin-delete-btn {
+    transition: none;
+  }
+}

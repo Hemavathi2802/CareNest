@@ -1,0 +1,1253 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap");
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.appointment-page {
+  min-height: 100vh;
+
+  padding: 34px 55px 80px;
+
+  box-sizing: border-box;
+
+  font-family: "DM Sans", sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 4% 12%,
+      rgba(186, 226, 244, 0.75),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 96% 12%,
+      rgba(222, 194, 241, 0.78),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 55% 100%,
+      rgba(249, 204, 229, 0.7),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #edf8fc,
+      #f5efff,
+      #fff1f8
+    );
+
+  color: #453d52;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.appointment-hero {
+  position: relative;
+
+  max-width: 1100px;
+
+  min-height: 275px;
+
+  margin: 0 auto 30px;
+
+  padding: 42px 50px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      115deg,
+      #cdebf8 0%,
+      #ded4f7 51%,
+      #f5d6e9 100%
+    );
+
+  box-shadow:
+    0 24px 55px rgba(86, 70, 116, 0.13);
+}
+
+.appointment-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 370px;
+  height: 370px;
+
+  left: -190px;
+  bottom: -250px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: 56%;
+}
+
+.hero-label {
+  display: inline-block;
+
+  padding: 7px 13px;
+
+  border: 1px solid rgba(255,255,255,0.75);
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,0.4);
+
+  color: #695b7d;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.6px;
+}
+
+.hero-content h1 {
+  margin: 17px 0 12px;
+
+  color: #453360;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 35px;
+
+  font-weight: 800;
+
+  line-height: 1.18;
+
+  letter-spacing: -1.5px;
+}
+
+.hero-content h1 span {
+  color: #8050b4;
+}
+
+.hero-content p {
+  max-width: 475px;
+
+  margin: 0;
+
+  color: #746b80;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.hero-decoration {
+  position: relative;
+
+  width: 390px;
+  height: 235px;
+}
+
+.hero-circle {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.circle-purple {
+  width: 155px;
+  height: 155px;
+
+  top: -5px;
+  right: 0;
+
+  background:
+    rgba(180, 153, 224, 0.32);
+}
+
+.circle-pink {
+  width: 100px;
+  height: 100px;
+
+  bottom: 0;
+  right: 190px;
+
+  background:
+    rgba(246, 182, 215, 0.42);
+}
+
+.circle-blue {
+  width: 46px;
+  height: 46px;
+
+  right: 68px;
+  bottom: 24px;
+
+  background:
+    rgba(183, 218, 241, 0.62);
+}
+
+
+/* =========================================================
+   CALENDAR CARD
+========================================================= */
+
+.calendar-card {
+  position: absolute;
+
+  z-index: 6;
+
+  width: 215px;
+  height: 190px;
+
+  right: 42px;
+  top: 20px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  border-radius: 25px;
+
+  background:
+    rgba(255,255,255,0.95);
+
+  box-shadow:
+    0 20px 40px rgba(82, 66, 111, 0.18);
+
+  transform: rotate(3deg);
+}
+
+.calendar-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #a17bb8;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.calendar-month {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 13px;
+}
+
+.calendar-month strong {
+  color: #4d3c61;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 17px;
+}
+
+.calendar-month small {
+  color: #a59aaa;
+
+  font-size: 9px;
+}
+
+.calendar-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 7px;
+
+  margin-top: 15px;
+
+  text-align: center;
+}
+
+.calendar-grid span {
+  color: #a69da9;
+
+  font-size: 7px;
+
+  font-weight: 700;
+}
+
+.calendar-grid i {
+  width: 19px;
+  height: 19px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #756b7e;
+
+  font-size: 8px;
+
+  font-style: normal;
+}
+
+.calendar-grid .active-day {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #9160d1,
+      #c36dbb
+    );
+
+  box-shadow:
+    0 5px 13px rgba(130, 82, 183, 0.3);
+}
+
+
+/* =========================================================
+   BOOKING SECTION
+========================================================= */
+
+.booking-section {
+  max-width: 900px;
+
+  margin: 0 auto;
+}
+
+.booking-card {
+  padding: 32px 38px;
+
+  border: 1px solid rgba(255,255,255,0.9);
+
+  border-radius: 27px;
+
+  background:
+    rgba(255,255,255,0.95);
+
+  box-shadow:
+    0 16px 42px rgba(76, 67, 102, 0.09);
+}
+
+
+/* =========================================================
+   BOOKING TITLE
+========================================================= */
+
+.booking-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 28px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #eee9f2;
+}
+
+.title-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e6d8f8,
+      #f5d8eb
+    );
+
+  color: #8157a7;
+
+  font-size: 23px;
+}
+
+.booking-title h2 {
+  margin: 0;
+
+  color: #43355a;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 800;
+}
+
+.booking-title p {
+  margin: 5px 0 0;
+
+  color: #968d9d;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.booking-card form {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  column-gap: 24px;
+
+  row-gap: 21px;
+}
+
+.input-group {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 8px;
+
+  color: #51475d;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e1dbea;
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background: #fcfbfe;
+
+  color: #5b5167;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  font-size: 12px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.input-group input,
+.input-group select {
+  height: 46px;
+
+  padding: 0 13px;
+}
+
+.input-group textarea {
+  min-height: 85px;
+
+  padding: 12px 13px;
+
+  resize: vertical;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #afa7b6;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #a978d0;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px rgba(166, 121, 210, 0.1);
+}
+
+.notes-group {
+  grid-column: span 2;
+}
+
+
+/* =========================================================
+   BOOK BUTTON
+========================================================= */
+
+.book-btn {
+  grid-column: span 2;
+
+  height: 49px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8153d1,
+      #a15bd0,
+      #c467b6
+    );
+
+  color: white;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 24px rgba(126, 78, 183, 0.22);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.book-btn span {
+  margin-left: 10px;
+
+  font-size: 16px;
+}
+
+.book-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 30px rgba(126, 78, 183, 0.3);
+}
+
+
+/* =========================================================
+   YOUR APPOINTMENTS
+========================================================= */
+
+.your-appointments {
+  max-width: 1100px;
+
+  margin: 52px auto 0;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.appointments-heading {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+
+  padding: 0 6px 18px;
+
+  border-bottom:
+    1px solid rgba(112, 99, 130, 0.12);
+}
+
+.small-heading {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #a06fbc;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.appointments-heading h2 {
+  margin: 0;
+
+  color: #403452;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.8px;
+}
+
+.appointments-heading p {
+  margin: 6px 0 0;
+
+  color: #91879b;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.appointment-number {
+  min-width: 82px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 10px 15px;
+
+  border:
+    1px solid rgba(180, 157, 205, 0.35);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.95),
+      rgba(246,239,252,0.95)
+    );
+
+  box-shadow:
+    0 7px 20px rgba(94, 72, 120, 0.07);
+}
+
+.appointment-number strong {
+  color: #76509a;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 19px;
+}
+
+.appointment-number span {
+  color: #9a8da4;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.appointment-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   APPOINTMENT CARD
+========================================================= */
+
+.appointment-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    82px 1fr auto;
+
+  align-items: center;
+
+  gap: 22px;
+
+  min-height: 116px;
+
+  padding: 18px 22px 18px 26px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(220, 211, 229, 0.9);
+
+  border-radius: 23px;
+
+  background:
+    rgba(255,255,255,0.96);
+
+  box-shadow:
+    0 10px 28px rgba(75, 61, 96, 0.065);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+/* LEFT PASTEL ACCENT */
+
+.appointment-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 17px;
+
+  bottom: 17px;
+
+  width: 5px;
+
+  border-radius:
+    0 8px 8px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #a9dced,
+      #9e81d6,
+      #d989bd
+    );
+}
+
+
+/* RIGHT SOFT DECORATION */
+
+.appointment-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 160px;
+  height: 160px;
+
+  right: -90px;
+  top: -90px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(228, 211, 245, 0.27);
+
+  pointer-events: none;
+}
+
+.appointment-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #d9c9e6;
+
+  box-shadow:
+    0 17px 38px rgba(75, 61, 96, 0.11);
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.date-box {
+  position: relative;
+
+  z-index: 2;
+
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid rgba(205, 189, 223, 0.55);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf8fc 0%,
+      #eee7fa 52%,
+      #f9eaf4 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 7px 17px rgba(105, 84, 127, 0.08);
+}
+
+.date-box span {
+  margin-bottom: 4px;
+
+  color: #9279a5;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.date-box strong {
+  color: #554168;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 27px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.appointment-info {
+  position: relative;
+
+  z-index: 2;
+}
+
+.appointment-info h3 {
+  margin: 0 0 5px;
+
+  color: #453654;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.2px;
+}
+
+.appointment-info p {
+  margin: 0 0 12px;
+
+  color: #99909f;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.appointment-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+}
+
+.appointment-meta span {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 6px 10px;
+
+  border:
+    1px solid #ebe3ef;
+
+  border-radius: 9px;
+
+  background: #fbf9fd;
+
+  color: #746a7c;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 2px 5px rgba(80, 60, 100, 0.025);
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.appointment-actions {
+  position: relative;
+
+  z-index: 3;
+
+  min-width: 105px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  justify-content: center;
+
+  gap: 11px;
+}
+
+
+/* =========================================================
+   PENDING BADGE
+========================================================= */
+
+.pending-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 8px 12px;
+
+  border:
+    1px solid #eadfb9;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffaf0,
+      #fff6df
+    );
+
+  color: #a08343;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 3px 8px rgba(160, 128, 67, 0.06);
+}
+
+
+/* small status dot */
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #d0a84c;
+
+  box-shadow:
+    0 0 0 3px rgba(208, 168, 76, 0.12);
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.cancel-btn {
+  padding: 8px 16px;
+
+  border:
+    1px solid #ead9e1;
+
+  border-radius: 10px;
+
+  background: #fffafd;
+
+  color: #ae718b;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cancel-btn:hover {
+  transform: translateY(-1px);
+
+  border-color: #dfc2d0;
+
+  background: #fff1f6;
+
+  color: #9d5d79;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-appointments {
+  padding: 65px 30px;
+
+  text-align: center;
+
+  border:
+    1px dashed #d8cbe3;
+
+  border-radius: 24px;
+
+  background:
+    rgba(255,255,255,0.72);
+
+  box-shadow:
+    0 8px 25px rgba(82, 65, 103, 0.04);
+}
+
+.empty-calendar {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 16px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e9def7,
+      #f7ddea
+    );
+
+  color: #8765a3;
+
+  font-size: 25px;
+}
+
+.empty-appointments h3 {
+  margin: 0 0 7px;
+
+  color: #51435e;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 16px;
+}
+
+.empty-appointments p {
+  margin: 0;
+
+  color: #9b919f;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.success-toast {
+  position: fixed;
+
+  left: 50%;
+  bottom: 25px;
+
+  z-index: 9999;
+
+  width: 350px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 17px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid #b9e1ce;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ecfaf2,
+      #dff5e9
+    );
+
+  box-shadow:
+    0 14px 35px rgba(60, 126, 91, 0.2);
+
+  transform:
+    translateX(-50%);
+
+  animation:
+    toastUp 0.35s ease;
+}
+
+.success-check {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #69b78e;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+.success-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.success-text strong {
+  color: #39755a;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.success-text span {
+  color: #679079;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   TOAST ANIMATION
+========================================================= */
+
+@keyframes toastUp {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, 22px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, 0);
+  }
+
+}

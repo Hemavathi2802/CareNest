@@ -1,0 +1,50 @@
+Table Admin {
+  admin_id int [pk, increment]
+  name varchar
+  email varchar
+  password varchar
+}
+
+Table Patient {
+  patient_id int [pk, increment]
+  name varchar
+  age int
+  gender varchar
+  phone varchar
+  address varchar
+}
+
+Table Nurse {
+  nurse_id int [pk, increment]
+  name varchar
+  specialization varchar
+  phone varchar
+}
+
+Table Appointment {
+  appointment_id int [pk, increment]
+  patient_id int
+  nurse_id int
+  appointment_date date
+  status varchar
+}
+
+Table VisitSchedule {
+  schedule_id int [pk, increment]
+  appointment_id int
+  visit_date date
+  visit_time time
+}
+
+Table VisitReport {
+  report_id int [pk, increment]
+  schedule_id int
+  diagnosis text
+  prescription text
+  remarks text
+}
+
+Ref: Appointment.patient_id > Patient.patient_id
+Ref: Appointment.nurse_id > Nurse.nurse_id
+Ref: VisitSchedule.appointment_id > Appointment.appointment_id
+Ref: VisitReport.schedule_id > VisitSchedule.schedule_id

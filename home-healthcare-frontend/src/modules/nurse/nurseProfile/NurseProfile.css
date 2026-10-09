@@ -1,0 +1,637 @@
+/* =========================================
+   CARENEST
+   NURSE PROFILE
+   PASTEL HEALTHCARE THEME
+========================================= */
+
+.nurse-profile-page {
+  min-height: 100vh;
+  padding: 35px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4fbfa 0%,
+      #f3f8fc 50%,
+      #faf6fc 100%
+    );
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.nurse-profile-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  top: 80px;
+  right: -130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(164, 222, 216, 0.28),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.nurse-profile-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 290px;
+  height: 290px;
+
+  left: -130px;
+  bottom: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(207, 193, 232, 0.25),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.nurse-profile-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.nurse-profile-header {
+  position: relative;
+
+  padding: 32px;
+
+  margin-bottom: 25px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a9ded8,
+      #b8ddea,
+      #cbc1e6
+    );
+
+  overflow: hidden;
+
+  box-shadow:
+    0 14px 32px rgba(89, 119, 130, 0.13);
+}
+
+.nurse-profile-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  right: 120px;
+  bottom: -105px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.nurse-profile-header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 230px;
+  height: 230px;
+
+  right: -80px;
+  top: -115px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.nurse-profile-label {
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;
+
+  margin-bottom: 9px;
+
+  color: #426d70;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.nurse-profile-header h1 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #29464e;
+
+  font-size: 35px;
+
+  font-weight: 800;
+}
+
+.nurse-profile-header p {
+  position: relative;
+  z-index: 2;
+
+  margin: 9px 0 0;
+
+  color: #4f6d74;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ALERT
+========================================= */
+
+.nurse-profile-alert {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 20px;
+
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce9e8;
+
+  box-shadow:
+    0 7px 18px rgba(75, 105, 115, 0.06);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  animation: profileAlertIn 0.25s ease;
+
+}
+
+
+/* SUCCESS MESSAGE */
+
+.nurse-profile-alert.success {
+
+  background: #ffffff;
+
+  border: 1px solid #cfe5d5;
+
+  color: #4f8a5b;
+
+}
+
+
+/* ERROR MESSAGE */
+
+.nurse-profile-alert.error {
+
+  background: #ffffff;
+
+  border: 1px solid #ead3da;
+
+  color: #9a626d;
+
+}
+
+
+.nurse-profile-alert-icon {
+
+  width: 27px;
+
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #eef8f0;
+
+  color: #4f8a5b;
+
+}
+
+
+.nurse-profile-alert.error
+.nurse-profile-alert-icon {
+
+  background: #fbedf0;
+
+  color: #9a626d;
+
+}
+
+
+.nurse-profile-alert-icon svg {
+
+  width: 17px;
+
+  height: 17px;
+
+}
+
+
+@keyframes profileAlertIn {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(-5px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.nurse-profile-card {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eeee;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 12px 30px rgba(75, 105, 115, 0.08);
+}
+
+
+/* =========================================
+   PROFILE TOP
+========================================= */
+
+.nurse-profile-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding-bottom: 22px;
+
+  margin-bottom: 23px;
+
+  border-bottom: 1px solid #edf2f2;
+}
+
+.nurse-profile-avatar {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dcefeb,
+      #e9e1f3
+    );
+
+  color: #628c88;
+}
+
+.nurse-profile-avatar svg {
+  width: 34px;
+  height: 34px;
+}
+
+.nurse-profile-top h2 {
+  margin: 0;
+
+  color: #3d5961;
+
+  font-size: 20px;
+}
+
+.nurse-profile-top p {
+  margin: 5px 0 0;
+
+  color: #87979c;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.nurse-profile-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.nurse-profile-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.nurse-profile-field.full {
+  grid-column: 1 / -1;
+}
+
+.nurse-profile-field label {
+  color: #5a7178;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.nurse-profile-field input,
+.nurse-profile-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px 13px;
+
+  border: 1px solid #dce9e8;
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #fbfdfd;
+
+  color: #526b72;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  transition: 0.2s ease;
+}
+
+.nurse-profile-field textarea {
+  resize: vertical;
+
+  min-height: 90px;
+
+  line-height: 1.5;
+}
+
+.nurse-profile-field input:focus,
+.nurse-profile-field textarea:focus {
+  border-color: #9bcfc9;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(157, 219, 212, 0.15);
+}
+
+.nurse-profile-field input:disabled {
+  background: #f1f5f5;
+
+  color: #89979a;
+
+  cursor: not-allowed;
+}
+
+.nurse-profile-field input::placeholder,
+.nurse-profile-field textarea::placeholder {
+  color: #a7b3b6;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.nurse-profile-submit {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 13px 20px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8bcfc7,
+      #a8c8df
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 17px rgba(105, 160, 165, 0.18);
+
+  transition: 0.2s ease;
+}
+
+.nurse-profile-submit:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 21px rgba(105, 160, 165, 0.22);
+}
+
+.nurse-profile-submit:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.nurse-profile-loading {
+  min-height: 300px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #829298;
+}
+
+.nurse-profile-loading p {
+  font-size: 12px;
+}
+
+.nurse-profile-loader {
+  width: 30px;
+  height: 30px;
+
+  border: 3px solid #dcefeb;
+
+  border-top-color: #82c8c0;
+
+  border-radius: 50%;
+
+  animation:
+    profileSpin 0.8s linear infinite;
+}
+
+@keyframes profileSpin {
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+  .nurse-profile-page {
+    padding: 25px;
+  }
+
+  .nurse-profile-card {
+    padding: 23px;
+  }
+
+  .nurse-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nurse-profile-field.full {
+    grid-column: auto;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .nurse-profile-page {
+    padding: 15px 12px;
+  }
+
+  .nurse-profile-header {
+    padding: 25px 20px;
+  }
+
+  .nurse-profile-header h1 {
+    font-size: 27px;
+  }
+
+  .nurse-profile-card {
+    padding: 18px;
+  }
+
+  .nurse-profile-avatar {
+    width: 55px;
+    height: 55px;
+  }
+
+  .nurse-profile-avatar svg {
+    width: 28px;
+    height: 28px;
+  }
+
+}

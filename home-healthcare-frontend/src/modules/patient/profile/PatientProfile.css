@@ -1,0 +1,543 @@
+/* =========================
+   PATIENT PROFILE PAGE
+   ========================= */
+
+.patient-profile-page {
+  min-height: calc(100vh - 72px);
+  padding: 50px 30px 70px;
+
+  background:
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(196, 190, 255, 0.45) 0,
+      rgba(196, 190, 255, 0.45) 75px,
+      transparent 76px
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(245, 190, 225, 0.50) 0,
+      rgba(245, 190, 225, 0.50) 75px,
+      transparent 76px
+    ),
+    linear-gradient(
+      135deg,
+      #d9f3ff 0%,
+      #e8e7ff 45%,
+      #f9e5f7 100%
+    );
+
+  color: #30235f;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.patient-profile-header {
+  max-width: 900px;
+  margin: 0 auto 30px;
+
+  text-align: center;
+}
+
+.patient-profile-label {
+  display: inline-block;
+
+  color: #9a55e8;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.patient-profile-header h1 {
+  margin: 8px 0 8px;
+
+  color: #30235f;
+
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.patient-profile-header p {
+  margin: 0;
+
+  color: #77718b;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+   ========================= */
+
+.patient-profile-container {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
+.patient-profile-card {
+  position: relative;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+
+  border-radius: 25px;
+
+  box-shadow:
+    0 15px 40px rgba(111, 85, 170, 0.12);
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================
+   PROFILE TOP
+   ========================= */
+
+.patient-profile-top {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 30px 35px;
+
+  border-bottom: 1px solid #eee9f7;
+}
+
+.patient-profile-avatar {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #c76ac9
+  );
+
+  color: white;
+
+  font-size: 28px;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 20px rgba(139, 92, 246, 0.25);
+}
+
+.patient-profile-name {
+  flex: 1;
+}
+
+.patient-profile-name h2 {
+  margin: 0;
+
+  color: #30235f;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.patient-profile-name p {
+  margin: 5px 0 0;
+
+  color: #81798f;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   EDIT BUTTON
+   ========================= */
+
+.patient-profile-edit-btn {
+  border: 1px solid #d9c8f4;
+
+  background: #ffffff;
+
+  color: #7644bd;
+
+  padding: 11px 18px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.patient-profile-edit-btn:hover {
+  background: #8b5cf6;
+
+  border-color: #8b5cf6;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 15px rgba(139, 92, 246, 0.22);
+}
+
+
+/* =========================
+   SECTION
+   ========================= */
+
+.patient-profile-section {
+  padding: 30px 35px;
+
+  border-bottom: 1px solid #eee9f7;
+}
+
+.patient-profile-section-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 24px;
+}
+
+.patient-profile-section-line {
+  width: 4px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 5px;
+
+  background: linear-gradient(
+    180deg,
+    #8b5cf6,
+    #c76ac9
+  );
+}
+
+.patient-profile-section-line.green {
+  background: linear-gradient(
+    180deg,
+    #38b979,
+    #63c98c
+  );
+}
+
+.patient-profile-section-heading h3 {
+  margin: 0;
+
+  color: #30235f;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.patient-profile-section-heading p {
+  margin: 4px 0 0;
+
+  color: #81798f;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   GRID
+   ========================= */
+
+.patient-profile-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.patient-profile-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.patient-profile-full {
+  grid-column: 1 / -1;
+}
+
+.patient-profile-field label {
+  color: #49415f;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   DISPLAY VALUE
+   ========================= */
+
+.patient-profile-value {
+  width: 100%;
+  min-height: 45px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 11px 14px;
+
+  background: #faf8ff;
+
+  border: 1px solid #e6def4;
+
+  border-radius: 10px;
+
+  color: #3d3555;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   INPUTS
+   ========================= */
+
+.patient-profile-field input,
+.patient-profile-field select,
+.patient-profile-field textarea {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd2ef;
+
+  border-radius: 10px;
+
+  padding: 11px 14px;
+
+  color: #3d3555;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+
+.patient-profile-field input,
+.patient-profile-field select {
+  height: 45px;
+}
+
+.patient-profile-field textarea {
+  min-height: 90px;
+
+  resize: vertical;
+}
+
+.patient-profile-field input:focus,
+.patient-profile-field select:focus,
+.patient-profile-field textarea:focus {
+  border-color: #9a6bea;
+
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.10);
+}
+
+
+/* =========================
+   EMERGENCY SECTION
+   ========================= */
+
+.patient-emergency-section {
+  background: rgba(250, 255, 252, 0.75);
+}
+
+
+/* =========================
+   SAVE AREA
+   ========================= */
+
+.patient-profile-save {
+  display: flex;
+  justify-content: flex-end;
+
+  padding: 22px 35px;
+
+  background: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================
+   SAVE BUTTON
+   ========================= */
+
+.patient-profile-save-btn {
+  border: none;
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #c76ac9
+  );
+
+  color: #ffffff;
+
+  padding: 12px 24px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  box-shadow:
+    0 7px 18px rgba(139, 92, 246, 0.20);
+}
+
+.patient-profile-save-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(139, 92, 246, 0.28);
+}
+
+
+/* =========================
+   LOADING
+   ========================= */
+
+.patient-profile-loading {
+  min-height: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #8b5cf6;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* =========================
+   MESSAGE
+   ========================= */
+
+.patient-profile-message {
+  position: fixed;
+
+  left: 50%;
+  bottom: 25px;
+
+  transform: translateX(-50%);
+
+  z-index: 9999;
+
+  padding: 13px 20px;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 25px rgba(80, 60, 120, 0.18);
+}
+
+.patient-profile-message.success {
+  border: 1px solid #63c98c;
+
+  border-left: 5px solid #38b979;
+
+  color: #23834f;
+}
+
+.patient-profile-message.error {
+  border: 1px solid #e48a9a;
+
+  border-left: 5px solid #dc5268;
+
+  color: #b7354d;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 800px) {
+  .patient-profile-page {
+    padding: 35px 20px 50px;
+  }
+
+  .patient-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-profile-full {
+    grid-column: auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .patient-profile-page {
+    padding: 25px 15px 40px;
+  }
+
+  .patient-profile-header h1 {
+    font-size: 27px;
+  }
+
+  .patient-profile-top {
+    flex-wrap: wrap;
+
+    padding: 25px 20px;
+  }
+
+  .patient-profile-edit-btn {
+    width: 100%;
+  }
+
+  .patient-profile-section {
+    padding: 25px 20px;
+  }
+
+  .patient-profile-save {
+    padding: 20px;
+  }
+
+  .patient-profile-save-btn {
+    width: 100%;
+  }
+}

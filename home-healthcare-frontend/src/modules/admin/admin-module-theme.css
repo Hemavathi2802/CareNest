@@ -1,0 +1,221 @@
+.admin-nurses-page,
+.admin-patients-page,
+.admin-appointments-page,
+.appointment-page,
+.admin-visits-page,
+.admin-report-page,
+.admin-reports-page,
+.admin-reports-container,
+.admin-availability-page {
+  background:
+    radial-gradient(ellipse at 8% 8%, rgba(255, 214, 235, 0.68), transparent 36%),
+    radial-gradient(ellipse at 92% 16%, rgba(207, 195, 244, 0.58), transparent 38%),
+    radial-gradient(ellipse at 72% 92%, rgba(211, 232, 250, 0.58), transparent 40%),
+    linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+  color: #493654;
+}
+
+.admin-nurses-header,
+.admin-patients-header,
+.admin-appointments-header,
+.admin-visits-header,
+.admin-report-header,
+.admin-reports-header,
+.reports-header,
+.admin-availability-header,
+.appointment-hero {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.62), transparent 32%),
+    linear-gradient(112deg, #f7c6df 0%, #e5d2f5 52%, #c8e2fb 100%);
+  box-shadow: 0 16px 38px rgba(111, 84, 133, 0.13);
+}
+
+.admin-nurses-header h1,
+.admin-patients-header h1,
+.admin-appointments-header h1,
+.admin-visits-header h1,
+.admin-report-header h1,
+.admin-reports-header h1,
+.reports-header h1,
+.admin-availability-header h1,
+.appointment-hero h1 {
+  color: #493654;
+}
+
+.admin-nurses-header p,
+.admin-patients-header p,
+.admin-appointments-header p,
+.admin-visits-header p,
+.admin-report-header p,
+.admin-reports-header p,
+.reports-header p,
+.admin-availability-header p,
+.appointment-hero p {
+  color: #6e5d7a;
+}
+
+.admin-nurses-label,
+.admin-patients-label,
+.admin-appointments-label,
+.admin-visits-label,
+.admin-report-label,
+.admin-reports-label,
+.reports-label,
+.admin-availability-header span,
+.hero-label {
+  color: #755386;
+}
+
+.admin-nurse-card,
+.admin-patient-card,
+.admin-visits-card,
+.admin-report-card,
+.admin-availability-card,
+.appointment-card,
+.calendar-card,
+.admin-nurse-form-card,
+.admin-patient-form-card,
+.admin-report-modal-content {
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 12px 32px rgba(102, 75, 124, 0.09);
+  backdrop-filter: blur(12px);
+}
+
+.admin-nurse-card h2,
+.admin-nurse-card h3,
+.admin-patient-card h2,
+.admin-patient-card h3,
+.admin-visits-card h2,
+.admin-visits-card h3,
+.admin-report-card h2,
+.admin-report-card h3,
+.admin-availability-card h2,
+.admin-availability-card h3,
+.admin-patients-section-heading h2,
+.admin-report-section-heading h2 {
+  color: #493654;
+}
+
+.admin-nurse-form input,
+.admin-nurse-form select,
+.admin-nurse-form textarea,
+.admin-patient-form input,
+.admin-patient-form select,
+.admin-patient-form textarea,
+.admin-report-search input,
+.admin-reports-search input,
+.reports-search input,
+.admin-appointments-search input,
+.admin-nurses-search input,
+.admin-patients-search input,
+.admin-visits-search input {
+  color: #55415f;
+}
+
+.admin-nurse-form input,
+.admin-nurse-form select,
+.admin-nurse-form textarea,
+.admin-patient-form input,
+.admin-patient-form select,
+.admin-patient-form textarea {
+  border-color: #e3d7eb;
+  border-radius: 12px;
+  background: rgba(255, 252, 255, 0.82);
+}
+
+.admin-nurse-form input:focus,
+.admin-nurse-form select:focus,
+.admin-nurse-form textarea:focus,
+.admin-patient-form input:focus,
+.admin-patient-form select:focus,
+.admin-patient-form textarea:focus,
+.admin-nurses-search:focus-within,
+.admin-patients-search:focus-within,
+.admin-appointments-search:focus-within,
+.admin-report-search:focus-within,
+.admin-reports-search:focus-within,
+.reports-search:focus-within,
+.admin-visits-search:focus-within {
+  border-color: #b995d1;
+  box-shadow: 0 0 0 4px rgba(177, 149, 209, 0.16);
+}
+
+.admin-nurse-form label,
+.admin-patient-form label {
+  color: #675675;
+}
+
+.admin-add-nurse-btn,
+.admin-add-patient-btn,
+.admin-add-appointment-btn,
+.admin-add-visit-btn,
+.admin-add-report-btn,
+.admin-save-btn,
+.admin-report-view-btn,
+.admin-patient-save-btn,
+.admin-form-submit,
+.admin-patient-submit,
+.admin-availability-retry-btn,
+.admin-visits-retry-btn {
+  border-color: rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  background: linear-gradient(120deg, #8b6da5, #a77b9d);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(112, 79, 132, 0.18);
+}
+
+.admin-add-nurse-btn:hover,
+.admin-add-patient-btn:hover,
+.admin-add-appointment-btn:hover,
+.admin-add-visit-btn:hover,
+.admin-add-report-btn:hover,
+.admin-save-btn:hover,
+.admin-report-view-btn:hover,
+.admin-patient-save-btn:hover,
+.admin-form-submit:hover,
+.admin-patient-submit:hover,
+.admin-availability-retry-btn:hover,
+.admin-visits-retry-btn:hover {
+  background: linear-gradient(120deg, #795a95, #986d91);
+  box-shadow: 0 11px 23px rgba(112, 79, 132, 0.24);
+}
+
+.admin-report-modal,
+.admin-report-modal-content {
+  border-color: #e8deef;
+}
+
+.admin-report-modal-header {
+  border-color: #e9dfef;
+  background: linear-gradient(120deg, #f8eaf2, #eee8f8 55%, #eaf2fb);
+}
+
+.admin-day-badge {
+  border-color: #e5dcec;
+  background: rgba(255, 255, 255, 0.72);
+  color: #675675;
+}
+
+.admin-day-badge:hover {
+  border-color: #d0b7df;
+  background: linear-gradient(120deg, #fbe5f1, #eee5fa);
+  color: #704c87;
+}
+
+@media (max-width: 650px) {
+  .admin-nurses-page,
+  .admin-patients-page,
+  .admin-appointments-page,
+  .appointment-page,
+  .admin-visits-page,
+  .admin-report-page,
+  .admin-reports-page,
+  .admin-reports-container,
+  .admin-availability-page {
+    background-attachment: scroll;
+  }
+}

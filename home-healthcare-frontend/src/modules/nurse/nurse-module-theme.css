@@ -1,0 +1,233 @@
+.nurse-patients-page,
+.nurse-availability-page,
+.nurse-profile-page,
+.nurse-report-page,
+.patient-care-page,
+.nurse-schedule-page,
+.appointment-page {
+  background:
+    radial-gradient(ellipse at 8% 8%, rgba(255, 214, 235, 0.68), transparent 36%),
+    radial-gradient(ellipse at 92% 16%, rgba(207, 195, 244, 0.58), transparent 38%),
+    radial-gradient(ellipse at 72% 92%, rgba(211, 232, 250, 0.58), transparent 40%),
+    linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+  color: #493654;
+}
+
+.nurse-patients-header,
+.nurse-availability-header,
+.nurse-profile-header,
+.nurse-report-header,
+.appointment-hero {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.62), transparent 32%),
+    linear-gradient(112deg, #f7c6df 0%, #e5d2f5 52%, #c8e2fb 100%);
+  box-shadow: 0 16px 38px rgba(111, 84, 133, 0.13);
+}
+
+.nurse-patients-label,
+.nurse-availability-label,
+.nurse-profile-label,
+.nurse-report-label {
+  color: #755386;
+}
+
+.nurse-patients-header h1,
+.nurse-availability-header h1,
+.nurse-profile-header h1,
+.nurse-report-header h1,
+.appointment-hero h1,
+.nurse-schedule-header h1 {
+  color: #493654;
+}
+
+.nurse-patients-header p,
+.nurse-availability-header p,
+.nurse-profile-header p,
+.nurse-report-header p,
+.appointment-hero p,
+.nurse-schedule-header p {
+  color: #6e5d7a;
+}
+
+.nurse-patients-heading h2,
+.nurse-availability-heading h2,
+.nurse-profile-top h2,
+.nurse-report-card-heading h2,
+.nurse-schedule-card-header h2,
+.patient-care-page .page-header h1,
+.patient-care-page .card-header h2 {
+  color: #493654;
+}
+
+.nurse-patients-heading p,
+.nurse-availability-heading p,
+.nurse-profile-top p,
+.nurse-report-card-heading p,
+.nurse-schedule-card-header p,
+.patient-care-page .page-header p,
+.patient-care-page .card-header p {
+  color: #71647b;
+}
+
+.nurse-patient-card,
+.nurse-availability-card,
+.nurse-profile-card,
+.nurse-report-card,
+.patient-care-card,
+.history-card,
+.nurse-schedule-card-wrapper,
+.appointment-card,
+.calendar-card {
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 12px 32px rgba(102, 75, 124, 0.09);
+  backdrop-filter: blur(12px);
+}
+
+.nurse-patient-card:hover,
+.appointment-card:hover {
+  border-color: rgba(203, 165, 221, 0.68);
+  box-shadow: 0 17px 38px rgba(102, 75, 124, 0.13);
+}
+
+.nurse-patient-card::before {
+  background: linear-gradient(90deg, #ed8fc2, #a987dc, #77bde9);
+}
+
+.nurse-patient-avatar,
+.nurse-profile-avatar,
+.nurse-report-heading-icon,
+.nurse-schedule-main-icon,
+.nurse-schedule-empty-icon {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background: linear-gradient(145deg, #ffe0ef, #f0e2fb);
+  color: #805b98;
+}
+
+.nurse-profile-field input,
+.nurse-profile-field textarea,
+.nurse-report-field input,
+.nurse-report-field select,
+.nurse-report-field textarea,
+.patient-care-page .form-group input,
+.patient-care-page .form-group select,
+.patient-care-page .form-group textarea,
+.patient-care-page .history-card select,
+.availability-field input {
+  border-color: #e3d7eb;
+  border-radius: 12px;
+  background: rgba(255, 252, 255, 0.82);
+  color: #55415f;
+}
+
+.nurse-profile-field input:focus,
+.nurse-profile-field textarea:focus,
+.nurse-report-field input:focus,
+.nurse-report-field select:focus,
+.nurse-report-field textarea:focus,
+.patient-care-page .form-group input:focus,
+.patient-care-page .form-group select:focus,
+.patient-care-page .form-group textarea:focus,
+.patient-care-page .history-card select:focus,
+.availability-field input:focus {
+  border-color: #b995d1;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(177, 149, 209, 0.16);
+}
+
+.nurse-profile-field label,
+.nurse-report-field label,
+.patient-care-page .form-group label,
+.availability-field label {
+  color: #675675;
+}
+
+.nurse-profile-submit,
+.nurse-report-submit,
+.save-care-button,
+.availability-save-btn,
+.nurse-patient-records-btn,
+.nurse-schedule-retry-btn,
+.patient-care-page .history-card button {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  background: linear-gradient(120deg, #8b6da5, #a77b9d);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(112, 79, 132, 0.18);
+}
+
+.nurse-profile-submit:hover,
+.nurse-report-submit:hover,
+.save-care-button:hover,
+.availability-save-btn:hover,
+.nurse-patient-records-btn:hover,
+.nurse-schedule-retry-btn:hover,
+.patient-care-page .history-card button:hover {
+  background: linear-gradient(120deg, #795a95, #986d91);
+  box-shadow: 0 11px 23px rgba(112, 79, 132, 0.24);
+}
+
+.availability-day {
+  border-color: #e5dcec;
+  background: rgba(255, 255, 255, 0.72);
+  color: #675675;
+}
+
+.availability-day:hover,
+.availability-day.active {
+  border-color: #d0b7df;
+  background: linear-gradient(120deg, #fbe5f1, #eee5fa);
+  color: #704c87;
+}
+
+.availability-day.active .availability-check {
+  border-color: #a987c4;
+  background: #a987c4;
+}
+
+.availability-small-icon,
+.availability-small-icon.purple,
+.schedule-detail-icon {
+  background: linear-gradient(145deg, #ffe0ef, #f0e2fb);
+  color: #805b98;
+}
+
+.nurse-records-modal {
+  border-color: #e8deef;
+  background: linear-gradient(155deg, #fff, #fffafd 55%, #f9f8ff);
+}
+
+.nurse-records-modal-header {
+  border-color: #e9dfef;
+  background: linear-gradient(120deg, #f8eaf2, #eee8f8 55%, #eaf2fb);
+}
+
+.nurse-record-card {
+  border-color: #ebe2f0;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.nurse-schedule-card-header {
+  border-bottom-color: #e9dff0;
+}
+
+.nurse-schedule-date-box,
+.nurse-schedule-location-box {
+  border-color: #eadff0;
+  background: linear-gradient(145deg, rgba(255, 246, 251, 0.9), rgba(246, 242, 255, 0.82));
+}
+
+@media (max-width: 650px) {
+  .nurse-patients-page,
+  .nurse-availability-page,
+  .nurse-profile-page,
+  .nurse-report-page,
+  .patient-care-page,
+  .nurse-schedule-page,
+  .appointment-page {
+    background-attachment: scroll;
+  }
+}

@@ -1,0 +1,906 @@
+.admin-appointments-page {
+  min-height: 100vh;
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4fbfa 0%,
+      #f3f8fc 50%,
+      #faf6fc 100%
+    );
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-appointments-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  right: -140px;
+  top: 30px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(164, 222, 216, 0.30),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+.admin-appointments-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  left: -160px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(207, 193, 232, 0.28),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ================= HEADER ================= */
+
+.admin-appointments-header {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 28px 30px;
+
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #a9ded8,
+      #b8ddea,
+      #cbc1e6
+    );
+
+  box-shadow:
+    0 12px 30px rgba(75, 105, 115, 0.10);
+}
+
+.admin-appointments-header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.admin-appointments-label {
+  display: inline-block;
+
+  margin-bottom: 6px;
+
+  color: #426d70;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.admin-appointments-header h1 {
+  margin: 0;
+
+  color: #29464e;
+
+  font-size: 28px;
+
+  font-weight: 800;
+}
+
+.admin-appointments-header p {
+  margin: 7px 0 0;
+
+  color: #4f6d74;
+
+  font-size: 12px;
+}
+
+
+/* ================= COUNT ================= */
+
+.admin-appointments-count {
+  min-width: 110px;
+
+  padding: 14px 18px;
+
+  text-align: center;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.admin-appointments-count strong {
+  display: block;
+
+  color: #3b5961;
+
+  font-size: 25px;
+}
+
+.admin-appointments-count span {
+  color: #627d83;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* ================= TOOLBAR ================= */
+
+.admin-appointments-toolbar {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.admin-appointments-search {
+  width: 100%;
+  max-width: 430px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 15px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e2eeee;
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 7px 20px rgba(75, 105, 115, 0.06);
+}
+
+.admin-appointments-search svg {
+  width: 18px;
+  height: 18px;
+
+  color: #78b9b3;
+
+  flex-shrink: 0;
+}
+
+.admin-appointments-search input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #3b5961;
+
+  font-size: 12px;
+}
+
+.admin-appointments-search input::placeholder {
+  color: #a1afb2;
+}
+
+
+/* ================= ADD BUTTON ================= */
+
+.admin-add-appointment-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px 17px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #79bdb6;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 17px rgba(91, 151, 145, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-add-appointment-btn span {
+  font-size: 18px;
+}
+
+.admin-add-appointment-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 11px 22px rgba(91, 151, 145, 0.25);
+}
+
+
+/* ================= FORM ================= */
+
+.admin-appointment-form-card {
+  position: relative;
+  z-index: 2;
+
+  padding: 22px;
+
+  margin-bottom: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e3eeee;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 9px 26px rgba(75, 105, 115, 0.08);
+}
+
+.admin-appointment-form-title {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.admin-appointment-form-title span {
+  color: #7da29f;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.admin-appointment-form-title h2 {
+  margin: 5px 0 0;
+
+  color: #3a5660;
+
+  font-size: 18px;
+}
+
+.admin-appointment-close {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #f1f7f6;
+
+  color: #6c8589;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+/* ================= FORM GRID ================= */
+
+.admin-appointment-form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.admin-appointment-form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.admin-appointment-form-group label {
+  color: #587078;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.admin-appointment-form-group input,
+.admin-appointment-form-group select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 12px;
+
+  border: 1px solid #dce9e8;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fbfdfd;
+
+  color: #405c64;
+
+  font-size: 11px;
+}
+
+.admin-appointment-form-group input:focus,
+.admin-appointment-form-group select:focus {
+  border-color: #9ddbd4;
+
+  box-shadow:
+    0 0 0 3px rgba(157, 219, 212, 0.15);
+}
+
+
+/* ================= ACTIONS ================= */
+
+.admin-appointment-form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 4px;
+}
+
+.admin-appointment-cancel-btn,
+.admin-appointment-save-btn {
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.admin-appointment-cancel-btn {
+  border: 1px solid #dce9e8;
+
+  background: #ffffff;
+
+  color: #72888d;
+}
+
+.admin-appointment-save-btn {
+  border: none;
+
+  background: #79bdb6;
+
+  color: #ffffff;
+}
+
+
+/* ================= SECTION ================= */
+
+.admin-appointments-section {
+  position: relative;
+  z-index: 2;
+}
+
+.admin-appointments-section-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 16px;
+}
+
+.admin-appointments-section-line {
+  width: 5px;
+  height: 35px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #9ddbd4,
+      #b9cce8
+    );
+}
+
+.admin-appointments-section-heading h2 {
+  margin: 0;
+
+  color: #3a5660;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+.admin-appointments-section-heading p {
+  margin: 4px 0 0;
+
+  color: #829298;
+
+  font-size: 10px;
+}
+
+
+/* ================= LIST ================= */
+
+.admin-appointments-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* ================= CARD ================= */
+
+.admin-appointment-card {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 16px 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eeee;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 22px rgba(75, 105, 115, 0.07);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-appointment-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 4px;
+  height: 100%;
+
+  background: #9ddbd4;
+}
+
+.admin-appointment-card:nth-child(2)::before {
+  background: #c5b5e3;
+}
+
+.admin-appointment-card:nth-child(3)::before {
+  background: #a9d8ba;
+}
+
+.admin-appointment-card:nth-child(4)::before {
+  background: #f0d4a7;
+}
+
+.admin-appointment-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 27px rgba(75, 105, 115, 0.11);
+}
+
+
+/* ================= ICON ================= */
+
+.admin-appointment-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  background: #d5efeb;
+
+  color: #48736f;
+}
+
+.admin-appointment-card:nth-child(2)
+.admin-appointment-icon {
+  background: #e7ddf3;
+
+  color: #6d5c83;
+}
+
+.admin-appointment-card:nth-child(3)
+.admin-appointment-icon {
+  background: #dcefe2;
+
+  color: #52755d;
+}
+
+.admin-appointment-icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+
+/* ================= INFO ================= */
+
+.admin-appointment-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.admin-appointment-info h3 {
+  margin: 0 0 4px;
+
+  color: #3a5660;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+.admin-appointment-info > span {
+  color: #7d9499;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+.admin-appointment-details {
+  display: flex;
+
+  gap: 18px;
+
+  margin-top: 6px;
+}
+
+.admin-appointment-details small {
+  color: #9aa8ab;
+
+  font-size: 9px;
+}
+
+
+/* ================= STATUS ================= */
+
+.admin-appointment-status {
+  min-width: 90px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 8px 10px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #e5f3ef;
+
+  color: #628a85;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.admin-appointment-status span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #79b98a;
+}
+
+.admin-appointment-status.completed {
+  background: #e5edf7;
+
+  color: #66809b;
+}
+
+.admin-appointment-status.completed span {
+  background: #789fc1;
+}
+
+.admin-appointment-status.cancelled {
+  background: #f5e8e8;
+
+  color: #9a7777;
+}
+
+.admin-appointment-status.cancelled span {
+  background: #d39c9c;
+}
+
+
+/* ================= DELETE ================= */
+
+.admin-appointment-delete {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #faf0f0;
+
+  color: #bd8585;
+
+  cursor: pointer;
+}
+
+.admin-appointment-delete svg {
+  width: 17px;
+  height: 17px;
+}
+
+.admin-appointment-delete:hover {
+  background: #f4dddd;
+}
+
+
+/* ================= EMPTY ================= */
+
+.admin-appointments-empty {
+  padding: 60px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eeee;
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 7px 22px rgba(75, 105, 115, 0.06);
+}
+
+.admin-appointment-empty-icon {
+  width: 55px;
+  height: 55px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #e2f1ef;
+
+  color: #6fa9a3;
+}
+
+.admin-appointment-empty-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.admin-appointments-empty h3 {
+  margin: 0;
+
+  color: #3a5660;
+
+  font-size: 15px;
+}
+
+.admin-appointments-empty p {
+  margin: 6px 0 0;
+
+  color: #89999d;
+
+  font-size: 10px;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 750px) {
+
+  .admin-appointments-page {
+    padding: 20px;
+  }
+
+  .admin-appointment-form {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .admin-appointments-page {
+    padding: 14px;
+  }
+
+  .admin-appointments-header {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 15px;
+  }
+
+  .admin-appointments-count {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .admin-appointments-toolbar {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .admin-appointments-search {
+    max-width: none;
+  }
+
+  .admin-add-appointment-btn {
+    justify-content: center;
+  }
+
+  .admin-appointment-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .admin-appointment-status {
+    margin-left: 64px;
+  }
+
+  .admin-appointment-delete {
+    margin-left: auto;
+  }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 420px) {
+
+  .admin-appointments-page {
+    padding: 10px;
+  }
+
+  .admin-appointments-header {
+    padding: 22px 18px;
+  }
+
+  .admin-appointments-header h1 {
+    font-size: 23px;
+  }
+
+  .admin-appointment-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .admin-appointment-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .admin-appointment-info h3 {
+    font-size: 13px;
+  }
+
+  .admin-appointment-details {
+    flex-direction: column;
+
+    gap: 3px;
+  }
+
+}

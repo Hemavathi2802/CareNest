@@ -1,0 +1,623 @@
+:root {
+  color-scheme: light;
+  --carenest-ink: #493654;
+  --carenest-muted: #71647b;
+  --carenest-purple: #8b6da5;
+  --carenest-pink: #a77b9d;
+  --carenest-border: #e6d9ed;
+  --carenest-glass: rgba(255, 255, 255, 0.78);
+  --carenest-shadow: 0 14px 36px rgba(102, 75, 124, 0.11);
+}
+
+html,
+body,
+#root {
+  background: linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.home-page,
+.login-container,
+.signup-container,
+.forgot-password-container,
+.patient-dashboard,
+.nurse-dashboard,
+.admin-dashboard,
+.appointment-page,
+.medical-page-wrapper,
+.medical-records-page,
+.patient-profile-page,
+.patient-schedule-page,
+.visit-reports-page {
+  background:
+    radial-gradient(ellipse at 8% 8%, rgba(255, 214, 235, 0.62), transparent 36%),
+    radial-gradient(ellipse at 92% 16%, rgba(207, 195, 244, 0.55), transparent 38%),
+    radial-gradient(ellipse at 72% 92%, rgba(211, 232, 250, 0.52), transparent 40%),
+    linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+  color: var(--carenest-ink);
+}
+
+.patient-dashboard-header,
+.nurse-dashboard-header,
+.admin-dashboard-header,
+.appointment-hero,
+.patient-schedule-header,
+.visit-reports-header,
+.medical-header,
+.patient-profile-header {
+  color: var(--carenest-ink);
+}
+
+.patient-dashboard-header,
+.nurse-dashboard-header,
+.admin-dashboard-header,
+.appointment-hero {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.62), transparent 32%),
+    linear-gradient(112deg, #f7c6df 0%, #e5d2f5 52%, #c8e2fb 100%);
+  box-shadow: var(--carenest-shadow);
+}
+
+.home-page .hero-section {
+  background:
+    radial-gradient(circle at 6% 12%, rgba(255, 214, 235, 0.68), transparent 31%),
+    radial-gradient(circle at 92% 12%, rgba(207, 195, 244, 0.62), transparent 32%),
+    radial-gradient(circle at 55% 100%, rgba(200, 226, 251, 0.62), transparent 34%),
+    linear-gradient(135deg, #fff3f9 0%, #f3efff 52%, #eff8ff 100%);
+}
+
+.home-page .hero-badge,
+.home-page .section-label,
+.signup-badge,
+.patient-schedule-label,
+.visit-reports-label,
+.medical-label,
+.patient-profile-label {
+  border-color: rgba(177, 149, 209, 0.25);
+  background: linear-gradient(120deg, #fbe5f1, #eee5fa);
+  color: #755386;
+}
+
+.home-page .hero-content h1,
+.home-page .section-heading h2,
+.home-page .contact-heading h2,
+.login-box h2,
+.signup-box h2,
+.forgot-password-box h2,
+.patient-schedule-header h1,
+.visit-reports-header h1,
+.medical-header h1,
+.patient-profile-header h1 {
+  color: var(--carenest-ink);
+}
+
+.home-page .hero-content h1 span,
+.home-page .hero-stats strong,
+.home-page .service-link,
+.home-page .about-btn,
+.home-page .contact-btn,
+.login-box .signup-link,
+.signup-box .login-link a,
+.back-login-link a {
+  color: var(--carenest-purple);
+}
+
+.home-page .primary-btn,
+.home-page .cta-button,
+.login-box button[type="submit"],
+.signup-submit-button,
+.forgot-section button:not(.secondary-button),
+.book-btn,
+.medical-save-btn,
+.patient-profile-save-btn,
+.visit-reports-retry-btn {
+  border-color: rgba(255, 255, 255, 0.72);
+  background: linear-gradient(120deg, #8b6da5, #a77b9d);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(112, 79, 132, 0.18);
+}
+
+.home-page .primary-btn:hover,
+.home-page .cta-button:hover,
+.login-box button[type="submit"]:hover,
+.signup-submit-button:hover,
+.forgot-section button:not(.secondary-button):hover,
+.book-btn:hover,
+.medical-save-btn:hover,
+.patient-profile-save-btn:hover,
+.visit-reports-retry-btn:hover {
+  background: linear-gradient(120deg, #795a95, #986d91);
+  box-shadow: 0 11px 23px rgba(112, 79, 132, 0.24);
+}
+
+.home-page .secondary-btn,
+.home-page .about-btn,
+.patient-profile-edit-btn {
+  border-color: var(--carenest-border);
+  color: #765a86;
+}
+
+.forgot-password-box .secondary-button {
+  background: linear-gradient(120deg, #a99ab5, #b6a2b2) !important;
+  color: #fff;
+}
+
+.home-page .hero-image-card,
+.home-page .floating-care-card,
+.home-page .service-card,
+.home-page .why-card,
+.home-page .contact-card,
+.login-box,
+.signup-box,
+.forgot-password-box,
+.calendar-card,
+.booking-card,
+.appointment-card,
+.medical-records-page .records-section,
+.medical-record-card,
+.patient-profile-card,
+.patient-schedule-card,
+.visit-reports-card,
+.visit-report-item,
+.visit-reports-modal-content {
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  background: var(--carenest-glass);
+  box-shadow: var(--carenest-shadow);
+  backdrop-filter: blur(12px);
+}
+
+.home-page .section-heading p,
+.home-page .contact-heading p,
+.home-page .hero-content > p,
+.patient-schedule-header p,
+.visit-reports-header p,
+.medical-header p,
+.patient-profile-header p,
+.login-box .subtitle,
+.signup-box > .signup-header > p,
+.forgot-subtitle {
+  color: var(--carenest-muted);
+}
+
+.login-box input:focus,
+.signup-box input:focus,
+.forgot-section input:focus,
+.booking-card input:focus,
+.booking-card select:focus,
+.booking-card textarea:focus,
+.medical-form input:focus,
+.medical-form select:focus,
+.medical-form textarea:focus,
+.patient-profile-field input:focus,
+.patient-profile-field select:focus,
+.patient-profile-field textarea:focus {
+  border-color: #b995d1;
+  box-shadow: 0 0 0 4px rgba(177, 149, 209, 0.16);
+}
+
+.login-box input,
+.signup-box input:not([type="radio"]),
+.forgot-section input,
+.booking-card input,
+.booking-card select,
+.booking-card textarea,
+.medical-form input,
+.medical-form select,
+.medical-form textarea,
+.patient-profile-field input,
+.patient-profile-field select,
+.patient-profile-field textarea {
+  border-color: var(--carenest-border);
+  color: #55415f;
+}
+
+.dashboard-welcome {
+  border-color: rgba(255, 255, 255, 0.86);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.62), transparent 32%),
+    linear-gradient(112deg, #f7c6df 0%, #e5d2f5 52%, #c8e2fb 100%);
+  color: var(--carenest-ink);
+  box-shadow: var(--carenest-shadow);
+}
+
+.dashboard-welcome-primary {
+  background: linear-gradient(120deg, #8b6da5, #a77b9d);
+  color: #fff;
+}
+
+.dashboard-welcome-secondary {
+  border-color: var(--carenest-border);
+  color: #765a86;
+}
+
+#root .nurse-patients-page,
+#root .nurse-availability-page,
+#root .nurse-profile-page,
+#root .nurse-report-page,
+#root .patient-care-page,
+#root .nurse-schedule-page,
+#root .appointment-page,
+#root .admin-nurses-page,
+#root .admin-patients-page,
+#root .admin-appointments-page,
+#root .admin-visits-page,
+#root .admin-report-page,
+#root .admin-reports-page,
+#root .admin-reports-container,
+#root .admin-availability-page {
+  background:
+    radial-gradient(ellipse at 8% 8%, rgba(255, 214, 235, 0.68), transparent 36%),
+    radial-gradient(ellipse at 92% 16%, rgba(207, 195, 244, 0.58), transparent 38%),
+    radial-gradient(ellipse at 72% 92%, rgba(211, 232, 250, 0.58), transparent 40%),
+    linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+  color: var(--carenest-ink);
+}
+
+#root .nurse-patients-header,
+#root .nurse-availability-header,
+#root .nurse-profile-header,
+#root .nurse-report-header,
+#root .appointment-hero,
+#root .nurse-schedule-header,
+#root .patient-care-page .page-header,
+#root .admin-nurses-header,
+#root .admin-patients-header,
+#root .admin-appointments-header,
+#root .admin-visits-header,
+#root .admin-report-header,
+#root .admin-reports-header,
+#root .reports-header,
+#root .admin-availability-header {
+  border-color: rgba(255, 255, 255, 0.82);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 255, 255, 0.62), transparent 32%),
+    linear-gradient(112deg, #f7c6df 0%, #e5d2f5 52%, #c8e2fb 100%);
+  box-shadow: var(--carenest-shadow);
+}
+
+#root .nurse-patient-card,
+#root .nurse-availability-card,
+#root .nurse-profile-card,
+#root .nurse-report-card,
+#root .patient-care-card,
+#root .history-card,
+#root .nurse-schedule-card-wrapper,
+#root .appointment-card,
+#root .calendar-card,
+#root .admin-nurse-card,
+#root .admin-patient-card,
+#root .admin-visits-card,
+#root .admin-report-card,
+#root .admin-availability-card,
+#root .admin-nurse-form-card,
+#root .admin-patient-form-card,
+#root .admin-report-modal-content {
+  border-color: rgba(255, 255, 255, 0.86);
+  background: var(--carenest-glass);
+  box-shadow: var(--carenest-shadow);
+  backdrop-filter: blur(12px);
+}
+
+#root .nurse-profile-field input,
+#root .nurse-profile-field textarea,
+#root .nurse-report-field input,
+#root .nurse-report-field select,
+#root .nurse-report-field textarea,
+#root .patient-care-page .form-group input,
+#root .patient-care-page .form-group select,
+#root .patient-care-page .form-group textarea,
+#root .patient-care-page .history-card select,
+#root .availability-field input,
+#root .admin-nurse-form input,
+#root .admin-nurse-form select,
+#root .admin-nurse-form textarea,
+#root .admin-patient-form input,
+#root .admin-patient-form select,
+#root .admin-patient-form textarea {
+  border-color: var(--carenest-border);
+  background: rgba(255, 252, 255, 0.88);
+  color: #55415f;
+}
+
+#root .nurse-profile-field input:focus,
+#root .nurse-profile-field textarea:focus,
+#root .nurse-report-field input:focus,
+#root .nurse-report-field select:focus,
+#root .nurse-report-field textarea:focus,
+#root .patient-care-page .form-group input:focus,
+#root .patient-care-page .form-group select:focus,
+#root .patient-care-page .form-group textarea:focus,
+#root .patient-care-page .history-card select:focus,
+#root .availability-field input:focus,
+#root .admin-nurse-form input:focus,
+#root .admin-nurse-form select:focus,
+#root .admin-nurse-form textarea:focus,
+#root .admin-patient-form input:focus,
+#root .admin-patient-form select:focus,
+#root .admin-patient-form textarea:focus {
+  border-color: #b995d1;
+  box-shadow: 0 0 0 4px rgba(177, 149, 209, 0.16);
+}
+
+#root .nurse-profile-submit,
+#root .nurse-report-submit,
+#root .save-care-button,
+#root .availability-save-btn,
+#root .nurse-patient-records-btn,
+#root .nurse-schedule-retry-btn,
+#root .patient-care-page .history-card button,
+#root .admin-add-nurse-btn,
+#root .admin-add-patient-btn,
+#root .admin-add-appointment-btn,
+#root .admin-add-visit-btn,
+#root .admin-add-report-btn,
+#root .admin-save-btn,
+#root .admin-report-view-btn,
+#root .admin-patient-save-btn,
+#root .admin-form-submit,
+#root .admin-patient-submit,
+#root .admin-visits-retry-btn {
+  border-color: rgba(255, 255, 255, 0.72);
+  background: linear-gradient(120deg, #8b6da5, #a77b9d);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(112, 79, 132, 0.18);
+}
+
+#root .nurse-profile-submit:hover,
+#root .nurse-report-submit:hover,
+#root .save-care-button:hover,
+#root .availability-save-btn:hover,
+#root .nurse-patient-records-btn:hover,
+#root .nurse-schedule-retry-btn:hover,
+#root .patient-care-page .history-card button:hover,
+#root .admin-add-nurse-btn:hover,
+#root .admin-add-patient-btn:hover,
+#root .admin-add-appointment-btn:hover,
+#root .admin-add-visit-btn:hover,
+#root .admin-add-report-btn:hover,
+#root .admin-save-btn:hover,
+#root .admin-report-view-btn:hover,
+#root .admin-patient-save-btn:hover,
+#root .admin-form-submit:hover,
+#root .admin-patient-submit:hover,
+#root .admin-visits-retry-btn:hover {
+  background: linear-gradient(120deg, #795a95, #986d91);
+  box-shadow: 0 11px 23px rgba(112, 79, 132, 0.24);
+}
+
+@media (max-width: 900px) {
+  .home-page,
+  .patient-dashboard,
+  .nurse-dashboard,
+  .admin-dashboard,
+  .appointment-page,
+  .medical-records-page,
+  .patient-profile-page,
+  .patient-schedule-page,
+  .visit-reports-page,
+  .nurse-patients-page,
+  .nurse-availability-page,
+  .nurse-profile-page,
+  .nurse-report-page,
+  .patient-care-page,
+  .nurse-schedule-page,
+  .admin-nurses-page,
+  .admin-patients-page,
+  .admin-appointments-page,
+  .admin-visits-page,
+  .admin-report-page,
+  .admin-reports-page,
+  .admin-reports-container,
+  .admin-availability-page {
+    min-width: 0;
+  }
+
+  .admin-nurses-toolbar,
+  .admin-patients-toolbar,
+  .admin-appointments-toolbar,
+  .admin-visits-toolbar,
+  .admin-report-toolbar,
+  .admin-reports-toolbar,
+  .reports-toolbar,
+  .nurse-patients-toolbar,
+  .nurse-report-toolbar,
+  .nurse-availability-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .admin-nurses-search,
+  .admin-patients-search,
+  .admin-appointments-search,
+  .admin-visits-search,
+  .admin-report-search,
+  .admin-reports-search,
+  .reports-search,
+  .nurse-patients-search {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .home-page .hero-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .home-page .services-grid,
+  .home-page .why-grid,
+  .home-page .contact-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .patient-dashboard-header,
+  .nurse-dashboard-header,
+  .admin-dashboard-header,
+  .appointment-hero,
+  .admin-nurses-header,
+  .admin-patients-header,
+  .admin-appointments-header,
+  .admin-report-header,
+  .admin-reports-header,
+  .reports-header,
+  .nurse-availability-header,
+  .nurse-profile-header,
+  .nurse-report-header {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 650px) {
+  .home-page,
+  .appointment-page,
+  .medical-page-wrapper,
+  .medical-records-page,
+  .patient-profile-page,
+  .patient-schedule-page,
+  .visit-reports-page {
+    background-attachment: scroll;
+  }
+
+  .home-page .services-grid,
+  .home-page .why-grid,
+  .home-page .contact-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .login-container,
+  .signup-container,
+  .forgot-password-container {
+    min-height: 100dvh;
+    padding: 22px 14px;
+  }
+
+  .login-box,
+  .signup-box,
+  .forgot-password-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px 20px;
+  }
+
+  .appointment-page,
+  .medical-records-page,
+  .patient-profile-page,
+  .patient-schedule-page,
+  .visit-reports-page,
+  .nurse-patients-page,
+  .nurse-availability-page,
+  .nurse-profile-page,
+  .nurse-report-page,
+  .patient-care-page,
+  .nurse-schedule-page,
+  .admin-nurses-page,
+  .admin-patients-page,
+  .admin-appointments-page,
+  .admin-visits-page,
+  .admin-report-page,
+  .admin-reports-page,
+  .admin-reports-container,
+  .admin-availability-page {
+    width: 100%;
+    padding: 20px 14px 30px;
+  }
+
+  .appointment-hero,
+  .patient-dashboard-header,
+  .nurse-dashboard-header,
+  .admin-dashboard-header,
+  .admin-nurses-header,
+  .admin-patients-header,
+  .admin-appointments-header,
+  .admin-report-header,
+  .admin-reports-header,
+  .reports-header,
+  .nurse-availability-header,
+  .nurse-profile-header,
+  .nurse-report-header {
+    width: 100%;
+    min-width: 0;
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .appointment-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .appointment-hero .hero-content {
+    width: 100%;
+  }
+
+  .admin-nurses-toolbar,
+  .admin-patients-toolbar,
+  .admin-appointments-toolbar,
+  .admin-visits-toolbar,
+  .admin-report-toolbar,
+  .admin-reports-toolbar,
+  .reports-toolbar,
+  .nurse-patients-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .admin-add-nurse-btn,
+  .admin-add-patient-btn,
+  .admin-add-appointment-btn,
+  .admin-add-visit-btn,
+  .admin-add-report-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nurse-profile-grid,
+  .nurse-report-grid,
+  .medical-form-grid,
+  .patient-profile-grid,
+  .patient-profile-page .patient-profile-grid,
+  .patient-care-page .form-grid,
+  .availability-time-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .calendar-grid > * {
+    min-width: 0;
+  }
+
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .table-container table {
+    min-width: 600px;
+  }
+
+  .nurse-records-modal,
+  .visit-reports-modal,
+  .admin-report-modal,
+  .modal-overlay > *,
+  .modal-backdrop > * {
+    width: calc(100vw - 28px);
+    max-width: 600px;
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+  }
+}
