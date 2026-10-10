@@ -4,7 +4,7 @@ import "./MedicalRecords.css";
 import {
   getMedicalRecords,
   createMedicalRecord,
-} from "./MedicalRecordService";
+} from "./medicalRecordService";
 
 function MedicalRecords() {
   const [records, setRecords] = useState([]);
