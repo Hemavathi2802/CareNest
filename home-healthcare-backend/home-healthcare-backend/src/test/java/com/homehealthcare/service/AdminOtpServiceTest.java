@@ -3,8 +3,6 @@ package com.homehealthcare.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,24 +12,23 @@ import static org.mockito.Mockito.*;
 
 class AdminOtpServiceTest {
 
-    private JavaMailSender mailSender;
+    private ResendEmailService emailService;
     private AdminOtpService adminOtpService;
 
     @BeforeEach
     void setUp() {
-        mailSender = mock(JavaMailSender.class);
-        adminOtpService = new AdminOtpService(mailSender);
+        emailService = mock(ResendEmailService.class);
+        adminOtpService = new AdminOtpService(emailService);
     }
 
     @Test
     void sendsSixDigitOtpAndCreatesSessionOnlyAfterVerification() {
         String challengeId = adminOtpService.startChallenge();
-        verify(mailSender, never()).send(any(SimpleMailMessage.class));
+        verify(emailService, never()).send(anyString(), anyString(), anyString());
         adminOtpService.sendChallenge(challengeId);
-        SimpleMailMessage message = captureLastMessage();
+        String message = captureLastMessage();
         String otp = findOtp(message);
 
-        assertArrayEquals(new String[]{AdminOtpService.ADMIN_EMAIL}, message.getTo());
         assertEquals(6, otp.length());
         assertNull(adminOtpService.verify(challengeId, "wrong!").accessToken());
 
@@ -86,16 +83,23 @@ class AdminOtpServiceTest {
         );
     }
 
-    private SimpleMailMessage captureLastMessage() {
-        ArgumentCaptor<SimpleMailMessage> messageCaptor =
-                ArgumentCaptor.forClass(SimpleMailMessage.class);
-        verify(mailSender, atLeastOnce()).send(messageCaptor.capture());
-        return messageCaptor.getValue();
+    private String captureLastMessage() {
+        ArgumentCaptor<String> recipientCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> subjectCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> textCaptor = ArgumentCaptor.forClass(String.class);
+        verify(emailService, atLeastOnce()).send(
+                recipientCaptor.capture(),
+                subjectCaptor.capture(),
+                textCaptor.capture()
+        );
+        assertEquals(AdminOtpService.ADMIN_EMAIL, recipientCaptor.getValue());
+        assertEquals("CareNest Admin Login OTP", subjectCaptor.getValue());
+        return textCaptor.getValue();
     }
 
-    private String findOtp(SimpleMailMessage message) {
+    private String findOtp(String message) {
         Matcher matcher = Pattern.compile("\\b\\d{6}\\b")
-                .matcher(message.getText());
+                .matcher(message);
         assertTrue(matcher.find(), "The email should contain a 6-digit OTP.");
         return matcher.group();
     }
