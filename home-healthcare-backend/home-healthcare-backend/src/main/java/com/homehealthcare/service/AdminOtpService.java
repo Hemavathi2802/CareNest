@@ -1,5 +1,7 @@
 package com.homehealthcare.service;
 
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -19,13 +21,13 @@ public class AdminOtpService {
     private static final long SESSION_LIFETIME_SECONDS = 8 * 60 * 60;
     private static final int MAX_OTP_ATTEMPTS = 5;
 
-    private final ResendEmailService emailService;
+    private final JavaMailSender mailSender;
     private final SecureRandom secureRandom = new SecureRandom();
     private final Map<String, OtpEntry> challenges = new ConcurrentHashMap<>();
     private final Map<String, Instant> adminSessions = new ConcurrentHashMap<>();
 
-    public AdminOtpService(ResendEmailService emailService) {
-        this.emailService = emailService;
+    public AdminOtpService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
     }
 
     public String startChallenge() {
@@ -142,12 +144,14 @@ public class AdminOtpService {
     }
 
     private void sendOtp(String otp) {
-        emailService.send(
-                ADMIN_EMAIL,
-                "CareNest Admin Login OTP",
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(ADMIN_EMAIL);
+        message.setSubject("CareNest Admin Login OTP");
+        message.setText(
                 "Your CareNest admin login OTP is: " + otp
                         + "\n\nThis OTP is valid for 5 minutes."
         );
+        mailSender.send(message);
     }
 
     private record OtpEntry(String otp, Instant expiresAt, int attempts) {

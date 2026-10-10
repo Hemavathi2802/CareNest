@@ -1,5 +1,7 @@
 package com.homehealthcare.service;
 
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
@@ -10,14 +12,14 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class OtpService {
 
-    private final ResendEmailService emailService;
+    private final JavaMailSender mailSender;
 
     private final Map<String, OtpData> otpStorage = new ConcurrentHashMap<>();
 
     private final SecureRandom secureRandom = new SecureRandom();
 
-    public OtpService(ResendEmailService emailService) {
-        this.emailService = emailService;
+    public OtpService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
     }
 
     public void sendOtp(String email) {
@@ -25,9 +27,13 @@ public class OtpService {
 
         LocalDateTime expiryTime = LocalDateTime.now().plusMinutes(5);
 
-        emailService.send(
-                email,
-                "CareNest Email Verification OTP",
+        otpStorage.put(email, new OtpData(otp, expiryTime));
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(email);
+        message.setSubject("CareNest Email Verification OTP");
+        message.setText(
                 "Hello,\n\n" +
                 "Your CareNest verification OTP is: " + otp + "\n\n" +
                 "This OTP is valid for 5 minutes.\n\n" +
@@ -36,7 +42,7 @@ public class OtpService {
                 "CareNest Team"
         );
 
-        otpStorage.put(email, new OtpData(otp, expiryTime));
+        mailSender.send(message);
     }
 
     public boolean verifyOtp(String email, String enteredOtp) {
