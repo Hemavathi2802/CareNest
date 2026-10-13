@@ -16,13 +16,13 @@ import java.util.Map;
 @Service
 public class BrevoEmailService {
 
-    @Value("${app.brevo.api-key:}")
+    @Value("${BREVO_API_KEY:}")
     private String apiKey;
 
-    @Value("${app.brevo.from-email:}")
+    @Value("${BREVO_FROM_EMAIL:}")
     private String fromEmail;
 
-    @Value("${app.brevo.from-name:CareNest}")
+    @Value("${BREVO_FROM_NAME:CareNest}")
     private String fromName;
 
     private final RestTemplate restTemplate = new RestTemplate();
