@@ -27,8 +27,6 @@ function NurseAppointments() {
   // =====================================================
 
   const [appointments, setAppointments] = useState([]);
-  const [notifications, setNotifications] = useState([]);
-  const [notificationError, setNotificationError] = useState("");
 
   const [loading, setLoading] = useState(true);
 
@@ -96,67 +94,13 @@ function NurseAppointments() {
     }
   }, [nurseId]);
 
-  const fetchNotifications = useCallback(async () => {
-    if (!nurseId) {
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `${API_URL}/notifications/nurse/${nurseId}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Unable to load nurse notifications.");
-      }
-
-      const data = await response.json();
-      setNotifications(Array.isArray(data) ? data : []);
-      setNotificationError("");
-    } catch (error) {
-      console.error("Fetch nurse notifications error:", error);
-      setNotificationError(
-        error.message || "Unable to load nurse notifications."
-      );
-    }
-  }, [nurseId]);
-
-  const markNotificationRead = async (notificationId) => {
-    try {
-      const response = await fetch(
-        `${API_URL}/notifications/nurse/${nurseId}/${notificationId}/read`,
-        { method: "PUT" }
-      );
-
-      if (!response.ok) {
-        throw new Error("Unable to mark notification as read.");
-      }
-
-      const updated = await response.json();
-      setNotifications((current) =>
-        current.map((notification) =>
-          notification.id === updated.id ? updated : notification
-        )
-      );
-    } catch (error) {
-      console.error("Mark nurse notification as read error:", error);
-      setNotificationError(
-        error.message || "Unable to update notification."
-      );
-    }
-  };
-
   // =====================================================
   // LOAD APPOINTMENTS
   // =====================================================
 
   useEffect(() => {
     fetchAppointments();
-    fetchNotifications();
-
-    const intervalId = window.setInterval(fetchNotifications, 60000);
-    return () => window.clearInterval(intervalId);
-  }, [fetchAppointments, fetchNotifications]);
+  }, [fetchAppointments]);
 
   // =====================================================
   // SUCCESS MESSAGE
@@ -634,58 +578,6 @@ function NurseAppointments() {
 
         </div>
 
-      </section>
-
-      <section className="nurse-notifications" aria-labelledby="nurse-notifications-heading">
-        <div className="nurse-notifications-heading">
-          <div>
-            <span className="small-heading">UPDATES</span>
-            <h2 id="nurse-notifications-heading">Appointment Notifications</h2>
-          </div>
-          <span className="notification-count">
-            {notifications.filter((notification) => !notification.read).length} unread
-          </span>
-        </div>
-
-        {notificationError && (
-          <p className="notification-error" role="alert">
-            {notificationError}
-          </p>
-        )}
-
-        {notifications.length === 0 ? (
-          <p className="notification-empty">
-            New appointment assignment notifications will appear here.
-          </p>
-        ) : (
-          <ul className="nurse-notification-list">
-            {notifications.map((notification) => (
-              <li
-                className={`nurse-notification${notification.read ? " is-read" : ""}`}
-                key={notification.id}
-              >
-                <span className="notification-indicator" aria-hidden="true">
-                  {notification.read ? "✓" : "●"}
-                </span>
-                <div className="notification-copy">
-                  <p>{notification.message}</p>
-                  <time dateTime={notification.createdAt}>
-                    {new Date(notification.createdAt).toLocaleString("en-IN")}
-                  </time>
-                </div>
-                {!notification.read && (
-                  <button
-                    className="notification-read-button"
-                    type="button"
-                    onClick={() => markNotificationRead(notification.id)}
-                  >
-                    Mark read
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
       </section>
 
       {/* =================================================

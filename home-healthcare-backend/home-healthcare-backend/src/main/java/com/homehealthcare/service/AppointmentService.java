@@ -1,13 +1,16 @@
+
 package com.homehealthcare.service;
 
 import com.homehealthcare.entity.Appointment;
 import com.homehealthcare.entity.NurseAvailability;
 import com.homehealthcare.entity.NurseNotification;
 import com.homehealthcare.entity.Patient;
+import com.homehealthcare.entity.PatientNotification;
 import com.homehealthcare.entity.User;
 import com.homehealthcare.repository.AppointmentRepository;
 import com.homehealthcare.repository.NurseAvailabilityRepository;
 import com.homehealthcare.repository.NurseNotificationRepository;
+import com.homehealthcare.repository.PatientNotificationRepository;
 import com.homehealthcare.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.http.HttpStatus;
@@ -31,13 +34,17 @@ import java.util.stream.Collectors;
 public class AppointmentService {
 
     private static final DateTimeFormatter DISPLAY_TIME =
-            DateTimeFormatter.ofPattern("h:mm a", java.util.Locale.ENGLISH);
+            DateTimeFormatter.ofPattern(
+                    "h:mm a",
+                    java.util.Locale.ENGLISH
+            );
 
     private final AppointmentRepository appointmentRepository;
     private final NurseAvailabilityRepository nurseAvailabilityRepository;
     private final UserRepository userRepository;
     private final PatientIdentityService patientIdentityService;
     private final NurseNotificationRepository nurseNotificationRepository;
+    private final PatientNotificationRepository patientNotificationRepository;
     private final AppointmentEmailService appointmentEmailService;
 
     public AppointmentService(
@@ -46,6 +53,7 @@ public class AppointmentService {
             UserRepository userRepository,
             PatientIdentityService patientIdentityService,
             NurseNotificationRepository nurseNotificationRepository,
+            PatientNotificationRepository patientNotificationRepository,
             AppointmentEmailService appointmentEmailService) {
 
         this.appointmentRepository = appointmentRepository;
@@ -53,22 +61,24 @@ public class AppointmentService {
         this.userRepository = userRepository;
         this.patientIdentityService = patientIdentityService;
         this.nurseNotificationRepository = nurseNotificationRepository;
+        this.patientNotificationRepository = patientNotificationRepository;
         this.appointmentEmailService = appointmentEmailService;
     }
 
-    // =====================================================
     // CREATE / BOOK APPOINTMENT
-    // =====================================================
 
     @Transactional
-    public Appointment createAppointment(
-            Appointment appointment) {
+    public Appointment createAppointment(Appointment appointment) {
 
-        if (appointment.getPatientId() == null
+        if (appointment == null
+                || appointment.getPatientId() == null
                 || appointment.getService() == null
                 || appointment.getService().isBlank()
                 || appointment.getDate() == null
-                || appointment.getTime() == null) {
+                || appointment.getDate().isBlank()
+                || appointment.getTime() == null
+                || appointment.getTime().isBlank()) {
+
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     "Patient, service, date and time are required."
@@ -77,6 +87,7 @@ public class AppointmentService {
 
         LocalDate appointmentDate;
         LocalTime appointmentTime;
+
         try {
             appointmentDate = LocalDate.parse(appointment.getDate());
             appointmentTime = LocalTime.parse(appointment.getTime());
@@ -90,37 +101,50 @@ public class AppointmentService {
         Patient patient = patientIdentityService.getOrCreateForUser(
                 appointment.getPatientId()
         );
+
         appointment.setPatientId(patient.getPatientId());
 
         Long nurseId = findAvailableNurse(
                 appointmentDate,
                 appointmentTime
         );
+
         appointment.setNurseId(nurseId);
         appointment.setStatus("PENDING");
+        appointment.setReminderSent(false);
 
-        Appointment saved =
-                appointmentRepository.save(appointment);
+        Appointment saved = appointmentRepository.save(appointment);
 
         Appointment response = addNames(saved);
+
+        notifyPatient(response, "Your " + response.getService()
+                + " appointment request has been booked and is pending nurse confirmation.", false);
+
         User nurse = notifyAssignedNurse(response);
+
         User patientUser = patient.getUserId() == null
                 ? null
                 : userRepository.findById(patient.getUserId()).orElse(null);
+
         appointmentEmailService.sendBookingEmails(
                 response,
+                patient,
                 patientUser == null ? null : patientUser.getEmail(),
-                patientUser == null ? null : patientUser.getName(),
+                patientUser == null ? patient.getName() : patientUser.getName(),
                 nurse == null ? null : nurse.getEmail(),
                 nurse == null ? null : nurse.getName()
         );
+
         return response;
     }
 
     private User notifyAssignedNurse(Appointment appointment) {
+
         User nurse = appointment.getNurseId() == null
                 ? null
-                : userRepository.findById(appointment.getNurseId()).orElse(null);
+                : userRepository.findById(
+                        appointment.getNurseId()
+                ).orElse(null);
 
         String notificationText = "New appointment assigned: "
                 + appointment.getPatientName() + " - "
@@ -130,12 +154,15 @@ public class AppointmentService {
                         .format(DISPLAY_TIME) + ".";
 
         if (appointment.getNurseId() != null
-                && !nurseNotificationRepository.existsByAppointmentId(appointment.getId())) {
+                && !nurseNotificationRepository.existsByAppointmentId(
+                        appointment.getId())) {
+
             NurseNotification notification = new NurseNotification();
             notification.setNurseId(appointment.getNurseId());
             notification.setAppointmentId(appointment.getId());
             notification.setMessage(notificationText);
             notification.setCreatedAt(LocalDateTime.now());
+
             nurseNotificationRepository.save(notification);
         }
 
@@ -181,9 +208,14 @@ public class AppointmentService {
                         .filter(nurseId -> existingAppointments.stream()
                                 .noneMatch(existing ->
                                         nurseId.equals(existing.getNurseId())
-                                                && appointmentDate.toString().equals(existing.getDate())
-                                                && appointmentTime.equals(parseTime(existing.getTime()))
-                                                && occupiesTimeSlot(existing.getStatus())
+                                                && appointmentDate.toString()
+                                                        .equals(existing.getDate())
+                                                && appointmentTime.equals(
+                                                        parseTime(existing.getTime())
+                                                )
+                                                && occupiesTimeSlot(
+                                                        existing.getStatus()
+                                                )
                                 )
                         )
                         .sorted(Comparator
@@ -239,6 +271,7 @@ public class AppointmentService {
     }
 
     private LocalTime parseTime(String time) {
+
         if (time == null || time.isBlank()) {
             return null;
         }
@@ -251,6 +284,7 @@ public class AppointmentService {
     }
 
     private boolean occupiesTimeSlot(String status) {
+
         return !"CANCELLED".equalsIgnoreCase(status)
                 && !"REJECTED".equalsIgnoreCase(status)
                 && !"COMPLETED".equalsIgnoreCase(status);
@@ -282,9 +316,7 @@ public class AppointmentService {
                 .count();
     }
 
-    // =====================================================
     // GET ALL APPOINTMENTS - ADMIN
-    // =====================================================
 
     public List<Appointment> getAllAppointments() {
 
@@ -294,29 +326,26 @@ public class AppointmentService {
         return addNamesToList(appointments);
     }
 
-    // =====================================================
     // GET PATIENT APPOINTMENTS
-    // =====================================================
 
-    public List<Appointment> getPatientAppointments(
-            Long patientId) {
+    public List<Appointment> getPatientAppointments(Long patientId) {
 
-        Patient patient = patientIdentityService.findByUserReference(patientId);
+        Patient patient =
+                patientIdentityService.findByUserReference(patientId);
+
         Long resolvedPatientId = patient == null
                 ? patientId
                 : patient.getPatientId();
+
         List<Appointment> appointments =
                 appointmentRepository.findByPatientId(resolvedPatientId);
 
         return addNamesToList(appointments);
     }
 
-    // =====================================================
     // GET NURSE APPOINTMENTS
-    // =====================================================
 
-    public List<Appointment> getNurseAppointments(
-            Long nurseId) {
+    public List<Appointment> getNurseAppointments(Long nurseId) {
 
         List<Appointment> appointments =
                 appointmentRepository.findByNurseId(nurseId);
@@ -324,23 +353,18 @@ public class AppointmentService {
         return addNamesToList(appointments);
     }
 
-    // =====================================================
     // GET NURSE PATIENTS
-    // =====================================================
 
     public List<Patient> getNursePatients(Long nurseId) {
 
         if (nurseId == null) {
-            throw new RuntimeException(
-                    "Nurse ID is required"
-            );
+            throw new RuntimeException("Nurse ID is required");
         }
 
         List<Appointment> appointments =
                 appointmentRepository.findByNurseId(nurseId);
 
-        List<Patient> patients =
-                new ArrayList<>();
+        List<Patient> patients = new ArrayList<>();
 
         for (Appointment appointment : appointments) {
 
@@ -356,15 +380,12 @@ public class AppointmentService {
                 continue;
             }
 
-            // Avoid duplicate patients
-            boolean alreadyExists =
-                    patients.stream()
-                            .anyMatch(existing ->
-                                    existing.getPatientId()
-                                            .equals(
-                                                    patient.getPatientId()
-                                            )
-                            );
+            boolean alreadyExists = patients.stream()
+                    .anyMatch(existing ->
+                            existing.getPatientId().equals(
+                                    patient.getPatientId()
+                            )
+                    );
 
             if (!alreadyExists) {
                 patients.add(patient);
@@ -374,106 +395,113 @@ public class AppointmentService {
         return patients;
     }
 
-    // =====================================================
     // ACCEPT APPOINTMENT
-    // =====================================================
 
-    public Appointment acceptAppointment(
-            Long appointmentId) {
+    public Appointment acceptAppointment(Long appointmentId) {
 
-        Appointment appointment =
-                getAppointment(appointmentId);
-
+        Appointment appointment = getAppointment(appointmentId);
         appointment.setStatus("ACCEPTED");
 
-        Appointment updated =
-                appointmentRepository.save(appointment);
+        Appointment updated = appointmentRepository.save(appointment);
+        notifyPatient(updated, "Your " + updated.getService()
+                + " appointment has been accepted by the nurse.", true);
 
         return addNames(updated);
     }
 
-    // =====================================================
     // REJECT APPOINTMENT
-    // =====================================================
 
-    public Appointment rejectAppointment(
-            Long appointmentId) {
+    public Appointment rejectAppointment(Long appointmentId) {
 
-        Appointment appointment =
-                getAppointment(appointmentId);
-
+        Appointment appointment = getAppointment(appointmentId);
         appointment.setStatus("REJECTED");
 
-        Appointment updated =
-                appointmentRepository.save(appointment);
+        Appointment updated = appointmentRepository.save(appointment);
+        notifyPatient(updated, "Your " + updated.getService()
+                + " appointment was declined by the nurse. Please choose another time or contact the care team.", true);
 
         return addNames(updated);
     }
 
-    // =====================================================
     // CANCEL APPOINTMENT
-    // =====================================================
 
-    public Appointment cancelAppointment(
-            Long appointmentId) {
+    public Appointment cancelAppointment(Long appointmentId) {
 
-        Appointment appointment =
-                getAppointment(appointmentId);
-
+        Appointment appointment = getAppointment(appointmentId);
         appointment.setStatus("CANCELLED");
 
-        Appointment updated =
-                appointmentRepository.save(appointment);
+        Appointment updated = appointmentRepository.save(appointment);
+        notifyPatient(updated, "Your " + updated.getService()
+                + " appointment has been cancelled.", true);
 
         return addNames(updated);
     }
 
-    // =====================================================
+    private void notifyPatient(
+            Appointment appointment,
+            String message,
+            boolean sendEmail) {
+
+        if (appointment.getPatientId() == null
+                || patientNotificationRepository.existsByAppointmentIdAndMessage(
+                        appointment.getId(), message)) {
+            return;
+        }
+
+        PatientNotification notification = new PatientNotification();
+        notification.setPatientId(appointment.getPatientId());
+        notification.setAppointmentId(appointment.getId());
+        notification.setMessage(message);
+        notification.setCreatedAt(LocalDateTime.now());
+        patientNotificationRepository.save(notification);
+
+        if (sendEmail) {
+            Patient patient = patientIdentityService.findForAppointment(
+                    appointment.getPatientId()
+            );
+            User patientUser = patient == null || patient.getUserId() == null
+                    ? null
+                    : userRepository.findById(patient.getUserId()).orElse(null);
+            String patientName = patientUser != null
+                    ? patientUser.getName()
+                    : patient == null ? null : patient.getName();
+            appointmentEmailService.sendPatientUpdateEmail(
+                    appointment,
+                    patientUser == null ? null : patientUser.getEmail(),
+                    patientName,
+                    message
+            );
+        }
+    }
+
     // DELETE APPOINTMENT
-    // =====================================================
 
     public void deleteAppointment(Long appointmentId) {
 
         if (!appointmentRepository.existsById(appointmentId)) {
-
             throw new RuntimeException(
-                    "Appointment not found with id: "
-                            + appointmentId
+                    "Appointment not found with id: " + appointmentId
             );
         }
 
-        appointmentRepository.deleteById(
-                appointmentId
-        );
+        appointmentRepository.deleteById(appointmentId);
     }
 
-    // =====================================================
     // FIND APPOINTMENT
-    // =====================================================
 
-    private Appointment getAppointment(
-            Long appointmentId) {
+    private Appointment getAppointment(Long appointmentId) {
 
-        return appointmentRepository
-                .findById(appointmentId)
+        return appointmentRepository.findById(appointmentId)
                 .orElseThrow(() ->
                         new RuntimeException(
-                                "Appointment not found with id: "
-                                        + appointmentId
+                                "Appointment not found with id: " + appointmentId
                         )
                 );
     }
 
-    // =====================================================
-    // ADD PATIENT NAME + NURSE NAME
-    // =====================================================
+    // ADD PATIENT NAME AND NURSE NAME
 
-    private Appointment addNames(
-            Appointment appointment) {
-
-        // -------------------------------------------------
-        // PATIENT
-        // -------------------------------------------------
+    private Appointment addNames(Appointment appointment) {
 
         if (appointment.getPatientId() != null) {
 
@@ -482,61 +510,35 @@ public class AppointmentService {
             );
 
             if (patient != null) {
-                appointment.setPatientName(
-                        patient.getName()
-                );
-
+                appointment.setPatientName(patient.getName());
             } else {
-
-                appointment.setPatientName(
-                        "Unknown Patient"
-                );
+                appointment.setPatientName("Unknown Patient");
             }
 
         } else {
-
-            appointment.setPatientName(
-                    "Unknown Patient"
-            );
+            appointment.setPatientName("Unknown Patient");
         }
-
-        // -------------------------------------------------
-        // NURSE
-        // -------------------------------------------------
 
         if (appointment.getNurseId() != null) {
 
-            User nurse =
-                    userRepository.findById(
-                            appointment.getNurseId()
-                    ).orElse(null);
+            User nurse = userRepository.findById(
+                    appointment.getNurseId()
+            ).orElse(null);
 
             if (nurse != null) {
-
-                appointment.setNurseName(
-                        nurse.getName()
-                );
-
+                appointment.setNurseName(nurse.getName());
             } else {
-
-                appointment.setNurseName(
-                        "Unknown Nurse"
-                );
+                appointment.setNurseName("Unknown Nurse");
             }
 
         } else {
-
-            appointment.setNurseName(
-                    "Unknown Nurse"
-            );
+            appointment.setNurseName("Unknown Nurse");
         }
 
         return appointment;
     }
 
-    // =====================================================
     // ADD NAMES TO ALL APPOINTMENTS
-    // =====================================================
 
     private List<Appointment> addNamesToList(
             List<Appointment> appointments) {

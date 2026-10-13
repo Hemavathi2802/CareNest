@@ -4,6 +4,7 @@ package com.homehealthcare.service;
 import com.homehealthcare.entity.User;
 import com.homehealthcare.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,9 @@ import java.util.List;
 public class UserService {
 
     private static final String ADMIN_PASSWORD = "Hemav@2802";
+
+    @Value("${ADMIN_EMAIL:hemavathisb28@gmail.com}")
+    private String adminEmail = AdminOtpService.ADMIN_EMAIL;
 
     private final UserRepository userRepository;
     private final AdminOtpService adminOtpService;
@@ -29,7 +33,7 @@ public class UserService {
     public boolean isAdminCredentials(String email, String password) {
         return email != null
                 && password != null
-                && AdminOtpService.ADMIN_EMAIL.equalsIgnoreCase(email.trim())
+                && adminEmail.equalsIgnoreCase(email.trim())
                 && ADMIN_PASSWORD.equals(password);
     }
 

@@ -135,6 +135,20 @@ function NurseDashboard() {
 
         </Link>
 
+        <Link to="/nurse/notifications" className="nurse-module-card">
+          <div className="nurse-module-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+              <path d="M10 21h4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div className="nurse-module-content">
+            <h3>Notifications</h3>
+            <p>View new appointment assignments and care updates.</p>
+          </div>
+          <div className="nurse-module-arrow">→</div>
+        </Link>
+
 
         {/* SCHEDULE */}
 

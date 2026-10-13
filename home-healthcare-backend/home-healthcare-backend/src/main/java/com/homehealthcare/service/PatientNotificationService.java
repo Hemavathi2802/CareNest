@@ -1,3 +1,4 @@
+
 package com.homehealthcare.service;
 
 import com.homehealthcare.entity.Appointment;
@@ -10,9 +11,6 @@ import com.homehealthcare.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -33,64 +32,88 @@ public class PatientNotificationService {
 
     private static final Logger logger =
             LoggerFactory.getLogger(PatientNotificationService.class);
+
+    private static final ZoneId INDIA_ZONE =
+            ZoneId.of("Asia/Kolkata");
+
     private static final DateTimeFormatter DISPLAY_DATE =
-            DateTimeFormatter.ofPattern("dd MMM yyyy");
+            DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
+
     private static final DateTimeFormatter DISPLAY_TIME =
             DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
+
     private static final Pattern REMINDER_TIME =
             Pattern.compile("\\bat (\\d{1,2}:\\d{2})(?= appointment)");
 
     private final AppointmentRepository appointmentRepository;
     private final PatientNotificationRepository notificationRepository;
     private final UserRepository userRepository;
-    private final JavaMailSender mailSender;
+    private final BrevoEmailService brevoEmailService;
     private final PatientIdentityService patientIdentityService;
 
     public PatientNotificationService(
             AppointmentRepository appointmentRepository,
             PatientNotificationRepository notificationRepository,
             UserRepository userRepository,
-            JavaMailSender mailSender,
+            BrevoEmailService brevoEmailService,
             PatientIdentityService patientIdentityService) {
+
         this.appointmentRepository = appointmentRepository;
         this.notificationRepository = notificationRepository;
         this.userRepository = userRepository;
-        this.mailSender = mailSender;
+        this.brevoEmailService = brevoEmailService;
         this.patientIdentityService = patientIdentityService;
     }
 
     @Scheduled(fixedDelayString = "${app.notifications.poll-delay-ms:60000}")
     @Transactional
     public void sendDueAppointmentReminders() {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime reminderWindowStart = now.plusHours(24);
 
-        for (Appointment appointment : appointmentRepository.findByReminderSentFalse()) {
+        LocalDateTime now = LocalDateTime.now(INDIA_ZONE);
+
+        LocalDateTime reminderWindowStart =
+                now.plusHours(23).plusMinutes(59);
+
+        LocalDateTime reminderWindowEnd =
+                now.plusHours(24);
+
+        for (Appointment appointment :
+                appointmentRepository.findByReminderSentFalse()) {
+
             if (appointment.isReminderSent()
                     || !isActive(appointment.getStatus())) {
                 continue;
             }
 
             LocalDateTime appointmentDateTime;
+
             try {
                 appointmentDateTime = LocalDate.parse(appointment.getDate())
                         .atTime(LocalTime.parse(appointment.getTime()));
+
             } catch (DateTimeParseException | NullPointerException exception) {
-                logger.warn("Skipping reminder for appointment {} because its date or time is invalid",
-                        appointment.getId(), exception);
+                logger.warn(
+                        "Skipping reminder for appointment {} because its date or time is invalid",
+                        appointment.getId(),
+                        exception
+                );
                 continue;
             }
 
-            if (!appointmentDateTime.isAfter(now)
-                    || appointmentDateTime.isAfter(reminderWindowStart)) {
+            if (appointmentDateTime.isBefore(reminderWindowStart)
+                    || appointmentDateTime.isAfter(reminderWindowEnd)) {
                 continue;
             }
 
             try {
                 sendReminder(appointment, appointmentDateTime);
-            } catch (MailException exception) {
-                logger.error("Unable to send reminder email for appointment {}",
-                        appointment.getId(), exception);
+
+            } catch (Exception exception) {
+                logger.error(
+                        "Unable to send reminder for appointment {}",
+                        appointment.getId(),
+                        exception
+                );
             }
         }
     }
@@ -98,47 +121,105 @@ public class PatientNotificationService {
     private void sendReminder(
             Appointment appointment,
             LocalDateTime appointmentDateTime) {
+
         Patient patient = patientIdentityService.findForAppointment(
                 appointment.getPatientId()
         );
+
         User user = patient == null || patient.getUserId() == null
                 ? null
                 : userRepository.findById(patient.getUserId()).orElse(null);
+        User nurse = appointment.getNurseId() == null
+                ? null
+                : userRepository.findById(appointment.getNurseId()).orElse(null);
 
-        String patientName = patient == null || patient.getName() == null
+        String patientName = patient == null
+                || patient.getName() == null
+                || patient.getName().isBlank()
                 ? "there"
                 : patient.getName();
+
         String appointmentDetails = appointment.getService() + " on "
                 + appointmentDateTime.format(DISPLAY_DATE) + " at "
                 + appointmentDateTime.toLocalTime().format(DISPLAY_TIME);
+
         String reminderMessage = "Reminder: your " + appointmentDetails
                 + " appointment is coming up.";
 
-        if (!notificationRepository.existsByAppointmentId(appointment.getId())) {
+        if (!notificationRepository.existsByAppointmentIdAndMessage(
+                appointment.getId(), reminderMessage)) {
+
             PatientNotification notification = new PatientNotification();
             notification.setPatientId(appointment.getPatientId());
             notification.setAppointmentId(appointment.getId());
             notification.setMessage(reminderMessage);
-            notification.setCreatedAt(LocalDateTime.now());
+            notification.setCreatedAt(LocalDateTime.now(INDIA_ZONE));
+
             notificationRepository.save(notification);
         }
 
-        if (user == null || user.getEmail() == null || user.getEmail().isBlank()) {
-            logger.error("Cannot email appointment reminder {}: patient email is unavailable",
-                    appointment.getId());
+        String subject = "CareNest appointment reminder - 24 hours to go";
+        String patientBody = "Hello " + patientName + ",\n\n"
+                + "This is a reminder that your CareNest appointment is scheduled for approximately 24 hours from now.\n\n"
+                + "Appointment ID: " + appointment.getId() + "\n"
+                + "Service: " + appointment.getService() + "\n"
+                + "Date: " + appointmentDateTime.format(DISPLAY_DATE) + "\n"
+                + "Time: " + appointmentDateTime.toLocalTime()
+                        .format(DISPLAY_TIME) + "\n\n"
+                + "Please log in to CareNest to view your appointment details.\n\n"
+                + "CareNest Team";
+
+        boolean emailSent = false;
+        if (user != null && user.getEmail() != null
+                && !user.getEmail().isBlank()) {
+            brevoEmailService.send(user.getEmail(), subject, patientBody);
+            emailSent = true;
+        } else {
+            logger.warn(
+                    "Cannot email appointment reminder {}: patient email is unavailable",
+                    appointment.getId()
+            );
+        }
+
+        if (nurse != null && nurse.getEmail() != null
+                && !nurse.getEmail().isBlank()) {
+            String nurseName = nurse.getName() == null || nurse.getName().isBlank()
+                    ? "Nurse"
+                    : nurse.getName();
+            String nurseBody = "Hello " + nurseName + ",\n\n"
+                    + "This is a reminder that you have a CareNest appointment scheduled for approximately 24 hours from now.\n\n"
+                    + "Appointment ID: " + appointment.getId() + "\n"
+                    + "Service: " + appointment.getService() + "\n"
+                    + "Patient: " + patientName + "\n"
+                    + "Date: " + appointmentDateTime.format(DISPLAY_DATE) + "\n"
+                    + "Time: " + appointmentDateTime.toLocalTime()
+                            .format(DISPLAY_TIME) + "\n\n"
+                    + "Please log in to CareNest to review the appointment.\n\n"
+                    + "CareNest Team";
+            brevoEmailService.send(nurse.getEmail(), subject, nurseBody);
+            emailSent = true;
+        } else {
+            logger.warn(
+                    "Cannot email appointment reminder {}: nurse email is unavailable",
+                    appointment.getId()
+            );
+        }
+
+        if (!emailSent) {
+            logger.error(
+                    "Cannot email appointment reminder {}: no recipient email is available",
+                    appointment.getId()
+            );
             return;
         }
 
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo(user.getEmail());
-        email.setSubject("CareNest appointment reminder");
-        email.setText("Hello " + patientName + ",\n\n"
-                + reminderMessage + "\n\n"
-                + "Please open CareNest to view your appointment details.\n\n"
-                + "CareNest Team");
-        mailSender.send(email);
         appointment.setReminderSent(true);
         appointmentRepository.save(appointment);
+
+        logger.info(
+                "Appointment reminder email sent through Brevo to patient and/or nurse for appointment {}",
+                appointment.getId()
+        );
     }
 
     private boolean isActive(String status) {
@@ -149,41 +230,58 @@ public class PatientNotificationService {
 
     @Transactional(readOnly = true)
     public List<PatientNotification> getPatientNotifications(Long patientId) {
-        Patient patient = patientIdentityService.findByUserReference(patientId);
+
+        Patient patient =
+                patientIdentityService.findByUserReference(patientId);
+
         Long resolvedPatientId = patient == null
                 ? patientId
                 : patient.getPatientId();
-        return notificationRepository.findByPatientIdOrderByCreatedAtDesc(
-                        resolvedPatientId
-                ).stream()
+
+        return notificationRepository
+                .findByPatientIdOrderByCreatedAtDesc(resolvedPatientId)
+                .stream()
                 .map(this::formatReminderTime)
                 .toList();
     }
 
     @Transactional
-    public PatientNotification markAsRead(Long patientId, Long notificationId) {
-        Patient patient = patientIdentityService.findByUserReference(patientId);
+    public PatientNotification markAsRead(
+            Long patientId,
+            Long notificationId) {
+
+        Patient patient =
+                patientIdentityService.findByUserReference(patientId);
+
         Long resolvedPatientId = patient == null
                 ? patientId
                 : patient.getPatientId();
+
         PatientNotification notification = notificationRepository
                 .findByIdAndPatientId(notificationId, resolvedPatientId)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "Notification not found."
                 ));
+
         notification.setRead(true);
-        return formatReminderTime(notificationRepository.save(notification));
+
+        return formatReminderTime(
+                notificationRepository.save(notification)
+        );
     }
 
     private PatientNotification formatReminderTime(
             PatientNotification notification) {
+
         String message = notification.getMessage();
+
         if (message == null) {
             return notification;
         }
 
         Matcher matcher = REMINDER_TIME.matcher(message);
+
         if (!matcher.find()) {
             return notification;
         }
@@ -191,13 +289,18 @@ public class PatientNotificationService {
         try {
             String formattedTime = LocalTime.parse(matcher.group(1))
                     .format(DISPLAY_TIME);
+
             notification.setMessage(
                     matcher.replaceFirst(
                             Matcher.quoteReplacement("at " + formattedTime)
                     )
             );
+
         } catch (DateTimeParseException exception) {
-            return notification;
+            logger.warn(
+                    "Could not format patient notification time",
+                    exception
+            );
         }
 
         return notification;

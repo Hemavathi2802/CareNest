@@ -2,12 +2,17 @@ package com.homehealthcare.service;
 
 import com.homehealthcare.entity.Appointment;
 import com.homehealthcare.entity.Patient;
+import com.homehealthcare.entity.PatientNotification;
 import com.homehealthcare.entity.User;
 import com.homehealthcare.entity.VisitReport;
 import com.homehealthcare.repository.AppointmentRepository;
+import com.homehealthcare.repository.PatientNotificationRepository;
 import com.homehealthcare.repository.UserRepository;
 import com.homehealthcare.repository.VisitReportRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 
 import java.util.List;
 
@@ -18,19 +23,26 @@ public class VisitReportService {
     private final AppointmentRepository appointmentRepository;
     private final UserRepository userRepository;
     private final PatientIdentityService patientIdentityService;
+    private final PatientNotificationRepository patientNotificationRepository;
+    private final AppointmentEmailService appointmentEmailService;
 
     public VisitReportService(
             VisitReportRepository visitReportRepository,
             AppointmentRepository appointmentRepository,
             UserRepository userRepository,
-            PatientIdentityService patientIdentityService) {
+            PatientIdentityService patientIdentityService,
+            PatientNotificationRepository patientNotificationRepository,
+            AppointmentEmailService appointmentEmailService) {
 
         this.visitReportRepository = visitReportRepository;
         this.appointmentRepository = appointmentRepository;
         this.userRepository = userRepository;
         this.patientIdentityService = patientIdentityService;
+        this.patientNotificationRepository = patientNotificationRepository;
+        this.appointmentEmailService = appointmentEmailService;
     }
 
+    @Transactional
     public VisitReport createVisitReport(VisitReport visitReport) {
 
         if (visitReport.getAppointmentId() == null) {
@@ -83,6 +95,35 @@ public class VisitReportService {
         // -----------------------------------------
         appointment.setStatus("COMPLETED");
         appointmentRepository.save(appointment);
+
+        String completionMessage = "Your " + appointment.getService()
+                + " appointment has been completed. You can now view the visit report in CareNest.";
+        if (appointment.getPatientId() != null
+                && !patientNotificationRepository.existsByAppointmentIdAndMessage(
+                        appointment.getId(), completionMessage)) {
+            PatientNotification notification = new PatientNotification();
+            notification.setPatientId(appointment.getPatientId());
+            notification.setAppointmentId(appointment.getId());
+            notification.setMessage(completionMessage);
+            notification.setCreatedAt(LocalDateTime.now());
+            patientNotificationRepository.save(notification);
+
+            Patient patient = patientIdentityService.findForAppointment(
+                    appointment.getPatientId()
+            );
+            User patientUser = patient == null || patient.getUserId() == null
+                    ? null
+                    : userRepository.findById(patient.getUserId()).orElse(null);
+            String patientName = patientUser != null
+                    ? patientUser.getName()
+                    : patient == null ? null : patient.getName();
+            appointmentEmailService.sendPatientUpdateEmail(
+                    appointment,
+                    patientUser == null ? null : patientUser.getEmail(),
+                    patientName,
+                    completionMessage
+            );
+        }
 
         return savedReport;
     }

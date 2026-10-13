@@ -1,5 +1,6 @@
 import { API_ORIGIN } from "../../../apiBase.js";
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./PatientNotifications.css";
 
 const API_URL = `${API_ORIGIN}/api`;
@@ -84,51 +85,65 @@ function PatientNotifications() {
   ).length;
 
   return (
-    <section className="patient-notifications" aria-labelledby="notifications-title">
-      <div className="patient-notifications-heading">
-        <div>
-          <p className="patient-notifications-eyebrow">UPDATES</p>
-          <h2 id="notifications-title">Appointment notifications</h2>
+    <main className="patient-notifications-page">
+      <section className="patient-notifications" aria-labelledby="notifications-title">
+        <div className="patient-notifications-heading">
+          <div>
+            <p className="patient-notifications-eyebrow">PATIENT PORTAL · UPDATES</p>
+            <h1 id="notifications-title">Notifications</h1>
+            <p className="patient-notifications-description">
+              Booking, appointment status, reminders, and completed visit updates.
+            </p>
+          </div>
+          <div className="patient-notifications-actions">
+            {unreadCount > 0 && (
+              <span className="patient-notifications-count">
+                {unreadCount} unread
+              </span>
+            )}
+            <Link to="/dashboard/patient">Dashboard</Link>
+          </div>
         </div>
-        {unreadCount > 0 && (
-          <span className="patient-notifications-count">
-            {unreadCount} new
-          </span>
+
+        {error && (
+          <p className="patient-notifications-error" role="alert">
+            {error}
+          </p>
         )}
-      </div>
 
-      {error && (
-        <p className="patient-notifications-error" role="alert">
-          {error}
-        </p>
-      )}
-
-      {notifications.length === 0 ? (
-        <p className="patient-notifications-empty">
-          No appointment reminders yet. We will show one here 24 hours before
-          your appointment.
-        </p>
-      ) : (
-        <ul className="patient-notifications-list">
-          {notifications.map((notification) => (
-            <li
-              className={`patient-notification${notification.read ? "" : " is-unread"}`}
-              key={notification.id}
-            >
-              <p>{notification.message}</p>
-              {!notification.read && (
-                <button
-                  type="button"
-                  onClick={() => markAsRead(notification.id)}
-                >
-                  Mark as read
-                </button>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </section>
+        {notifications.length === 0 ? (
+          <p className="patient-notifications-empty">
+            No notifications yet. Appointment updates will appear here.
+          </p>
+        ) : (
+          <ul className="patient-notifications-list">
+            {notifications.map((notification) => (
+              <li
+                className={`patient-notification${notification.read ? "" : " is-unread"}`}
+                key={notification.id}
+              >
+                <div className="patient-notification-copy">
+                  <p>{notification.message}</p>
+                  {notification.createdAt && (
+                    <time dateTime={notification.createdAt}>
+                      {new Date(notification.createdAt).toLocaleString("en-IN")}
+                    </time>
+                  )}
+                </div>
+                {!notification.read && (
+                  <button
+                    type="button"
+                    onClick={() => markAsRead(notification.id)}
+                  >
+                    Mark as read
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </main>
   );
 }
 

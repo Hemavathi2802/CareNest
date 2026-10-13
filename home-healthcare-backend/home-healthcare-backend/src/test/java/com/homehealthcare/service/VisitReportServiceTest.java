@@ -3,6 +3,7 @@ package com.homehealthcare.service;
 import com.homehealthcare.entity.Appointment;
 import com.homehealthcare.entity.VisitReport;
 import com.homehealthcare.repository.AppointmentRepository;
+import com.homehealthcare.repository.PatientNotificationRepository;
 import com.homehealthcare.repository.UserRepository;
 import com.homehealthcare.repository.VisitReportRepository;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,9 @@ class VisitReportServiceTest {
                 reportRepository,
                 appointmentRepository,
                 userRepository,
-                patientIdentityService
+                patientIdentityService,
+                mock(PatientNotificationRepository.class),
+                mock(AppointmentEmailService.class)
         );
 
         Appointment appointment = new Appointment();

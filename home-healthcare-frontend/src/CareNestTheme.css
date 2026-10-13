@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap");
+
 :root {
   color-scheme: light;
+  --carenest-font: "DM Sans", "Segoe UI", Roboto, sans-serif;
   --carenest-ink: #493654;
   --carenest-muted: #71647b;
   --carenest-purple: #8b6da5;
@@ -7,12 +10,29 @@
   --carenest-border: #e6d9ed;
   --carenest-glass: rgba(255, 255, 255, 0.78);
   --carenest-shadow: 0 14px 36px rgba(102, 75, 124, 0.11);
+  --carenest-page-background:
+    radial-gradient(ellipse at 6% 7%, rgba(255, 205, 229, 0.54), transparent 34%),
+    radial-gradient(ellipse at 96% 10%, rgba(207, 196, 246, 0.48), transparent 36%),
+    radial-gradient(ellipse at 74% 96%, rgba(194, 226, 245, 0.5), transparent 38%),
+    linear-gradient(135deg, #fff8fb 0%, #f8f5ff 50%, #f1f8fc 100%);
+}
+
+#root,
+#root * {
+  font-family: var(--carenest-font) !important;
+}
+
+#root code,
+#root pre,
+#root kbd,
+#root samp {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important;
 }
 
 html,
 body,
 #root {
-  background: linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+  background: var(--carenest-page-background);
 }
 
 html,
@@ -39,12 +59,10 @@ body {
 .medical-records-page,
 .patient-profile-page,
 .patient-schedule-page,
-.visit-reports-page {
-  background:
-    radial-gradient(ellipse at 8% 8%, rgba(255, 214, 235, 0.62), transparent 36%),
-    radial-gradient(ellipse at 92% 16%, rgba(207, 195, 244, 0.55), transparent 38%),
-    radial-gradient(ellipse at 72% 92%, rgba(211, 232, 250, 0.52), transparent 40%),
-    linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+.visit-reports-page,
+.patient-notifications-page,
+.nurse-notifications-page {
+  background: var(--carenest-page-background);
   color: var(--carenest-ink);
 }
 
@@ -256,11 +274,7 @@ body {
 #root .admin-reports-page,
 #root .admin-reports-container,
 #root .admin-availability-page {
-  background:
-    radial-gradient(ellipse at 8% 8%, rgba(255, 214, 235, 0.68), transparent 36%),
-    radial-gradient(ellipse at 92% 16%, rgba(207, 195, 244, 0.58), transparent 38%),
-    radial-gradient(ellipse at 72% 92%, rgba(211, 232, 250, 0.58), transparent 40%),
-    linear-gradient(135deg, #fff7fb 0%, #f8f4ff 52%, #f2f9ff 100%);
+  background: var(--carenest-page-background);
   color: var(--carenest-ink);
 }
 

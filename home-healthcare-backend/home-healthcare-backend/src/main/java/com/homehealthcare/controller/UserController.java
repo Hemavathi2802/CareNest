@@ -7,7 +7,8 @@ import com.homehealthcare.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.Map;
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "${app.cors.allowed-origin:http://localhost:5173}")
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -88,7 +91,8 @@ public class UserController {
         } catch (IllegalArgumentException exception) {
             return ResponseEntity.badRequest()
                     .body(Map.of("message", exception.getMessage()));
-        } catch (MailException exception) {
+        } catch (RuntimeException exception) {
+            logger.error("Unable to send admin login OTP email", exception);
             return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
                     .body(Map.of("message", "Unable to send the OTP email. Please try again."));
         }
@@ -105,6 +109,10 @@ public class UserController {
         } catch (IllegalArgumentException exception) {
             return ResponseEntity.badRequest()
                     .body(Map.of("message", exception.getMessage()));
+        } catch (RuntimeException exception) {
+            logger.error("Unable to resend admin login OTP email", exception);
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
+                    .body(Map.of("message", "Unable to resend the OTP email. Please check Brevo configuration and try again."));
         }
     }
 

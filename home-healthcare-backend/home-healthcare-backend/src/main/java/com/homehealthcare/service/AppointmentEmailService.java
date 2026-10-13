@@ -1,11 +1,10 @@
+
 package com.homehealthcare.service;
 
 import com.homehealthcare.entity.Appointment;
+import com.homehealthcare.entity.Patient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -18,103 +17,175 @@ public class AppointmentEmailService {
 
     private static final Logger logger =
             LoggerFactory.getLogger(AppointmentEmailService.class);
+
     private static final DateTimeFormatter DISPLAY_TIME =
             DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
 
-    private final JavaMailSender mailSender;
+    private final BrevoEmailService brevoEmailService;
 
-    public AppointmentEmailService(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
+    public AppointmentEmailService(BrevoEmailService brevoEmailService) {
+        this.brevoEmailService = brevoEmailService;
     }
 
     @Async
     public void sendBookingEmails(
             Appointment appointment,
+            Patient patient,
             String patientEmail,
             String patientName,
             String nurseEmail,
             String nurseName) {
-        sendPatientConfirmation(
-                appointment,
-                patientEmail,
-                patientName,
-                nurseName
-        );
-        sendNurseAssignment(
-                appointment,
-                nurseEmail,
-                nurseName
-        );
+
+        String time = appointment.getTime();
+
+        try {
+            time = LocalTime.parse(time).format(DISPLAY_TIME);
+        } catch (Exception exception) {
+            logger.warn("Could not format appointment time: {}", time);
+        }
+
+        if (patientEmail != null && !patientEmail.isBlank()) {
+            try {
+                String patientMessage =
+                        "Hello " + safeName(patientName, "Patient") + ",\n\n"
+                        + "Your CareNest appointment has been booked successfully.\n\n"
+                        + "Appointment ID: " + appointment.getId() + "\n"
+                        + "Service: " + safeName(appointment.getService(), "Not specified") + "\n"
+                        + "Nurse: " + safeName(nurseName, "Your assigned nurse") + "\n"
+                        + "Date: " + safeName(appointment.getDate(), "Not specified") + "\n"
+                        + "Time: " + time + "\n"
+                        + "Status: " + safeName(appointment.getStatus(), "PENDING") + "\n\n"
+                        + "CareNest Team";
+
+                brevoEmailService.send(
+                        patientEmail,
+                        "CareNest appointment confirmation",
+                        patientMessage
+                );
+
+                logger.info(
+                        "Appointment confirmation email submitted to Brevo for appointment {}",
+                        appointment.getId()
+                );
+
+            } catch (RuntimeException exception) {
+                logger.error(
+                        "Failed to send patient appointment email for appointment {}",
+                        appointment.getId(),
+                        exception
+                );
+            }
+        } else {
+            logger.warn(
+                    "Patient email is unavailable for appointment {}",
+                    appointment.getId()
+            );
+        }
+
+        if (nurseEmail != null && !nurseEmail.isBlank()) {
+            try {
+                String patientDetails = patient == null
+                        ? "Patient details are unavailable.\n"
+                        : "Patient Name: " + safeName(patient.getName(), "Not provided") + "\n"
+                        + "Age: " + patient.getAge() + "\n"
+                        + "Gender: " + safeName(patient.getGender(), "Not provided") + "\n"
+                        + "Phone: " + safeName(patient.getPhone(), "Not provided") + "\n"
+                        + "Address: " + safeName(patient.getAddress(), "Not provided") + "\n";
+
+                String nurseMessage =
+                        "Hello " + safeName(nurseName, "Nurse") + ",\n\n"
+                        + "A patient has booked an appointment with you through CareNest.\n\n"
+                        + "APPOINTMENT DETAILS\n"
+                        + "Appointment ID: " + appointment.getId() + "\n"
+                        + "Service: " + safeName(appointment.getService(), "Not specified") + "\n"
+                        + "Date: " + safeName(appointment.getDate(), "Not specified") + "\n"
+                        + "Time: " + time + "\n"
+                        + "Status: " + safeName(appointment.getStatus(), "PENDING") + "\n\n"
+                        + "PATIENT DETAILS\n"
+                        + patientDetails
+                        + "Reason / Notes: "
+                        + safeName(appointment.getNotes(), "Not provided") + "\n\n"
+                        + "Please log in to CareNest to review the appointment.\n\n"
+                        + "CareNest Team";
+
+                brevoEmailService.send(
+                        nurseEmail,
+                        "New Patient Appointment - CareNest",
+                        nurseMessage
+                );
+
+                logger.info(
+                        "Appointment assignment email submitted to Brevo for appointment {}",
+                        appointment.getId()
+                );
+
+            } catch (RuntimeException exception) {
+                logger.error(
+                        "Failed to send nurse appointment email for appointment {}",
+                        appointment.getId(),
+                        exception
+                );
+            }
+        } else {
+            logger.warn(
+                    "Nurse email is unavailable for appointment {}",
+                    appointment.getId()
+            );
+        }
     }
 
-    private void sendPatientConfirmation(
+    @Async
+    public void sendPatientUpdateEmail(
             Appointment appointment,
             String patientEmail,
             String patientName,
-            String nurseName) {
+            String updateMessage) {
+
         if (patientEmail == null || patientEmail.isBlank()) {
-            logger.error("Cannot email appointment confirmation {}: patient email is unavailable",
-                    appointment.getId());
+            logger.warn(
+                    "Cannot send appointment update email for appointment {}: patient email is unavailable",
+                    appointment.getId()
+            );
             return;
         }
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(patientEmail);
-        message.setSubject("CareNest appointment confirmation");
-        message.setText("Hello "
-                + safeName(patientName, "Patient")
-                + ",\n\nYour appointment has been booked successfully.\n\n"
+        String time = appointment.getTime();
+        try {
+            time = LocalTime.parse(time).format(DISPLAY_TIME);
+        } catch (Exception exception) {
+            logger.warn("Could not format appointment time: {}", time);
+        }
+
+        String body = "Hello " + safeName(patientName, "Patient") + ",\n\n"
+                + updateMessage + "\n\n"
                 + "Appointment ID: " + appointment.getId() + "\n"
-                + "Service: " + appointment.getService() + "\n"
-                + "Nurse: " + safeName(nurseName, "Your assigned nurse") + "\n"
-                + "Date: " + appointment.getDate() + "\n"
-                + "Time: " + LocalTime.parse(appointment.getTime())
-                        .format(DISPLAY_TIME) + "\n"
-                + "Status: " + appointment.getStatus() + "\n\n"
-                + "CareNest Team");
+                + "Service: " + safeName(appointment.getService(), "Not specified") + "\n"
+                + "Date: " + safeName(appointment.getDate(), "Not specified") + "\n"
+                + "Time: " + time + "\n"
+                + "Status: " + safeName(appointment.getStatus(), "UPDATED") + "\n\n"
+                + "Sign in to CareNest to view your appointment details.\n\n"
+                + "CareNest Team";
 
         try {
-            mailSender.send(message);
-        } catch (MailException exception) {
-            logger.error("Appointment {} was booked, but the confirmation email could not be sent",
-                    appointment.getId(), exception);
+            brevoEmailService.send(
+                    patientEmail,
+                    "CareNest appointment update",
+                    body
+            );
+            logger.info(
+                    "Appointment update email submitted to Brevo for appointment {}",
+                    appointment.getId()
+            );
+        } catch (RuntimeException exception) {
+            logger.error(
+                    "Failed to send appointment update email for appointment {}",
+                    appointment.getId(),
+                    exception
+            );
         }
     }
 
-    private void sendNurseAssignment(
-            Appointment appointment,
-            String nurseEmail,
-            String nurseName) {
-        if (nurseEmail == null || nurseEmail.isBlank()) {
-            logger.error("Cannot email appointment assignment for appointment {}: assigned nurse email is unavailable",
-                    appointment.getId());
-            return;
-        }
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(nurseEmail);
-        message.setSubject("New CareNest appointment assigned to you");
-        message.setText("Hello "
-                + safeName(nurseName, "Nurse")
-                + ",\n\nA new patient appointment has been assigned to you.\n\n"
-                + "Patient: " + safeName(appointment.getPatientName(), "Patient") + "\n"
-                + "Service: " + appointment.getService() + "\n"
-                + "Date: " + appointment.getDate() + "\n"
-                + "Time: " + LocalTime.parse(appointment.getTime())
-                        .format(DISPLAY_TIME) + "\n"
-                + "Status: " + appointment.getStatus() + "\n\n"
-                + "Please log in to CareNest to review the appointment.\n\n"
-                + "CareNest Team");
-
-        try {
-            mailSender.send(message);
-        } catch (MailException exception) {
-            logger.error("Appointment {} was booked, but the assignment email could not be sent to nurse {}",
-                    appointment.getId(), appointment.getNurseId(), exception);
-        }
-    }
-
-    private String safeName(String name, String fallback) {
-        return name == null || name.isBlank() ? fallback : name;
+    private String safeName(String value, String fallback) {
+        return value == null || value.isBlank() ? fallback : value;
     }
 }

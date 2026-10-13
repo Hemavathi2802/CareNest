@@ -15,6 +15,7 @@ import NurseDashboard from "./pages/Dashboard/NurseDashboard";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard";
 
 import Appointments from "./modules/patient/appointments/Appointments";
+import PatientNotifications from "./modules/patient/notifications/PatientNotifications";
 import MedicalRecords from "./modules/patient/medicalRecords/MedicalRecords";
 import PatientProfile from "./modules/patient/profile/PatientProfile";
 import Schedule from "./modules/patient/schedule/Schedule";
@@ -22,6 +23,7 @@ import VisitReports from "./modules/patient/visitReports/VisitReports";
 
 import NursePatients from "./modules/nurse/patients/NursePatients";
 import NurseAppointments from "./modules/nurse/appointments/NurseAppointments";
+import NurseNotifications from "./modules/nurse/notifications/NurseNotifications";
 import NurseAvailability from "./modules/nurse/availability/NurseAvailability";
 import NurseProfile from "./modules/nurse/nurseProfile/NurseProfile";
 import PatientCare from "./modules/nurse/patientCare/PatientCare";
@@ -95,6 +97,11 @@ function App() {
         />
 
         <Route
+          path="/patient/notifications"
+          element={<PatientNotifications />}
+        />
+
+        <Route
           path="/patient/medical-records"
           element={<MedicalRecords />}
         />
@@ -122,6 +129,11 @@ function App() {
         <Route
           path="/nurse/appointments"
           element={<NurseAppointments />}
+        />
+
+        <Route
+          path="/nurse/notifications"
+          element={<NurseNotifications />}
         />
 
         <Route

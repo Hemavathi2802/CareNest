@@ -1,7 +1,6 @@
 import { API_ORIGIN } from "../../../apiBase.js";
 import React, { useEffect, useState } from "react";
 import "./Appointments.css";
-import PatientNotifications from "./PatientNotifications";
 import { getPatientProfile } from "../profile/profileService";
 
 function Appointments() {
@@ -768,8 +767,6 @@ function Appointments() {
 
       </section>
 
-      <PatientNotifications />
-
       {/* =====================================================
           BOOK APPOINTMENT
       ===================================================== */}
@@ -1128,8 +1125,12 @@ function Appointments() {
                         {/* NURSE */}
 
                         <span>
-                          👩‍⚕️ Nurse ID:{" "}
-                          {appointment.nurseId}
+                          👩‍⚕️ Nurse:{" "}
+                          {appointment.nurseName || (
+                            appointment.nurseId
+                              ? `Nurse #${appointment.nurseId}`
+                              : "Not assigned"
+                          )}
                         </span>
 
                         {/* NOTES */}

@@ -83,6 +83,23 @@ function PatientDashboard() {
             <span className="module-arrow">→</span>
           </Link>
 
+          <Link
+            to="/patient/notifications"
+            className="patient-module-card"
+          >
+            <div className="module-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+                <path d="M10 21h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+            </div>
+            <div className="module-content">
+              <h3>Notifications</h3>
+              <p>View appointment status, reminders, and visit updates.</p>
+            </div>
+            <span className="module-arrow">→</span>
+          </Link>
+
 
           {/* SCHEDULE */}
 

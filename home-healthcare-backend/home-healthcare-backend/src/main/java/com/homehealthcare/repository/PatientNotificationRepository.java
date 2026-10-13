@@ -14,4 +14,6 @@ public interface PatientNotificationRepository
     Optional<PatientNotification> findByIdAndPatientId(Long id, Long patientId);
 
     boolean existsByAppointmentId(Long appointmentId);
+
+    boolean existsByAppointmentIdAndMessage(Long appointmentId, String message);
 }
